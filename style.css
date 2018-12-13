@@ -5,7 +5,7 @@ html, body {
 canvas {
   display: block;
 }
-.button {
+# class1 {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
