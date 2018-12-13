@@ -40,8 +40,18 @@ input[type=submit]:hover {
 .record {
   width: 50%;
 }
-.button {
-width: 100%;
+/* .button { */
+/* width: 100%; */
+  /* background-color: #4CAF50; */ 
+  /* border: none; */
+  /* color: white; */
+  /* padding: 15px 32px; */
+  /* text-align: center; */
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  /* font-size: 26px; */
+}
+.btn-group .button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -49,7 +59,13 @@ width: 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 26px;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
 }
 </style>
   </head>
@@ -57,8 +73,10 @@ width: 100%;
 
     <p id="demo"></p>
      <br>
+     <div class="btn-group">
      <button id="record" class ="record">Record</button>
     <button id="stoprecording" class ="record">Stop recording</button>
+    </div>
      <br>
     	<br>
     <button id="class1" class="button">Class 1</button>
