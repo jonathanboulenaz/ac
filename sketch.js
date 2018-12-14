@@ -54,7 +54,7 @@ function preload() {
 }
 
 function setup() {
-    cnv = createCanvas(window.innerWidth,920);
+    cnv = createCanvas(window.innerWidth,200);
 
 	audio = new MicrophoneInput(v);
     startTime = millis();
@@ -80,7 +80,7 @@ function draw() {
         fill(0);
         noStroke();
         text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-350, 150);
-        text("MFCCs", + 10,  150);
+        text("MFCCs", 0,  150);
 
         if (loudness > loudnessThreshold) {
             fill(0,255,0);
