@@ -44,7 +44,7 @@ var cnv;
 var v = 512;
 var ps = true;
 var recording = false;
-
+var cnv = document.getElementById('canvas');
 function preload() {
   //soundFile = loadSound('A.mp3');
   soundA = loadSound('A.mp3');
@@ -55,7 +55,7 @@ function preload() {
 
 function setup() {
     //cnv = createCanvas(480, 480);
-    cnv = document.getElementById('canvas');
+
 	audio = new MicrophoneInput(v);
     startTime = millis();
     setupButtons();
