@@ -55,10 +55,11 @@ function preload() {
 
 function setup() {
     //cnv = createCanvas(480, 480);
+    cnv = getElementById('canvas');
 	audio = new MicrophoneInput(v);
     startTime = millis();
     setupButtons();
-    makeDragAndDrop(cnv, gotFile);
+  //  makeDragAndDrop(cnv, gotFile);
 
 }
 
@@ -188,10 +189,10 @@ function labelStuff() {
   text('Drag a soundfile here to play it', width/2, 100);
 
 }
-function makeDragAndDrop(canvas, callback) {
-  var domEl = cnv;
-  domEl.drop(callback);
-}
+// function makeDragAndDrop(canvas, callback) {
+//   var domEl = cnv;
+//   domEl.drop(callback);
+// }
 
 function gotFile(file) {
   if (currentClass == 0){
