@@ -46,7 +46,6 @@ var ps = true;
 var recording = false;
 
 function preload() {
-  //soundFile = loadSound('A.mp3');
   soundA = loadSound('A.mp3');
   soundB = loadSound('B.mp3');
   soundC = loadSound('B.mp3');
@@ -268,11 +267,11 @@ function setupButtons() {
 function playSound(){
 if (soundA.isPlaying() || soundB.isPlaying() || soundC.isPlaying()){
 ps = true;
-print("play");
+//print("play");
 }
 else {
   ps = false;
-  print("stop");
+  //print("stop");
 }
 
 /*if (soundA.isPlaying()){
