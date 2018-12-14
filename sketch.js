@@ -40,8 +40,7 @@ var soundFile;
 var fft;
 var binCount = 1024;
 var bins = new Array(binCount);
-var canvas = document.getElementById('mycanvas');
-var cnv = canvas.getContext("2d");
+
 var v = 512;
 var ps = true;
 var recording = false;
@@ -166,8 +165,8 @@ if (loudness < 8){
     noStroke();
 
     textSize(12);
-    cnv.fillText("Current class: " + currentClass, 0, 35);
-    cnv.fillText("Number of samples: " + nSamples, 0, 55);
+    fillText("Current class: " + currentClass, 0, 35);
+    fillText("Number of samples: " + nSamples, 0, 55);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
