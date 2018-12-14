@@ -78,7 +78,7 @@ function draw() {
     if (soundReady) {
         fill(0);
         noStroke();
-        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-370, 150);
+        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-380, 150);
         text("MFCCs", 20,  150);
 
         if (loudness > loudnessThreshold) {
