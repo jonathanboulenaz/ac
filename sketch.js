@@ -132,7 +132,7 @@ if (loudness < 8){
     fill(0);
     textSize(20);
 
-  	text("Prediction: " + test, 0, height/2);
+  	text("Prediction: " + test, 0, height/3);
   if (currentClass == 1){
     text(counter1 + " " + document.getElementById("myText1").value, 0, height/2+25);
   }
