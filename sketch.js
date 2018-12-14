@@ -54,7 +54,7 @@ function preload() {
 }
 
 function setup() {
-    cnv = createCanvas(480, 480);
+    //cnv = createCanvas(480, 480);
 	audio = new MicrophoneInput(v);
     startTime = millis();
     setupButtons();
