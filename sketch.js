@@ -40,6 +40,7 @@ var soundFile;
 var fft;
 var binCount = 1024;
 var bins = new Array(binCount);
+var canvas;
 var cnv;
 var v = 512;
 var ps = true;
@@ -55,7 +56,8 @@ function preload() {
 
 function setup() {
     //cnv = createCanvas(480, 480);
-var cnv = document.getElementById('canvas');
+var canvas = document.getElementById('canvas');
+var cnv = canvas.getContext("2d");
 	audio = new MicrophoneInput(v);
     startTime = millis();
     setupButtons();
