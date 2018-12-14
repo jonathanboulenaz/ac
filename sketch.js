@@ -40,7 +40,7 @@ var soundFile;
 var fft;
 var binCount = 1024;
 var bins = new Array(binCount);
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('mycanvas');
 var cnv = canvas.getContext("2d");
 var v = 512;
 var ps = true;
