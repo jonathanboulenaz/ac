@@ -54,7 +54,7 @@ function preload() {
 }
 
 function setup() {
-    //cnv = createCanvas(480, 480);
+    cnv = createCanvas(964,920);
 
 	audio = new MicrophoneInput(v);
     startTime = millis();
@@ -65,7 +65,7 @@ function setup() {
 
 function draw() {
     background(255);
-    textSize(12);
+    textSize(36);
     playSound();
 
 //print(machine);
@@ -79,8 +79,8 @@ function draw() {
     if (soundReady) {
         fill(0);
         noStroke();
-        text("LOUDNESS " + nf(loudness, 1, 2), 10, 430);
-        text("MFCCs", + 10,  375);
+        text("LOUDNESS " + nf(loudness, 1, 2), width-350, 150);
+        text("MFCCs", + 10,  150);
 
         if (loudness > loudnessThreshold) {
             fill(0,255,0);
@@ -93,11 +93,11 @@ function draw() {
         }
 
         stroke(0);
-        ellipse(150, 425, loudness*3, loudness*3);
+        ellipse(width-20, 140, loudness*3, loudness*3);
 
         fill(0,255,0);
         for (var i = 0; i < 13; i++) {
-            rect(i*(15)+ 100, 375, 10, mfcc[i]*5);
+            rect(i*(15)+ 150, 150, 10, mfcc[i]*5);
         }
     }
 
@@ -131,9 +131,9 @@ if (loudness < 8){
   }
     noStroke();
     fill(0);
-    textSize(20);
+    textSize(36);
 
-  	text("Prediction: " + test, 0, height/3);
+  	text("Prediction: " + test, width/2-100, 90);
   if (currentClass == 1){
     text(counter1 + " " + document.getElementById("myText1").value, 0, height/2+25);
   }
@@ -164,9 +164,9 @@ if (loudness < 8){
 
     noStroke();
 
-    textSize(12);
-    fillText("Current class: " + currentClass, 0, 35);
-    fillText("Number of samples: " + nSamples, 0, 55);
+    //textSize();
+    text("Current class: " + currentClass, 0, 30, 1000);
+    text("Number of samples: " + nSamples, width-370, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
@@ -174,7 +174,7 @@ if (loudness < 8){
 }
 function labelStuff() {
   fill(255);
-  textSize(18);
+  //textSize(18);
   text('~'+selectedBin.freq + 'Hz (bin #' + selectedBin.index+')', mouseX, mouseY );
   text('Energy: ' + selectedBin.value, mouseX, mouseY + 20);
 
@@ -182,11 +182,7 @@ function labelStuff() {
     text('Current Time: ' + soundFile.currentTime().toFixed(3), width/2, 20);
   }*/
 
-  text('Current Source: ' + currentSource, width/2, 40);
-  textSize(14);
-  text('Press T to toggle source', width/2, 60);
-  text('Logarithmic view: ' + logView +' (L to toggle)', width/2, 80);
-  text('Drag a soundfile here to play it', width/2, 100);
+
 
 }
 // function makeDragAndDrop(canvas, callback) {
