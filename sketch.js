@@ -79,8 +79,8 @@ function draw() {
     if (soundReady) {
         fill(0);
         noStroke();
-        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-350, 150);
-        text("MFCCs", 0,  150);
+        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-370, 150);
+        text("MFCCs", 20,  150);
 
         if (loudness > loudnessThreshold) {
             fill(0,255,0);
@@ -93,11 +93,11 @@ function draw() {
         }
 
         stroke(0);
-        ellipse(window.innerWidth-30, 140, loudness*3, loudness*3);
+        ellipse(window.innerWidth-50, 140, loudness*3, loudness*3);
 
         fill(0,255,0);
         for (var i = 0; i < 13; i++) {
-            rect(i*(15)+ 150, 150, 10, mfcc[i]*5);
+            rect(i*(15)+ 170, 150, 10, mfcc[i]*5);
         }
     }
 
@@ -110,7 +110,7 @@ function draw() {
 
         fill(255, 0, 0);
         noStroke();
-        ellipse(window.innerWidth - 35, 25, 25, 25);
+        ellipse(window.innerWidth - 55, 25, 25, 25);
 
         singleTrigger = false;
         startTime = millis();
@@ -133,8 +133,8 @@ if (loudness < 8){
     fill(0);
     textSize(36);
 
-  	text("Prediction: " + test, window.innerWidth-220, 90);
-    var posx = 0;
+  	text("Prediction: " + test, window.innerWidth-240, 90);
+    var posx = 20;
     var posy = 90;
   if (currentClass == 1){
     text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
@@ -167,8 +167,8 @@ if (loudness < 8){
     noStroke();
 
     //textSize();
-    text("Current class: " + currentClass, 0, 30, 1000);
-    text("Number of samples: " + nSamples, window.innerWidth-370, 30, 1000);
+    text("Current class: " + currentClass, 20, 30, 1000);
+    text("Number of samples: " + nSamples, window.innerWidth-390, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
