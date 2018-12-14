@@ -54,7 +54,7 @@ function preload() {
 }
 
 function setup() {
-    cnv = createCanvas(964,920);
+    cnv = createCanvas(window.innerWidth,920);
 
 	audio = new MicrophoneInput(v);
     startTime = millis();
@@ -79,7 +79,7 @@ function draw() {
     if (soundReady) {
         fill(0);
         noStroke();
-        text("LOUDNESS " + nf(loudness, 1, 2), width-350, 150);
+        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-350, 150);
         text("MFCCs", + 10,  150);
 
         if (loudness > loudnessThreshold) {
@@ -93,7 +93,7 @@ function draw() {
         }
 
         stroke(0);
-        ellipse(width-20, 140, loudness*3, loudness*3);
+        ellipse(window.innerWidth-30, 140, loudness*3, loudness*3);
 
         fill(0,255,0);
         for (var i = 0; i < 13; i++) {
@@ -110,7 +110,7 @@ function draw() {
 
         fill(255, 0, 0);
         noStroke();
-        ellipse(width - 25, 25, 25, 25);
+        ellipse(window.innerWidth - 35, 25, 25, 25);
 
         singleTrigger = false;
         startTime = millis();
@@ -133,30 +133,32 @@ if (loudness < 8){
     fill(0);
     textSize(36);
 
-  	text("Prediction: " + test, width/2-100, 90);
+  	text("Prediction: " + test, window.innerWidth-220, 90);
+    var posx = 0;
+    var posy = 90;
   if (currentClass == 1){
-    text(counter1 + " " + document.getElementById("myText1").value, 0, height/2+25);
+    text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
   }
   else if (currentClass == 2){
-    text(counter2 + " " + document.getElementById("myText2").value, 0, height/2+25);
+    text(counter2 + " " + document.getElementById("myText2").value, posx, posy);
   }
   else if (currentClass == 3){
-    text(counter3 + " " + document.getElementById("myText3").value, 0, height/2+25);
+    text(counter3 + " " + document.getElementById("myText3").value, posx, posy);
   }
   else if (currentClass == 4){
-    text(counter4 + " " + document.getElementById("myText4").value, 0, height/2+25);
+    text(counter4 + " " + document.getElementById("myText4").value, posx, posy);
   }
   else if (currentClass == 5){
-    text(counter5 + " " + document.getElementById("myText5").value, 0, height/2+25);
+    text(counter5 + " " + document.getElementById("myText5").value, posx, posy);
   }
   else if (currentClass == 6){
-    text(counter6 + " " + document.getElementById("myText6").value, 0, height/2+25);
+    text(counter6 + " " + document.getElementById("myText6").value, posx, posy);
   }
   else if (currentClass == 7){
-    text(counter7 + " " + document.getElementById("myText7").value, 0, height/2+25);
+    text(counter7 + " " + document.getElementById("myText7").value, posx, posy);
   }
   else if (currentClass == 8){
-    text(counter8 + " " + document.getElementById("myText8").value, 0, height/2+25);
+    text(counter8 + " " + document.getElementById("myText8").value, posx, posy);
   }
 
 
@@ -166,7 +168,7 @@ if (loudness < 8){
 
     //textSize();
     text("Current class: " + currentClass, 0, 30, 1000);
-    text("Number of samples: " + nSamples, width-370, 30, 1000);
+    text("Number of samples: " + nSamples, window.innerWidth-370, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
