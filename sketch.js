@@ -165,28 +165,28 @@ if (loudness < 8){
     noStroke();
 
     textSize(12);
-    cnv.text("Current class: " + currentClass, 0, 35);
-    cnv.text("Number of samples: " + nSamples, 0, 55);
+    cnv.fillText("Current class: " + currentClass, 0, 35);
+    cnv.fillText("Number of samples: " + nSamples, 0, 55);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
 
 }
 function labelStuff() {
-  cnv.fill(255);
-  cnv.textSize(18);
-  cnv.text('~'+selectedBin.freq + 'Hz (bin #' + selectedBin.index+')', mouseX, mouseY );
-  cnv.text('Energy: ' + selectedBin.value, mouseX, mouseY + 20);
+  fill(255);
+  textSize(18);
+  text('~'+selectedBin.freq + 'Hz (bin #' + selectedBin.index+')', mouseX, mouseY );
+  text('Energy: ' + selectedBin.value, mouseX, mouseY + 20);
 
   /*if (soundFile.isPlaying()) {
     text('Current Time: ' + soundFile.currentTime().toFixed(3), width/2, 20);
   }*/
 
-  cnv.text('Current Source: ' + currentSource, width/2, 40);
-  cnv.textSize(14);
-  cnv.text('Press T to toggle source', width/2, 60);
-  cnv.text('Logarithmic view: ' + logView +' (L to toggle)', width/2, 80);
-  cnv.text('Drag a soundfile here to play it', width/2, 100);
+  text('Current Source: ' + currentSource, width/2, 40);
+  textSize(14);
+  text('Press T to toggle source', width/2, 60);
+  text('Logarithmic view: ' + logView +' (L to toggle)', width/2, 80);
+  text('Drag a soundfile here to play it', width/2, 100);
 
 }
 // function makeDragAndDrop(canvas, callback) {
