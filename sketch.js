@@ -55,7 +55,7 @@ function preload() {
 function setup() {
     cnv = createCanvas(window.innerWidth,200);
 window.onload = function() {
-	audio = new MicrophoneInput(v);
+	//audio = new MicrophoneInput(v);
 }
     startTime = millis();
     setupButtons();
@@ -183,6 +183,9 @@ if (loudness < 8){
 
 
 }
+
+function mousePressed() { getAudioContext().resume() }
+
 function labelStuff() {
   fill(255);
   //textSize(18);
