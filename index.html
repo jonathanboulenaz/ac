@@ -8,7 +8,7 @@
     <script src="Audio.js" type="text/javascript"></script>
     <script src="meyda.min.js" type="text/javascript"></script>
     <script src="ml5.min.js" type="text/javascript"></script>
-
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="sketch.js" type="text/javascript"></script>
     <style>  canvas {vertical-align: top; width: 100%;}
     input[type=text], select {
@@ -81,33 +81,39 @@ width: 100%;
      <div class="btn-group">
      <button id="record" class ="record">Record</button>
     <button id="stoprecording" class ="record">Stop recording</button>
+
     </div>
      <br>
     	<br>
+      <form action="#" method="get" id="myForm">
+        <button id="_save">Save</button>
+        <button id="_load">Load</button>
+        <input type="reset">
     <button id="class1" class="button">Class 1</button>
-    <input type="text" id="myText1" value="Café(s)">
+    <input type="text" name="textfield1" id="myText1" value="Café(s)">
    <br>
     <button id="class2" class="button">Class 2</button>
-    <input type="text" id="myText2" value="Thé(s)">
+    <input type="text" name="textfield2" id="myText2" value="Thé(s)">
     <br>
     <button id="class3" class="button">Class 3</button>
-    <input type="text" id="myText3" value="Toast(s)">
+    <input type="text" name="textfield3" id="myText3" value="Toast(s)">
     <br>
     <button id="class4" class="button">Class 4</button>
-    <input type="text" id="myText4" value="Bols de corn flakes">
+    <input type="text" name="textfield4" id="myText4" value="Bols de corn flakes">
      <br>
     <button id="class5" class="button">Class 5</button>
-    <input type="text" id="myText5" value="Verre(s) d'eau">
+    <input type="text" name="textfield5" id="myText5" value="Verre(s) d'eau">
      <br>
     <button id="class6" class="button">Class 6</button>
-    <input type="text" id="myText6" value="Pastille(s) lave vaisselle">
+    <input type="text" name="textfield6" id="myText6" value="Pastille(s) lave vaisselle">
      <br>
     <button id="class7" class="button">Class 7</button>
-    <input type="text" id="myText7" value="Cola(s)">
+    <input type="text" name="textfield7" id="myText7" value="Cola(s)">
      <br>
     <button id="class8" class="button">Class 8</button>
-    <input type="text" id="myText8" value="Verre(s)">
+    <input type="text" name="textfield8" id="myText8" value="Verre(s)">
      <br>
      <br>
+</form>
 
 </body></html>

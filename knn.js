@@ -1,6 +1,6 @@
 var kNear = function(k) {
     //PRIVATE
-    var training = [];
+    this.training = [];
 
     var dist = function(v1, v2) {
         var sum = 0;
@@ -36,13 +36,13 @@ var kNear = function(k) {
     //add a point to the training set
     this.learn = function(vector, label) {
         var obj = { v: vector, lab: label };
-        training.push(obj);
+        this.training.push(obj);
     };
 
     this.classify = function(v) {
         var voteBloc = [];
         var maxD = 0;
-        training.forEach(function(obj) {
+        this.training.forEach(function(obj) {
             var o = { d: dist(v, obj.v), vote: obj.lab };
             if (voteBloc.length < k) {
                 voteBloc.push(o);
@@ -74,4 +74,17 @@ var kNear = function(k) {
         });
         return mode(votes);
     };
-};
+//     function download(content, fileName, contentType) {
+//     var a = document.createElement("a");
+//     var file = new Blob([content], {type: contentType});
+//     a.href = URL.createObjectURL(file);
+//     a.download = fileName;
+//     a.click();
+// }
+// download(jsonData, 'json.txt', 'text/plain');
+
+    this.save = function(){
+      //export json ...
+
+    }
+}
