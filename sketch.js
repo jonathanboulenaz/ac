@@ -217,7 +217,10 @@ soundC = loadSound(file)
 }
 
 function setupButtons() {
-
+micro = select('#micro');
+micro.mousePressed(function(){
+  audio = new MicrophoneInput(v);
+})
 
 
    class1 = select('#class1');
