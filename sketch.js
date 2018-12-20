@@ -216,10 +216,7 @@ soundC = loadSound(file)
 }
 
 function setupButtons() {
-micro = select('#micro');
-micro.mousePressed(function(){
-  audio = new MicrophoneInput(v);
-})
+
 
 
    class1 = select('#class1');
@@ -267,6 +264,7 @@ micro.mousePressed(function(){
   record.mousePressed(function() {
     //machine.save();
 	recording = true;
+  audio = new MicrophoneInput(v);
   });
   stopRecording = select('#stoprecording');
   stopRecording.mousePressed(function() {
