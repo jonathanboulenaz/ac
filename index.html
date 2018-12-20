@@ -46,9 +46,19 @@ canvas{
 .record {
   /* width: 50%; */
 }
-.button {
+/* .button {
 width: 100%;
   background-color: grey; /* Green */
+  /* border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 36px;
+} */ 
+.btn-group .record {
+  background-color: black; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -56,8 +66,10 @@ width: 100%;
   text-decoration: none;
   display: inline-block;
   font-size: 36px;
+  cursor: pointer;
+  float: left;
 }
-.btn-group .record {
+.class-group .button {
   background-color: black; /* Green */
   border: none;
   color: white;
@@ -91,6 +103,7 @@ width: 100%;
         <button id="_save">Save</button>
         <button id="_load">Load</button>
         <input type="reset">
+        <div class="class-group">
     <button id="class1" class="button">Class 1</button>
     <button id="class2" class="button">Class 2</button>
     <button id="class3" class="button">Class 3</button>
@@ -99,6 +112,7 @@ width: 100%;
     <button id="class6" class="button">Class 6</button>
     <button id="class7" class="button">Class 7</button>
     <button id="class8" class="button">Class 8</button>
+    </div>
     <input type="text" name="textfield1" id="myText1" value="Café(s)">
    <br>
 
