@@ -55,7 +55,6 @@ function preload() {
 function setup() {
     cnv = createCanvas(window.innerWidth,200);
 
-	audio = new MicrophoneInput(v);
     startTime = millis();
     setupButtons();
   //  makeDragAndDrop(cnv, gotFile);
