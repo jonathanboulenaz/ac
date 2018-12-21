@@ -58,6 +58,7 @@ width: 100%;
   font-size: 36px;
 } */
 .btn-group .record {
+  width:25%;
   background-color: black;
   border: none;
   color: white;
@@ -68,12 +69,11 @@ width: 100%;
   font-size: 36px;
   cursor: pointer;
   float: left;
+  border: 1px solid white;
 }
-.class-group {
-  width:100%;
-}
-.class-group .button {
-  background-color: black;
+.btn-group .record2 {
+  width:25%;
+  background-color: red;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -83,11 +83,57 @@ width: 100%;
   font-size: 36px;
   cursor: pointer;
   float: left;
+  border: 1px solid white;
 }
 
-#record:hover {
-  background-color: red;
+.class-group .button {
+  width:12.5%;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 36px;
+  cursor: pointer;
+  float: left;
+  border: 1px solid white;
 }
+.class-group .button2 {
+  width:12.5%;
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 36px;
+  cursor: pointer;
+  float: left;
+  border: 1px solid white;
+}
+.save-btn .save {
+  width:25%;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 36px;
+  cursor: pointer;
+  float: left;
+  border: 1px solid white;
+}
+
+
+/* #record:hover {
+  background-color: red;
+} */
+
 </style>
   </head>
   <body>
@@ -95,28 +141,29 @@ width: 100%;
     <p id="demo"></p>
      <br>
      <div class="btn-group">
-     <button id="record" class ="record">Record</button>
-    <button id="stoprecording" class ="record">Stop recording</button>
+     <button id="record" class ="record">Rec</button>
+    <button id="stoprecording" class ="record">Stop rec</button>
     <!-- <button id="micro" class ="record">Active micro</button> -->
 
     </div>
-     <br>
-    	<br>
+
       <form action="#" method="get" id="myForm">
-        <button id="_save">Save</button>
-        <button id="_load">Load</button>
-        <input type="reset">
+        <div class="save-btn">
+        <button id="_save" class = "save">Save</button>
+        <button id="_load" class = "save">Load</button>
+        <!-- <input type="reset"> -->
+        </div>
         <br>
         <br>
-        <div class="class-group">
-    <button id="class1" class="button">Class 1</button>
-    <button id="class2" class="button">Class 2</button>
-    <button id="class3" class="button">Class 3</button>
-    <button id="class4" class="button">Class 4</button>
-    <button id="class5" class="button">Class 5</button>
-    <button id="class6" class="button">Class 6</button>
-    <button id="class7" class="button">Class 7</button>
-    <button id="class8" class="button">Class 8</button>
+        <div id = "mydiv" class="class-group">
+    <button id="class1" class="button">1</button>
+    <button id="class2" class="button">2</button>
+    <button id="class3" class="button">3</button>
+    <button id="class4" class="button">4</button>
+    <button id="class5" class="button">5</button>
+    <button id="class6" class="button">6</button>
+    <button id="class7" class="button">7</button>
+    <button id="class8" class="button">8</button>
     </div>
     <input type="text" name="textfield1" id="myText1" value="Café(s)">
    <br>

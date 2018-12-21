@@ -74,8 +74,56 @@ function draw() {
     background(255);
     textSize(36);
     playSound();
-
-//print(machine);
+if (currentClass == 1){
+  document.getElementById('class1').className = 'button2'
+}
+else{
+    document.getElementById('class1').className = 'button'
+}
+if (currentClass == 2){
+  document.getElementById('class2').className = 'button2'
+}
+else{
+    document.getElementById('class2').className = 'button'
+}
+if (currentClass == 3){
+  document.getElementById('class3').className = 'button2'
+}
+else{
+    document.getElementById('class3').className = 'button'
+}
+if (currentClass == 4){
+  document.getElementById('class4').className = 'button2'
+}
+else{
+    document.getElementById('class4').className = 'button'
+}
+if (currentClass == 5){
+  document.getElementById('class5').className = 'button2'
+}
+else{
+    document.getElementById('class5').className = 'button'
+}
+if (currentClass == 6){
+  document.getElementById('class6').className = 'button2'
+}
+else{
+    document.getElementById('class6').className = 'button'
+}
+if (currentClass == 7){
+  document.getElementById('class7').className = 'button2'
+}
+else{
+    document.getElementById('class7').className = 'button'
+}
+if (currentClass == 8){
+  document.getElementById('class8').className = 'button2'
+}
+else{
+    document.getElementById('class8').className = 'button'
+}
+//pr
+int(machine);
 
     timer = millis() - startTime;
     if (timer>triggerTimerThreshold) {
@@ -201,11 +249,14 @@ function labelStuff() {
 
 function gotFile(file) {
   if (currentClass == 0){
+
   soundA.dispose();
   soundA = loadSound(file)
 
 }
 if (currentClass == 1){
+
+
 soundB.dispose();
 soundB = loadSound(file)
 }
@@ -223,15 +274,24 @@ function setupButtons() {
   class1.mousePressed(function() {
     //machine.save();
 	currentClass = 1;
-
+  // document.getElementById('class1').className = 'button2'
+  // document.getElementById('class2').className = 'button'
+  // document.getElementById('class3').className = 'button'
+  // document.getElementById('class4').className = 'button'
   });
   class2 = select('#class2');
   class2.mousePressed(function() {
+    // document.getElementById('class1').className = 'button'
+    // document.getElementById('class2').className = 'button2'
+    // document.getElementById('class3').className = 'button'
     //machine.save();
 	currentClass = 2;
   });
   class3 = select('#class3');
   class3.mousePressed(function() {
+    // document.getElementById('class1').className = 'button'
+    // document.getElementById('class2').className = 'button'
+    // document.getElementById('class3').className = 'button2'
     //machine.save();
 	currentClass = 3;
   });
@@ -263,11 +323,13 @@ function setupButtons() {
   record = select('#record');
   record.mousePressed(function() {
     //machine.save();
+    document.getElementById('record').className = 'record2'
 	recording = true;
   audio = new MicrophoneInput(v);
   });
   stopRecording = select('#stoprecording');
   stopRecording.mousePressed(function() {
+      document.getElementById('record').className = 'record'
     //machine.save();
 	recording = false;
   });
