@@ -12,8 +12,9 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="sketch.js" type="text/javascript"></script>
     <style>  canvas {vertical-align: top; width: 100%;}
-    input[type=text], select {
+  .text1 {
       width: 100%;
+
       padding: 12px 20px;
       margin: 8px 0;
       display: inline-block;
@@ -24,7 +25,20 @@
       text-align: center;
 }
 
-input[type=submit] {
+.text2 {
+  background-color: #bfbfbf;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -35,7 +49,7 @@ input[type=submit] {
     cursor: pointer;
     font-size: 36px;
     text-align: center;
-}
+} */
 canvas{
   width: 100%;
 }
@@ -102,7 +116,7 @@ width: 100%;
 }
 .class-group .button2 {
   width:12.5%;
-  background-color: red;
+  background-color: grey;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -165,28 +179,29 @@ width: 100%;
     <button id="class7" class="button">7</button>
     <button id="class8" class="button">8</button>
     </div>
-    <input type="text" name="textfield1" id="myText1" value="Café(s)">
+    <!-- <label for="myText1">First Name</label> -->
+    <input class = text1 type="text" name="textfield1" id="myText1" value="Café(s)">
    <br>
 
-    <input type="text" name="textfield2" id="myText2" value="Thé(s)">
+    <input class = text1 type="text" name="textfield2" id="myText2" value="Thé(s)">
     <br>
 
-    <input type="text" name="textfield3" id="myText3" value="Toast(s)">
+    <input class = text1 type="text" name="textfield3" id="myText3" value="Toast(s)">
     <br>
 
-    <input type="text" name="textfield4" id="myText4" value="Bols de corn flakes">
+    <input class = text1 type="text" name="textfield4" id="myText4" value="Bols de corn flakes">
      <br>
 
-    <input type="text" name="textfield5" id="myText5" value="Verre(s) d'eau">
+    <input class = text1 type="text" name="textfield5" id="myText5" value="Verre(s) d'eau">
      <br>
 
-    <input type="text" name="textfield6" id="myText6" value="Pastille(s) lave vaisselle">
+    <input class = text1 type="text" name="textfield6" id="myText6" value="Pastille(s) lave vaisselle">
      <br>
 
-    <input type="text" name="textfield7" id="myText7" value="Cola(s)">
+    <input class = text1 type="text" name="textfield7" id="myText7" value="Cola(s)">
      <br>
 
-    <input type="text" name="textfield8" id="myText8" value="Verre(s)">
+    <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
      <br>
      <br>
 </form>

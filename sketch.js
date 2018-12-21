@@ -76,51 +76,67 @@ function draw() {
     playSound();
 if (currentClass == 1){
   document.getElementById('class1').className = 'button2'
+  document.getElementById('myText1').className = 'text2'
 }
 else{
     document.getElementById('class1').className = 'button'
+    document.getElementById('myText1').className = 'text1'
 }
 if (currentClass == 2){
   document.getElementById('class2').className = 'button2'
+  document.getElementById('myText2').className = 'text2'
 }
 else{
     document.getElementById('class2').className = 'button'
+    document.getElementById('myText2').className = 'text1'
 }
 if (currentClass == 3){
   document.getElementById('class3').className = 'button2'
+  document.getElementById('myText3').className = 'text2'
 }
 else{
     document.getElementById('class3').className = 'button'
+    document.getElementById('myText3').className = 'text1'
 }
 if (currentClass == 4){
   document.getElementById('class4').className = 'button2'
+  document.getElementById('myText4').className = 'text2'
 }
 else{
     document.getElementById('class4').className = 'button'
+    document.getElementById('myText4').className = 'text1'
 }
 if (currentClass == 5){
   document.getElementById('class5').className = 'button2'
+  document.getElementById('myText5').className = 'text2'
 }
 else{
     document.getElementById('class5').className = 'button'
+    document.getElementById('myText5').className = 'text1'
 }
 if (currentClass == 6){
   document.getElementById('class6').className = 'button2'
+  document.getElementById('myText6').className = 'text2'
 }
 else{
     document.getElementById('class6').className = 'button'
+    document.getElementById('myText6').className = 'text1'
 }
 if (currentClass == 7){
   document.getElementById('class7').className = 'button2'
+  document.getElementById('myText7').className = 'text2'
 }
 else{
     document.getElementById('class7').className = 'button'
+    document.getElementById('myText7').className = 'text1'
 }
 if (currentClass == 8){
   document.getElementById('class8').className = 'button2'
+  document.getElementById('myText8').className = 'text2'
 }
 else{
     document.getElementById('class8').className = 'button'
+    document.getElementById('myText8').className = 'text1'
 }
 //pr
 int(machine);
@@ -191,10 +207,10 @@ if (loudness < 8){
   	text("Prediction: " + test, window.innerWidth-240, 90);
     var posx = 20;
     var posy = 90;
-  if (currentClass == 1){
+if (currentClass == 1){
     text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
-  }
-  else if (currentClass == 2){
+}
+    if (currentClass == 2){
     text(counter2 + " " + document.getElementById("myText2").value, posx, posy);
   }
   else if (currentClass == 3){
@@ -222,7 +238,7 @@ if (loudness < 8){
     noStroke();
 
     //textSize();
-    text("Current class: " + currentClass, 20, 30, 1000);
+    //text("Current class: " + currentClass, 20, 30, 1000);
     text("Number of samples: " + nSamples, window.innerWidth-390, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
@@ -387,7 +403,7 @@ lastTest = test;
 }
 
 function soundDataCallback(soundData) {
-    console.log('soundData');
+    //console.log('soundData');
     soundReady = true;
     mfcc = soundData.mfcc;
     // console.log(mfcc);
@@ -461,8 +477,11 @@ $(document).ready(function(){
    $("#_save").on('click', function(){
      console.log("Saving form data...")
      var data = $("form#myForm").toJSON()
-     console.log(data);
+     var audioData = JSON.stringify(machine.training);
+
+     console.log(audioData);
      localStorage['form_data'] = data;
+     localStorage['audio_data'] = audioData;
 
      return false;
    })
@@ -475,6 +494,7 @@ $(document).ready(function(){
      } else {
        console.log("Error: Save some data first")
      }
+
 
      return false;
    })
