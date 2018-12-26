@@ -23,9 +23,10 @@ var counter5 = 0;
 var counter6 = 0;
 var counter7 = 0;
 var counter8 = 0;
+var counter9 = 0;
 
 var counter = 9;
-var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8];
+var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8,counter9];
 
 
 //TRIGGER MODE
@@ -64,19 +65,9 @@ function setup() {
 
     startTime = millis();
     setupButtons();
-  //  makeDragAndDrop(cnv, gotFile);
-
-
-  //load JSON ...
-
 
 }
 
-
-
-// function callbackJSONLoaded(json){
-//   machine.training = json.training;
-// }
 
 function draw() {
 
@@ -94,12 +85,7 @@ document.getElementById('myText'+i).className = 'text1'
 
 }
 
-// else {
-//   document.getElementById('class'+currentClass).className = 'button2'
-//   document.getElementById('myText'+currentClass).className = 'text2'
-// }
-//}
-//lastClass = currentClass;
+
 // if (currentClass == 1){
 //   document.getElementById('class1').className = 'button2'
 //   document.getElementById('myText1').className = 'text2'
@@ -108,73 +94,7 @@ document.getElementById('myText'+i).className = 'text1'
 //     document.getElementById('class1').className = 'button'
 //     document.getElementById('myText1').className = 'text1'
 // }
-// if (currentClass == 2){
-//   document.getElementById('class2').className = 'button2'
-//   document.getElementById('myText2').className = 'text2'
-// }
-// else{
-//     document.getElementById('class2').className = 'button'
-//     document.getElementById('myText2').className = 'text1'
-// }
-// if (currentClass == 3){
-//   document.getElementById('class3').className = 'button2'
-//   document.getElementById('myText3').className = 'text2'
-// }
-// else{
-//     document.getElementById('class3').className = 'button'
-//     document.getElementById('myText3').className = 'text1'
-// }
-// if (currentClass == 4){
-//   document.getElementById('class4').className = 'button2'
-//   document.getElementById('myText4').className = 'text2'
-// }
-// else{
-//     document.getElementById('class4').className = 'button'
-//     document.getElementById('myText4').className = 'text1'
-// }
-// if (currentClass == 5){
-//   document.getElementById('class5').className = 'button2'
-//   document.getElementById('myText5').className = 'text2'
-// }
-// else{
-//     document.getElementById('class5').className = 'button'
-//     document.getElementById('myText5').className = 'text1'
-// }
-// if (currentClass == 6){
-//   document.getElementById('class6').className = 'button2'
-//   document.getElementById('myText6').className = 'text2'
-// }
-// else{
-//     document.getElementById('class6').className = 'button'
-//     document.getElementById('myText6').className = 'text1'
-// }
-// if (currentClass == 7){
-//   document.getElementById('class7').className = 'button2'
-//   document.getElementById('myText7').className = 'text2'
-// }
-// else{
-//     document.getElementById('class7').className = 'button'
-//     document.getElementById('myText7').className = 'text1'
-// }
-// if (currentClass == 8){
-//   document.getElementById('class8').className = 'button2'
-//   document.getElementById('myText8').className = 'text2'
-// }
-// else{
-//     document.getElementById('class8').className = 'button'
-//     document.getElementById('myText8').className = 'text1'
-// }
-// if (counter == 10){
-//
-// if (currentClass == 9){
-//   document.getElementById('class9').className = 'button2'
-//   document.getElementById('myText9').className = 'text2'
-// }
-// else{
-//     document.getElementById('class9').className = 'button'
-//     document.getElementById('myText9').className = 'text1'
-// }
-// }
+
 playSound();
 //pr
 int(machine);
@@ -250,36 +170,6 @@ if (loudness < 8){
 
 text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
  }
-//console.log(count[0]);
-
-
-// if (currentClass == 1){
-//     text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
-// }
-//     if (currentClass == 2){
-//     text(counter2 + " " + document.getElementById("myText2").value, posx, posy);
-//   }
-//   else if (currentClass == 3){
-//     text(counter3 + " " + document.getElementById("myText3").value, posx, posy);
-//   }
-//   else if (currentClass == 4){
-//     text(counter4 + " " + document.getElementById("myText4").value, posx, posy);
-//   }
-//   else if (currentClass == 5){
-//     text(counter5 + " " + document.getElementById("myText5").value, posx, posy);
-//   }
-//   else if (currentClass == 6){
-//     text(counter6 + " " + document.getElementById("myText6").value, posx, posy);
-//   }
-//   else if (currentClass == 7){
-//     text(counter7 + " " + document.getElementById("myText7").value, posx, posy);
-//   }
-//   else if (currentClass == 8){
-//     text(counter8 + " " + document.getElementById("myText8").value, posx, posy);
-//   }
-
-
-    //print(test);
 
     noStroke();
 
@@ -303,6 +193,15 @@ function labelStuff() {
 
 function drawButtons(){
 
+
+// for (var i = 1; i<= counter-1; i++){
+// select('#class'+ i).mousePressed(function(){
+// currentClass = i;
+//
+//
+// });
+//
+// }
 
      class1 = select('#class1');
     class1.mousePressed(function() {
@@ -357,10 +256,15 @@ function drawButtons(){
   	currentClass = 9;
     });
   }
+  else if (counter == 11){
+  class10 = select('#class10');
+  class10.mousePressed(function() {
+    //machine.save();
+  currentClass = 10;
+  });
+}
 }
 function setupButtons() {
-
-
 
   record = select('#record');
   record.mousePressed(function() {
@@ -378,64 +282,10 @@ function setupButtons() {
 }
 
 function playSound(){
-if (soundA.isPlaying() || soundB.isPlaying() || soundC.isPlaying()){
-ps = true;
-//print("play");
-}
-else {
-  ps = false;
-  //print("stop");
-}
 
-/*if (soundA.isPlaying()){
-  test = 0;
-}
-if (soundB.isPlaying()){
-  test = 1;
-}
-if (soundC.isPlaying()){
-  test = 2;
-}*/
 if (test !== lastTest ){
 count[test-1]++;
 }
-//
-// if (test == 0 && lastTest !== 0 ){
-//
-// }
-// else if (test == 1 && lastTest !== 1 ){
-// // counter1++;
-// count[0]++;
-// console.log(count[0]);
-// }
-// else if (test == 2 && lastTest !== 2 ){
-// // counter2++;
-// count[1]++;
-// }
-//   else if (test == 3 && lastTest !== 3){
-// // counter3++;
-// count[2]++;
-// }
-//   else if (test == 4 && lastTest !== 4 ){
-// // counter4++;
-// count[3]++;
-// }
-//   else if (test == 5 && lastTest !== 5 ){
-// // counter5++;
-// count[4]++;
-// }
-//   else if (test == 6 && lastTest !== 6 ){
-// // counter6++;
-// count[5]++;
-// }
-//   else if (test == 7 && lastTest !== 7 ){
-// // counter7++;
-// count[6]++;
-// }
-//   else if (test == 8 && lastTest !== 8 ){
-// // counter8++;
-// count[7]++;
-// }
 
 lastTest = test;
 }
@@ -454,32 +304,6 @@ function soundDataCallback(soundData) {
     }
 }
 
-
-function keyPressed() {
-    if (key == '0') {
-        currentClass = 0;
-    } else if (key == '1') {
-        currentClass = 1;
-    } else if (key == '2') {
-        currentClass = 2;
-    } else if (key == '3') {
-        currentClass = 3;
-    } else if (key == '4') {
-        currentClass = 4;
-    } else if (key == '5') {
-        currentClass = 5;
-    } else if (key == '6') {
-        currentClass = 6;
-    } else if (key == '7') {
-        currentClass = 7;
-    } else if (key == '8') {
-        currentClass = 8;
-    } else if (key == '9') {
-        currentClass = 9;
-    }
-
-
-}
 
 ;(function($) {
     $.fn.toJSON = function() {
@@ -552,8 +376,8 @@ $(document).ready(function(){
 
     $("#addButton").click(function () {
 
-	if(counter>10){
-            alert("Only 10 textboxes allow");
+	if(counter>15){
+            alert("Only 15 textboxes allow");
             return false;
 	}
 
