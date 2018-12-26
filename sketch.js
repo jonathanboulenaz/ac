@@ -1,8 +1,9 @@
 //Basic KNN classification of MFFCs
 var k = 3; //k can be any integer
 var machine = new kNear(k);
-var test;
+
 var currentClass = 0;
+var lastClass;
 var nSamples = 0;
 
 var audio;
@@ -22,6 +23,11 @@ var counter5 = 0;
 var counter6 = 0;
 var counter7 = 0;
 var counter8 = 0;
+
+var counter = 9;
+var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8];
+
+
 //TRIGGER MODE
 var predictionAlpha = 255;
 
@@ -53,6 +59,7 @@ function preload() {
 }
 
 function setup() {
+
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
@@ -72,72 +79,103 @@ function setup() {
 // }
 
 function draw() {
+
     background(255);
     textSize(36);
-if (currentClass == 1){
-  document.getElementById('class1').className = 'button2'
-  document.getElementById('myText1').className = 'text2'
+drawButtons();
+if (currentClass>0){
+for (var i = 1; i< counter; i++){
+document.getElementById('class'+i).className = 'button'
+document.getElementById('myText'+i).className = 'text1'
 }
-else{
-    document.getElementById('class1').className = 'button'
-    document.getElementById('myText1').className = 'text1'
+  //if (currentClass !== lastClass){
+  document.getElementById('class'+currentClass).className = 'button2'
+  document.getElementById('myText'+currentClass).className = 'text2'
+
 }
-if (currentClass == 2){
-  document.getElementById('class2').className = 'button2'
-  document.getElementById('myText2').className = 'text2'
-}
-else{
-    document.getElementById('class2').className = 'button'
-    document.getElementById('myText2').className = 'text1'
-}
-if (currentClass == 3){
-  document.getElementById('class3').className = 'button2'
-  document.getElementById('myText3').className = 'text2'
-}
-else{
-    document.getElementById('class3').className = 'button'
-    document.getElementById('myText3').className = 'text1'
-}
-if (currentClass == 4){
-  document.getElementById('class4').className = 'button2'
-  document.getElementById('myText4').className = 'text2'
-}
-else{
-    document.getElementById('class4').className = 'button'
-    document.getElementById('myText4').className = 'text1'
-}
-if (currentClass == 5){
-  document.getElementById('class5').className = 'button2'
-  document.getElementById('myText5').className = 'text2'
-}
-else{
-    document.getElementById('class5').className = 'button'
-    document.getElementById('myText5').className = 'text1'
-}
-if (currentClass == 6){
-  document.getElementById('class6').className = 'button2'
-  document.getElementById('myText6').className = 'text2'
-}
-else{
-    document.getElementById('class6').className = 'button'
-    document.getElementById('myText6').className = 'text1'
-}
-if (currentClass == 7){
-  document.getElementById('class7').className = 'button2'
-  document.getElementById('myText7').className = 'text2'
-}
-else{
-    document.getElementById('class7').className = 'button'
-    document.getElementById('myText7').className = 'text1'
-}
-if (currentClass == 8){
-  document.getElementById('class8').className = 'button2'
-  document.getElementById('myText8').className = 'text2'
-}
-else{
-    document.getElementById('class8').className = 'button'
-    document.getElementById('myText8').className = 'text1'
-}
+
+// else {
+//   document.getElementById('class'+currentClass).className = 'button2'
+//   document.getElementById('myText'+currentClass).className = 'text2'
+// }
+//}
+//lastClass = currentClass;
+// if (currentClass == 1){
+//   document.getElementById('class1').className = 'button2'
+//   document.getElementById('myText1').className = 'text2'
+// }
+// else{
+//     document.getElementById('class1').className = 'button'
+//     document.getElementById('myText1').className = 'text1'
+// }
+// if (currentClass == 2){
+//   document.getElementById('class2').className = 'button2'
+//   document.getElementById('myText2').className = 'text2'
+// }
+// else{
+//     document.getElementById('class2').className = 'button'
+//     document.getElementById('myText2').className = 'text1'
+// }
+// if (currentClass == 3){
+//   document.getElementById('class3').className = 'button2'
+//   document.getElementById('myText3').className = 'text2'
+// }
+// else{
+//     document.getElementById('class3').className = 'button'
+//     document.getElementById('myText3').className = 'text1'
+// }
+// if (currentClass == 4){
+//   document.getElementById('class4').className = 'button2'
+//   document.getElementById('myText4').className = 'text2'
+// }
+// else{
+//     document.getElementById('class4').className = 'button'
+//     document.getElementById('myText4').className = 'text1'
+// }
+// if (currentClass == 5){
+//   document.getElementById('class5').className = 'button2'
+//   document.getElementById('myText5').className = 'text2'
+// }
+// else{
+//     document.getElementById('class5').className = 'button'
+//     document.getElementById('myText5').className = 'text1'
+// }
+// if (currentClass == 6){
+//   document.getElementById('class6').className = 'button2'
+//   document.getElementById('myText6').className = 'text2'
+// }
+// else{
+//     document.getElementById('class6').className = 'button'
+//     document.getElementById('myText6').className = 'text1'
+// }
+// if (currentClass == 7){
+//   document.getElementById('class7').className = 'button2'
+//   document.getElementById('myText7').className = 'text2'
+// }
+// else{
+//     document.getElementById('class7').className = 'button'
+//     document.getElementById('myText7').className = 'text1'
+// }
+// if (currentClass == 8){
+//   document.getElementById('class8').className = 'button2'
+//   document.getElementById('myText8').className = 'text2'
+// }
+// else{
+//     document.getElementById('class8').className = 'button'
+//     document.getElementById('myText8').className = 'text1'
+// }
+// if (counter == 10){
+//
+// if (currentClass == 9){
+//   document.getElementById('class9').className = 'button2'
+//   document.getElementById('myText9').className = 'text2'
+// }
+// else{
+//     document.getElementById('class9').className = 'button'
+//     document.getElementById('myText9').className = 'text1'
+// }
+// }
+playSound();
 //pr
 int(machine);
 
@@ -207,30 +245,38 @@ if (loudness < 8){
   	text("Prediction: " + test, window.innerWidth-240, 90);
     var posx = 20;
     var posy = 90;
-if (currentClass == 1){
-    text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
-}
-    if (currentClass == 2){
-    text(counter2 + " " + document.getElementById("myText2").value, posx, posy);
-  }
-  else if (currentClass == 3){
-    text(counter3 + " " + document.getElementById("myText3").value, posx, posy);
-  }
-  else if (currentClass == 4){
-    text(counter4 + " " + document.getElementById("myText4").value, posx, posy);
-  }
-  else if (currentClass == 5){
-    text(counter5 + " " + document.getElementById("myText5").value, posx, posy);
-  }
-  else if (currentClass == 6){
-    text(counter6 + " " + document.getElementById("myText6").value, posx, posy);
-  }
-  else if (currentClass == 7){
-    text(counter7 + " " + document.getElementById("myText7").value, posx, posy);
-  }
-  else if (currentClass == 8){
-    text(counter8 + " " + document.getElementById("myText8").value, posx, posy);
-  }
+
+ if (currentClass !== 0){
+
+text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
+ }
+//console.log(count[0]);
+
+
+// if (currentClass == 1){
+//     text(counter1 + " " + document.getElementById("myText1").value, posx, posy);
+// }
+//     if (currentClass == 2){
+//     text(counter2 + " " + document.getElementById("myText2").value, posx, posy);
+//   }
+//   else if (currentClass == 3){
+//     text(counter3 + " " + document.getElementById("myText3").value, posx, posy);
+//   }
+//   else if (currentClass == 4){
+//     text(counter4 + " " + document.getElementById("myText4").value, posx, posy);
+//   }
+//   else if (currentClass == 5){
+//     text(counter5 + " " + document.getElementById("myText5").value, posx, posy);
+//   }
+//   else if (currentClass == 6){
+//     text(counter6 + " " + document.getElementById("myText6").value, posx, posy);
+//   }
+//   else if (currentClass == 7){
+//     text(counter7 + " " + document.getElementById("myText7").value, posx, posy);
+//   }
+//   else if (currentClass == 8){
+//     text(counter8 + " " + document.getElementById("myText8").value, posx, posy);
+//   }
 
 
     //print(test);
@@ -255,55 +301,67 @@ function labelStuff() {
 
 }
 
+function drawButtons(){
 
+
+     class1 = select('#class1');
+    class1.mousePressed(function() {
+      //machine.save();
+  	currentClass = 1;
+    // document.getElementById('class1').className = 'button2'
+    // document.getElementById('class2').className = 'button'
+    // document.getElementById('class3').className = 'button'
+    // document.getElementById('class4').className = 'button'
+    });
+    class2 = select('#class2');
+    class2.mousePressed(function() {
+      // document.getElementById('class1').className = 'button'
+      // document.getElementById('class2').className = 'button2'
+      // document.getElementById('class3').className = 'button'
+      //machine.save();
+  	currentClass = 2;
+    });
+    class3 = select('#class3');
+    class3.mousePressed(function() {
+  	currentClass = 3;
+    });
+    class4 = select('#class4');
+    class4.mousePressed(function() {
+      //machine.save();
+  	currentClass = 4;
+    });
+    class5 = select('#class5');
+    class5.mousePressed(function() {
+      //machine.save();
+  	currentClass = 5;
+    });
+    class6 = select('#class6');
+    class6.mousePressed(function() {
+      //machine.save();
+  	currentClass = 6;
+    });
+    class7 = select('#class7');
+    class7.mousePressed(function() {
+      //machine.save();
+  	currentClass = 7;
+    });
+    class8 = select('#class8');
+    class8.mousePressed(function() {
+      //machine.save();
+  	currentClass = 8;
+    });
+    if (counter == 10){
+    class9 = select('#class9');
+    class9.mousePressed(function() {
+      //machine.save();
+  	currentClass = 9;
+    });
+  }
+}
 function setupButtons() {
 
-   class1 = select('#class1');
-  class1.mousePressed(function() {
-    //machine.save();
-	currentClass = 1;
-  // document.getElementById('class1').className = 'button2'
-  // document.getElementById('class2').className = 'button'
-  // document.getElementById('class3').className = 'button'
-  // document.getElementById('class4').className = 'button'
-  });
-  class2 = select('#class2');
-  class2.mousePressed(function() {
-    // document.getElementById('class1').className = 'button'
-    // document.getElementById('class2').className = 'button2'
-    // document.getElementById('class3').className = 'button'
-    //machine.save();
-	currentClass = 2;
-  });
-  class3 = select('#class3');
-  class3.mousePressed(function() {
-	currentClass = 3;
-  });
-  class4 = select('#class4');
-  class4.mousePressed(function() {
-    //machine.save();
-	currentClass = 4;
-  });
-  class5 = select('#class5');
-  class5.mousePressed(function() {
-    //machine.save();
-	currentClass = 5;
-  });
-  class6 = select('#class6');
-  class6.mousePressed(function() {
-    //machine.save();
-	currentClass = 6;
-  });
-  class7 = select('#class7');
-  class7.mousePressed(function() {
-    //machine.save();
-	currentClass = 7;
-  });
-  class8 = select('#class8');
-  class8.mousePressed(function() {
-    //machine.save();
-	currentClass = 8;
-  });
+
+
   record = select('#record');
   record.mousePressed(function() {
     //machine.save();
@@ -338,34 +396,46 @@ if (soundB.isPlaying()){
 if (soundC.isPlaying()){
   test = 2;
 }*/
-
-if (test == 0 && lastTest !== 0 && ps == false){
-
+if (test !== lastTest ){
+count[test-1]++;
 }
-else if (test == 1 && lastTest !== 1 && ps == false){
-counter1++;
-}
-else if (test == 2 && lastTest !== 2 && ps == false){
-counter2++;
-}
-  else if (test == 3 && lastTest !== 3 && ps == false){
-counter3++;
-}
-  else if (test == 4 && lastTest !== 4 && ps == false){
-counter4++;
-}
-  else if (test == 5 && lastTest !== 5 && ps == false){
-counter5++;
-}
-  else if (test == 6 && lastTest !== 6 && ps == false){
-counter6++;
-}
-  else if (test == 7 && lastTest !== 7 && ps == false){
-counter7++;
-}
-  else if (test == 8 && lastTest !== 8 && ps == false){
-counter8++;
-}
+//
+// if (test == 0 && lastTest !== 0 ){
+//
+// }
+// else if (test == 1 && lastTest !== 1 ){
+// // counter1++;
+// count[0]++;
+// console.log(count[0]);
+// }
+// else if (test == 2 && lastTest !== 2 ){
+// // counter2++;
+// count[1]++;
+// }
+//   else if (test == 3 && lastTest !== 3){
+// // counter3++;
+// count[2]++;
+// }
+//   else if (test == 4 && lastTest !== 4 ){
+// // counter4++;
+// count[3]++;
+// }
+//   else if (test == 5 && lastTest !== 5 ){
+// // counter5++;
+// count[4]++;
+// }
+//   else if (test == 6 && lastTest !== 6 ){
+// // counter6++;
+// count[5]++;
+// }
+//   else if (test == 7 && lastTest !== 7 ){
+// // counter7++;
+// count[6]++;
+// }
+//   else if (test == 8 && lastTest !== 8 ){
+// // counter8++;
+// count[7]++;
+// }
 
 lastTest = test;
 }
@@ -478,7 +548,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
 
-    var counter = 9;
+
 
     $("#addButton").click(function () {
 
@@ -493,7 +563,10 @@ $(document).ready(function(){
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
 	      '<input class = text1 type="text" name="textfield' + counter
-        + '" id="myText'+ counter +'" value="Verres">');
+        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button>'
+      );
+// <button id="class1" class="button">1</button>
+
 
 	newTextBoxDiv.appendTo("#TextBoxesGroup");
 
