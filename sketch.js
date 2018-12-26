@@ -62,18 +62,18 @@ function setup() {
 
   //load JSON ...
 
+
 }
 
 
 
-function callbackJSONLoaded(json){
-  machine.training = json.training;
-}
+// function callbackJSONLoaded(json){
+//   machine.training = json.training;
+// }
 
 function draw() {
     background(255);
     textSize(36);
-    playSound();
 if (currentClass == 1){
   document.getElementById('class1').className = 'button2'
   document.getElementById('myText1').className = 'text2'
@@ -251,40 +251,12 @@ function labelStuff() {
   text('~'+selectedBin.freq + 'Hz (bin #' + selectedBin.index+')', mouseX, mouseY );
   text('Energy: ' + selectedBin.value, mouseX, mouseY + 20);
 
-  /*if (soundFile.isPlaying()) {
-    text('Current Time: ' + soundFile.currentTime().toFixed(3), width/2, 20);
-  }*/
-
 
 
 }
-// function makeDragAndDrop(canvas, callback) {
-//   var domEl = cnv;
-//   domEl.drop(callback);
-// }
 
-function gotFile(file) {
-  if (currentClass == 0){
-
-  soundA.dispose();
-  soundA = loadSound(file)
-
-}
-if (currentClass == 1){
-
-
-soundB.dispose();
-soundB = loadSound(file)
-}
-if (currentClass == 2){
-soundC.dispose();
-soundC = loadSound(file)
-}
-}
 
 function setupButtons() {
-
-
 
    class1 = select('#class1');
   class1.mousePressed(function() {
@@ -305,10 +277,6 @@ function setupButtons() {
   });
   class3 = select('#class3');
   class3.mousePressed(function() {
-    // document.getElementById('class1').className = 'button'
-    // document.getElementById('class2').className = 'button'
-    // document.getElementById('class3').className = 'button2'
-    //machine.save();
 	currentClass = 3;
   });
   class4 = select('#class4');
@@ -476,21 +444,30 @@ function keyPressed() {
 $(document).ready(function(){
    $("#_save").on('click', function(){
      console.log("Saving form data...")
+     console.log('training datas',machine.training);
      var data = $("form#myForm").toJSON()
      var audioData = JSON.stringify(machine.training);
 
-     console.log(audioData);
-     localStorage['form_data'] = data;
-     localStorage['audio_data'] = audioData;
+     // console.log(audioData);
+     localStorage.setItem('form_data', data);
+     localStorage.setItem('audio_data', audioData);
 
      return false;
    })
 
    $("#_load").on('click', function(){
      if(localStorage['form_data']){
-       console.log("Loading form data...")
-       console.log(JSON.parse(localStorage['form_data']))
-       $("form#myForm").fromJSON(localStorage['form_data'])
+       console.log("Loading form data...");
+       //console.log(JSON.parse(localStorage['form_data']))
+       let model = JSON.parse(localStorage.getItem('audio_data'));
+       machine.training = model;
+       console.log('length',model.length,machine.training);
+
+      nSamples = model.length;
+       //console.log(JSON.parse(localStorage['audio-data']))
+       let form = localStorage.getItem('form_data');
+       $("form#myForm").fromJSON(form);
+
      } else {
        console.log("Error: Save some data first")
      }
@@ -499,3 +476,49 @@ $(document).ready(function(){
      return false;
    })
 });
+$(document).ready(function(){
+
+    var counter = 9;
+
+    $("#addButton").click(function () {
+
+	if(counter>10){
+            alert("Only 10 textboxes allow");
+            return false;
+	}
+
+	var newTextBoxDiv = $(document.createElement('div'))
+	     .attr("id", 'TextBoxDiv' + counter);
+    //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
+	newTextBoxDiv.after().html(
+    // '<label>Textbox #'+ counter + ' : </label>' +
+	      '<input class = text1 type="text" name="textfield' + counter
+        + '" id="myText'+ counter +'" value="Verres">');
+
+	newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+
+	counter++;
+     });
+
+     $("#removeButton").click(function () {
+	if(counter==1){
+          alert("No more textbox to remove");
+          return false;
+       }
+
+	counter--;
+
+        $("#TextBoxDiv" + counter).remove();
+
+     });
+
+     $("#getButtonValue").click(function () {
+
+	var msg = '';
+	for(i=1; i<counter; i++){
+   	  msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+	}
+    	  alert(msg);
+     });
+  });
