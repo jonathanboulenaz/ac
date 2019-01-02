@@ -177,6 +177,14 @@ if (loudness < ambiantNoise){
 
 text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
  }
+for (var i = 1; i < counter; i++){
+  if(count[i-1] == document.getElementById("myEmail"+i).value){
+    //console.log(document.getElementById("myEmail1").value);
+    alert(count[i-1] + " " + document.getElementById("myText"+ currentClass).value + " comptailisé");
+    //console.log(count[i-1] + " " + document.getElementById("myText"+ currentClass).value);
+    count[i-1] = 0;
+  }
+}
 
     noStroke();
 
