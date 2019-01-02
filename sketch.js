@@ -11,7 +11,8 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 10;
+var loudnessThreshold = 9;
+var ambiantNoise = 4;
 
 var soundReady = false;
 
@@ -24,9 +25,15 @@ var counter6 = 0;
 var counter7 = 0;
 var counter8 = 0;
 var counter9 = 0;
+var counter10 = 0;
+var counter11 = 0;
+var counter12 = 0;
+var counter13 = 0;
+var counter14 = 0;
+var counter15 = 0;
 
 var counter = 9;
-var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8,counter9];
+var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8,counter9,counter10,counter11,counter12,counter13,counter14,counter15];
 
 
 //TRIGGER MODE
@@ -52,12 +59,12 @@ var v = 512;
 var ps = true;
 var recording = false;
 
-function preload() {
-  soundA = loadSound('A.mp3');
-  soundB = loadSound('B.mp3');
-  soundC = loadSound('B.mp3');
-
-}
+// function preload() {
+//   soundA = loadSound('A.mp3');
+//   soundB = loadSound('B.mp3');
+//   soundC = loadSound('B.mp3');
+//
+// }
 
 function setup() {
 
@@ -77,11 +84,11 @@ drawButtons();
 if (currentClass>0){
 for (var i = 1; i< counter; i++){
 document.getElementById('class'+i).className = 'button'
-document.getElementById('myText'+i).className = 'text1'
+//document.getElementById('myText'+i).className = 'text1'
 }
   //if (currentClass !== lastClass){
   document.getElementById('class'+currentClass).className = 'button2'
-  document.getElementById('myText'+currentClass).className = 'text2'
+//  document.getElementById('myText'+currentClass).className = 'text2'
 
 }
 
@@ -155,7 +162,7 @@ int(machine);
             predictionAlpha = 255;
         }
     }
-if (loudness < 8){
+if (loudness < ambiantNoise){
     test = 0;
   }
     noStroke();
@@ -193,7 +200,13 @@ function labelStuff() {
 
 function drawButtons(){
 
-
+//   for (var i = 1; i< counter; i++){
+//   select('#class'+ i).mousePressed(function(){
+//      currentClass = i;
+//      console.log(currentClass);
+//   });
+//
+// }
 // for (var i = 1; i<= counter-1; i++){
 // select('#class'+ i).mousePressed(function(){
 // currentClass = i;
@@ -256,12 +269,47 @@ function drawButtons(){
   	currentClass = 9;
     });
   }
-  else if (counter == 11){
+  if (counter == 11){
   class10 = select('#class10');
   class10.mousePressed(function() {
     //machine.save();
   currentClass = 10;
   });
+}
+if (counter == 12){
+class11 = select('#class11');
+class11.mousePressed(function() {
+  //machine.save();
+currentClass = 11;
+});
+}
+if (counter == 13){
+class12 = select('#class12');
+class12.mousePressed(function() {
+  //machine.save();
+currentClass = 12;
+});
+}
+if (counter == 14){
+class13 = select('#class13');
+class13.mousePressed(function() {
+  //machine.save();
+currentClass = 13;
+});
+}
+if (counter == 15){
+class14 = select('#class14');
+class14.mousePressed(function() {
+  //machine.save();
+currentClass = 14;
+});
+}
+if (counter == 16){
+class15 = select('#class15');
+class15.mousePressed(function() {
+  //machine.save();
+currentClass = 15;
+});
 }
 }
 function setupButtons() {
@@ -387,7 +435,7 @@ $(document).ready(function(){
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
 	      '<input class = text1 type="text" name="textfield' + counter
-        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button>'
+        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button> <input class = email type="text" name="email' + counter + '" id="myEmail' + counter + '" value="10">'
       );
 // <button id="class1" class="button">1</button>
 
