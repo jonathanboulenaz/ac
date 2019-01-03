@@ -11,11 +11,11 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 9;
+var loudnessThreshold = 4;
 var ambiantNoise = 4;
 
 var soundReady = false;
-
+var pressed = false;
 var counter1 = 0;
 var counter2 = 0;
 var counter3 = 0;
@@ -66,6 +66,7 @@ var recording = false;
 //
 // }
 
+
 function setup() {
 
     cnv = createCanvas(window.innerWidth,200);
@@ -82,12 +83,27 @@ function draw() {
     textSize(36);
 drawButtons();
 if (currentClass>0){
+
 for (var i = 1; i< counter; i++){
+  document.getElementById('class0').className = 'ambiant'
 document.getElementById('class'+i).className = 'button'
 //document.getElementById('myText'+i).className = 'text1'
 }
   //if (currentClass !== lastClass){
   document.getElementById('class'+currentClass).className = 'button2'
+//  document.getElementById('myText'+currentClass).className = 'text2'
+
+}
+
+if (currentClass==0){
+
+for (var i = 1; i< counter; i++){
+  document.getElementById('class0').className = 'ambiant'
+document.getElementById('class'+i).className = 'button'
+//document.getElementById('myText'+i).className = 'text1'
+}
+  //if (currentClass !== lastClass){
+    document.getElementById('class0').className = 'ambiant2'
 //  document.getElementById('myText'+currentClass).className = 'text2'
 
 }
@@ -115,11 +131,11 @@ int(machine);
     if (soundReady) {
         fill(0);
         noStroke();
-        text("LOUDNESS " + nf(loudness, 1, 2), window.innerWidth-380, 150);
+        text("LOUDNESS " , window.innerWidth-275, 150);
         text("MFCCs", 20,  150);
 
         if (loudness > loudnessThreshold) {
-            fill(0,255,0);
+            // fill(0,255,0);
         } else {
             fill(122);
         }
@@ -129,7 +145,7 @@ int(machine);
         }
 
         stroke(0);
-        ellipse(window.innerWidth-50, 140, loudness*3, loudness*3);
+        ellipse(window.innerWidth-50, 138, loudness*2, loudness*2);
 
         fill(0,255,0);
         for (var i = 0; i < 13; i++) {
@@ -144,9 +160,7 @@ int(machine);
         machine.learn(mfcc, currentClass);
         nSamples++;
 
-        fill(255, 0, 0);
-        noStroke();
-        ellipse(window.innerWidth - 55, 25, 25, 25);
+
 
         singleTrigger = false;
         startTime = millis();
@@ -170,27 +184,48 @@ if (loudness < ambiantNoise){
     textSize(36);
 
   	text("Prediction: " + test, window.innerWidth-240, 90);
+
     var posx = 20;
     var posy = 90;
+
+
 
  if (currentClass !== 0){
 
 text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
- }
+
 for (var i = 1; i < counter; i++){
   if(count[i-1] == document.getElementById("myEmail"+i).value){
     //console.log(document.getElementById("myEmail1").value);
-    alert(count[i-1] + " " + document.getElementById("myText"+ currentClass).value + " comptailisé");
+    if (count[i-1] !== 0){
+    alert(count[i-1] + " " + document.getElementById("myText"+ i).value + " comptailisé");
+  }
     //console.log(count[i-1] + " " + document.getElementById("myText"+ currentClass).value);
     count[i-1] = 0;
+
   }
+}
 }
 
     noStroke();
 
     //textSize();
     //text("Current class: " + currentClass, 20, 30, 1000);
-    text("Number of samples: " + nSamples, window.innerWidth-390, 30, 1000);
+    var a;
+
+    if (nSamples < 10){
+      a = 390;
+    }
+    else if (nSamples >=10 && nSamples < 100 ){
+      a = 410;
+    }
+    else if  ( nSamples >= 100 && nSamples < 1000 ){
+      a = 430;
+    }
+    else if  ( nSamples >= 1000 ){
+      a = 450;
+    }
+    text("Number of samples: " + nSamples, window.innerWidth-a, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
@@ -223,6 +258,15 @@ function drawButtons(){
 // });
 //
 // }
+class0 = select('#class0');
+class0.mousePressed(function() {
+ //machine.save();
+currentClass = 0;
+// document.getElementById('class1').className = 'button2'
+// document.getElementById('class2').className = 'button'
+// document.getElementById('class3').className = 'button'
+// document.getElementById('class4').className = 'button'
+});
 
      class1 = select('#class1');
     class1.mousePressed(function() {
@@ -324,16 +368,24 @@ function setupButtons() {
 
   record = select('#record');
   record.mousePressed(function() {
+
     //machine.save();
+    if (pressed == false ){
     document.getElementById('record').className = 'record2'
+    pressed = true;
 	recording = true;
   audio = new MicrophoneInput(v);
+}
+else{
+  document.getElementById('record').className = 'record'
+//machine.save();
+pressed = false;
+recording = false;
+}
   });
   stopRecording = select('#stoprecording');
   stopRecording.mousePressed(function() {
-      document.getElementById('record').className = 'record'
-    //machine.save();
-	recording = false;
+
   });
 }
 
