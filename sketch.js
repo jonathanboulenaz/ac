@@ -11,7 +11,7 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 4;
+var loudnessThreshold = 6;
 var ambiantNoise = 4;
 
 var soundReady = false;
@@ -188,12 +188,14 @@ if (loudness < ambiantNoise){
     var posx = 20;
     var posy = 90;
 
-
+////////////////////////////////////////////////////////////////////////////////
 
  if (currentClass !== 0){
 
-text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
-
+//text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
+for (var i = 1; i< counter; i++){
+document.getElementById("p"+i).innerHTML = count[i-1] + "  /";
+}
 for (var i = 1; i < counter; i++){
   if(count[i-1] == document.getElementById("myEmail"+i).value){
     //console.log(document.getElementById("myEmail1").value);
@@ -383,10 +385,10 @@ pressed = false;
 recording = false;
 }
   });
-  stopRecording = select('#stoprecording');
-  stopRecording.mousePressed(function() {
-
-  });
+  // stopRecording = select('#stoprecording');
+  // stopRecording.mousePressed(function() {
+  //
+  // });
 }
 
 function playSound(){
@@ -495,7 +497,7 @@ $(document).ready(function(){
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
 	      '<input class = text1 type="text" name="textfield' + counter
-        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button> <input class = email type="text" name="email' + counter + '" id="myEmail' + counter + '" value="10">'
+        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button>  <p id="p'+counter+'" class = p>0</p>  <input class = email type="text" name="email' + counter + '" id="myEmail' + counter + '" value="10">'
       );
 // <button id="class1" class="button">1</button>
 
