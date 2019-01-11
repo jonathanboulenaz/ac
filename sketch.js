@@ -227,7 +227,7 @@ for (var i = 1; i < counter; i++){
     else if  ( nSamples >= 1000 ){
       a = 450;
     }
-    //text("Number of samples: " + nSamples, window.innerWidth-a, 30, 1000);
+    text("Number of samples: " + nSamples, window.innerWidth-a, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
