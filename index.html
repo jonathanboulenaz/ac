@@ -1,152 +1,193 @@
-<html>
+<?php
 
-   <head>
-      <style>
-         .error {color: #FF0000;}
-      </style>
-   </head>
+//Initializing variable
+$action = "";
+// This is somewhat of a validity checker.
+// I don't have the form sending to anywhere in the 'form' DOM.
+// I validate the existence of the form in a hidden field.
 
-   <body> 
-      <?php
-         // define variables and set to empty values
-         $nameErr = $emailErr = $genderErr = $websiteErr = "";
-         $name = $email = $gender = $class = $course = $subject = "";
+//isset()
+$action = isset($_POST['action']) ? $_POST['action'] : '';
+//empty()
+$action = !empty($_POST['action']) ? $_POST['action'] : '';
 
-         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["name"])) {
-               $nameErr = "Name is required";
-            }else {
-               $name = test_input($_POST["name"]);
-            }
+if ($action=="")    /* display the contact form */
+    {
+ ?>
 
-            if (empty($_POST["email"])) {
-               $emailErr = "Email is required";
-            }else {
-               $email = test_input($_POST["email"]);
+<div class="form-wrap">
+    <form  action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="submit">
 
-               // check if e-mail address is well-formed
-               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  $emailErr = "Invalid email format";
-               }
-            }
+    <div class="form-group">
+      <label for="first_name">First Name<red>*</red></label>
+      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required="yes">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name<red>*</red></label>
+      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" required="yes">
+    </div>
+    <div class="form-group">
+      <label for="business_type">Are you:<red>*</red></label>
+			<label class="radio-inline">
+			  <input type="radio" name="business_type" id="individual" value="Individual"> Individual
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="business_type" id="company" value="Company"> Company
+			</label>
+	</div>
+    <div class="form-group">
+      <label for="company_name">Company Name<red> </red></label>
+      <input type="text" class="form-control" name="company_name" id="company_name" placeholder="Company Name" required="no">
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address<red>*</red></label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="yes">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone<red>*</red></label>
+      <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required="yes">
+    </div>
+     <div class="form-group">
+      <label for="type">Do you require an NDA:<red>*</red></label>
+			<label class="radio-inline">
+			  <input type="radio" name="nda" id="yes" value="Yes" /> Yes
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="nda" id="no" value="No" /> No
+			</label>
+	</div>
+    <div class="form-group ">
+	      <label for="interest">Service areas you are interested in:</label>
+      <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest1" value="Product Development Consulting" aria-label="Product Development Consulting"> Product Development Consulting
+		</label>
+      </p>
+      <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest2" value="Industrial Design" aria-label="Industrial Design"> Industrial Design
+		</label>
+      </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest3" value="Technical Document Preparation" aria-label="Technical Document Preparation"> Technical Document Preparation
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest4" value="Patent images and Specifications" aria-label="Patent images and Specifications"> Patent images and Specifications
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest5" value="Risk Assessments" aria-label="Risk Assessments"> Risk Assessments
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest6" value="Complete 2D CAD files for Manufacturing" aria-label="Complete 2D CAD files for Manufacturing"> Complete 2D CAD files for Manufacturing
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest7" value="Prototyping" aria-label="Prototyping"> Prototyping
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest8" value="Verification Testing" aria-label="Verification Testing"> Verification Testing
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest9" value="Validation Testing" aria-label="Validation Testing"> Validation Testing
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest10" value="Manufacturing Drawings Package" aria-label="Manufacturing Drawings Package"> Manufacturing Drawings Package
+		</label>
+	  </p>
+	  <p class="checkbox">
+		<label>
+		<input type="checkbox" name="interest[]" id="interest11" value="Complete Design History File" aria-label="Complete Design History File"> Complete Design History File
+		</label>
+	  </p>
+	  	</div>
 
-            if (empty($_POST["course"])) {
-               $course = "";
-            }else {
-               $course = test_input($_POST["course"]);
-            }
+    <div class="form-group"><center>
+		<button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 
-            if (empty($_POST["class"])) {
-               $class = "";
-            }else {
-               $class = test_input($_POST["class"]);
-            }
+    <?php
+    }
+else                /* send the submitted data */
+    {
+	date_default_timezone_set('America/Chicago');  /* You should set your timezone. */
 
-            if (empty($_POST["gender"])) {
-               $genderErr = "Gender is required";
-            }else {
-               $gender = test_input($_POST["gender"]);
-            }
+    $first_name		=	$_POST['first_name'];
+    $last_name		=	$_POST['last_name'];
+    $business_type	=	$_POST['business_type'];
+    $company_name	=	$_POST['company_name'];
+    $email			=	$_POST['email'];
+    $business_type	=	$_POST['business_type'];
+    $phone			=	$_POST['phone'];
+    $nda			=	$_POST['nda'];
+    $interests = 'No languages selected';  /* This sets this variable if no boxes are checked. */
+	if (isset($_POST['interest'])){          /* This builds an array from all those checkboxes. */
+	  $interests = implode(',
+	  ', $_POST['interest']);  /* This line break will put each item on a new line in the email. */
+	}
 
-            if (empty($_POST["subject"])) {
-               $subjectErr = "You must select 1 or more";
-            }else {
-               $subject = $_POST["subject"];
-            }
-         }
+    if (($first_name=="")||($email=="")||($last_name==""))
+        {
+		echo "Certain fields are required, please fill <a href=\"\">the form</a> again.";
+	    }
+    else{
+	    $date 		=	date('m/d/Y - h:i:s A');
 
-         function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-         }
-      ?>
+	    $from		=	"From: $first_name $last_name<$email>\r\nReturn-path: $email";
+	    $from_noreply	= "no_reply@mycompany.com";
+        $subject	=	"Web contact form: $last_name";
+		$date 		=	date('m/d/Y - h:i:s A');
+		$courtesy 	=	"
+Thank you for your interest in contacting My Company.
+(Here is a copy of the form you recently sent to us.)
+";
+        $message	=	"
+Sent:   $date \r
+---------------------------------------------------
+Name:    $first_name $last_name\r
+Company: $company_name\r
+Type:    $business_type\r
+Email:   $email\r
+Phone:   $phone\r
+NDA:     $nda\r
+Interests:\r $interests\r
 
-      <h2>Absolute classes registration</h2>
+        				";
+        $courtesy_message = "$courtesy \r\r $message";
 
-      <p><span class = "error">* required field.</span></p>
+		mail("myemailaddress@mycompany.com", $subject, $message, $from);  // This one goes to ME.
+		mail($from, $subject, $courtesy_message, $from_noreply);    // This one goes to the guest.
+		echo '
 
-      <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-         <table>
-            <tr>
-               <td>Name:</td>
-               <td><input type = "text" name = "name">
-                  <span class = "error">* <?php echo $nameErr;?></span>
-               </td>
-            </tr>
+<div class="alert alert-success" role="alert">
+<h2>Thank you!</h2> Your message has been sent to our office and we will reply as soon as possible.
+</div>
 
-            <tr>
-               <td>E-mail: </td>
-               <td><input type = "text" name = "email">
-                  <span class = "error">* <?php echo $emailErr;?></span>
-               </td>
-            </tr>
+		';
+	    }
+    }
+?>
 
-            <tr>
-               <td>Time:</td>
-               <td> <input type = "text" name = "course">
-                  <span class = "error"><?php echo $websiteErr;?></span>
-               </td>
-            </tr>
 
-            <tr>
-               <td>Classes:</td>
-               <td> <textarea name = "class" rows = "5" cols = "40"></textarea></td>
-            </tr>
-
-            <tr>
-               <td>Gender:</td>
-               <td>
-                  <input type = "radio" name = "gender" value = "female">Female
-                  <input type = "radio" name = "gender" value = "male">Male
-                  <span class = "error">* <?php echo $genderErr;?></span>
-               </td>
-            </tr>
-
-            <tr>
-               <td>Select:</td>
-               <td>
-                  <select name = "subject[]" size = "4" multiple>
-                     <option value = "Android">Android</option>
-                     <option value = "Java">Java</option>
-                     <option value = "C#">C#</option>
-                     <option value = "Data Base">Data Base</option>
-                     <option value = "Hadoop">Hadoop</option>
-                     <option value = "VB script">VB script</option>
-                  </select>
-               </td>
-            </tr>
-
-            <tr>
-               <td>Agree</td>
-               <td><input type = "checkbox" name = "checked" value = "1"></td>
-               <?php if(!isset($_POST['checked'])){ ?>
-               <span class = "error">* <?php echo "You must agree to terms";?></span>
-               <?php } ?>
-            </tr>
-
-            <tr>
-               <td>
-                  <input type = "submit" name = "submit" value = "Submit">
-               </td>
-            </tr>
-
-         </table>
-      </form>
-
-      <?php
-         echo "<h2>Your given values are as :</h2>";
-         echo ("<p>Your name is $name</p>");
-         echo ("<p> your email address is $email</p>");
-         echo ("<p>Your class time at $course</p>");
-         echo ("<p>your class info $class </p>");
-         echo ("<p>your gender is $gender</p>");
-
-         for($i = 0; $i < count($subject); $i++) {
-            echo($subject[$i] . " ");
-         }
-      ?>
-
-   </body>
-</html>
+</div>
+  
+  
+  
+<?php 
+    require "includes/footer.php"; 
+?>
