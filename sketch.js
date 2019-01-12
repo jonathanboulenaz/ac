@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Google Inc. All Rights Reserved.
+ * Copyright 2018 Jonathan Boulenaz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,21 +60,21 @@ function writeNewPost(uid, username, title, body) {
  * Star/unstar post.
  */
 // [START post_stars_transaction]
-// function toggleStar(postRef, uid) {
-//   postRef.transaction(function(post) {
-//     if (post.stars && post.stars[uid]) {
-//       post.starCount--;
-//       post.stars[uid] = null;
-//     } else {
-//       post.starCount++;
-//       if (!post.stars) {
-//         post.stars = {};
-//       }
-//       post.stars[uid] = true;
-//     }
-//     return post;
-//   });
-// }
+function toggleStar(postRef, uid) {
+  postRef.transaction(function(post) {
+    if (post.stars && post.stars[uid]) {
+      post.starCount--;
+      post.stars[uid] = null;
+    } else {
+      post.starCount++;
+      if (!post.stars) {
+        post.stars = {};
+      }
+      post.stars[uid] = true;
+    }
+    return post;
+  });
+}
 // [END post_stars_transaction]
 
 /**
@@ -102,12 +102,12 @@ function createPostElement(postId, title, text, author) {
             '<div class="star-count">0</div>' +
           '</span>' +
           '<div class="text"></div>' +
-          '<div class="comments-container"></div>' +
-          '<form class="add-comment" action="#">' +
-            '<div class="mdl-textfield mdl-js-textfield">' +
-              '<input class="mdl-textfield__input new-comment" type="text">' +
-              '<label class="mdl-textfield__label">Comment...</label>' +
-            '</div>' +
+          // '<div class="comments-container"></div>' +
+          // '<form class="add-comment" action="#">' +
+            // '<div class="mdl-textfield mdl-js-textfield">' +
+            //   '<input class="mdl-textfield__input new-comment" type="text">' +
+            //   '<label class="mdl-textfield__label">Comment...</label>' +
+            // '</div>' +
           '</form>' +
         '</div>' +
       '</div>';
@@ -120,8 +120,8 @@ function createPostElement(postId, title, text, author) {
 
   // var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
   // var commentInput = postElement.getElementsByClassName('new-comment')[0];
-  // var star = postElement.getElementsByClassName('starred')[0];
-  // var unStar = postElement.getElementsByClassName('not-starred')[0];
+  var star = postElement.getElementsByClassName('starred')[0];
+  var unStar = postElement.getElementsByClassName('not-starred')[0];
 
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
@@ -130,31 +130,31 @@ function createPostElement(postId, title, text, author) {
 
   // Listen for comments.
   // [START child_event_listener_recycler]
-  var commentsRef = firebase.database().ref('post-comments/' + postId);
-  commentsRef.on('child_added', function(data) {
-    addCommentElement(postElement, data.key, data.val().text, data.val().author);
-  });
+  // var commentsRef = firebase.database().ref('post-comments/' + postId);
+  // commentsRef.on('child_added', function(data) {
+  //   addCommentElement(postElement, data.key, data.val().text, data.val().author);
+  // });
 
-  commentsRef.on('child_changed', function(data) {
-    setCommentValues(postElement, data.key, data.val().text, data.val().author);
-  });
+  // commentsRef.on('child_changed', function(data) {
+  //   setCommentValues(postElement, data.key, data.val().text, data.val().author);
+  // });
 
-  commentsRef.on('child_removed', function(data) {
-    deleteComment(postElement, data.key);
-  });
+  // commentsRef.on('child_removed', function(data) {
+  //   deleteComment(postElement, data.key);
+  // });
   // [END child_event_listener_recycler]
 
   // Listen for likes counts.
   // [START post_value_event_listener]
-  // firebase.database().ref('posts/' + postId + '/starCount').on('value', function(snapshot) {
-  //   updateStarCount(postElement, snapshot.val());
-  // });
+  firebase.database().ref('posts/' + postId + '/starCount').on('value', function(snapshot) {
+    updateStarCount(postElement, snapshot.val());
+  });
   // [END post_value_event_listener]
 
   // Listen for the starred status.
-  // firebase.database().ref('posts/' + postId + '/stars/' + uid).on('value', function(snapshot) {
-  //   updateStarredByCurrentUser(postElement, snapshot.val());
-  // });
+  firebase.database().ref('posts/' + postId + '/stars/' + uid).on('value', function(snapshot) {
+    updateStarredByCurrentUser(postElement, snapshot.val());
+  });
 
   // Create new comment.
   // addCommentForm.onsubmit = function(e) {
@@ -165,16 +165,16 @@ function createPostElement(postId, title, text, author) {
   // };
 
   // Bind starring action.
-  // var onStarClicked = function() {
-  //   var globalPostRef = firebase.database().ref('/posts/' + postId);
-  //   var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
-  //   toggleStar(globalPostRef, uid);
-  //   toggleStar(userPostRef, uid);
-  // };
-  // unStar.onclick = onStarClicked;
-  // star.onclick = onStarClicked;
+  var onStarClicked = function() {
+    var globalPostRef = firebase.database().ref('/posts/' + postId);
+    var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
+    toggleStar(globalPostRef, uid);
+    toggleStar(userPostRef, uid);
+  };
+  unStar.onclick = onStarClicked;
+  star.onclick = onStarClicked;
 
-  //return postElement;
+  return postElement;
 }
 
 /**
@@ -191,22 +191,22 @@ function createPostElement(postId, title, text, author) {
 /**
  * Updates the starred status of the post.
  */
-// function updateStarredByCurrentUser(postElement, starred) {
-//   if (starred) {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
-//   } else {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'none';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
-//   }
-// }
+function updateStarredByCurrentUser(postElement, starred) {
+  if (starred) {
+    postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
+    postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
+  } else {
+    postElement.getElementsByClassName('starred')[0].style.display = 'none';
+    postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
+  }
+}
 
 /**
  * Updates the number of stars displayed for a post.
  */
-// function updateStarCount(postElement, nbStart) {
-//   postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
-// }
+function updateStarCount(postElement, nbStart) {
+  postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
+}
 
 /**
  * Creates a comment element and adds it to the given postElement.
