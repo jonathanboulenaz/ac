@@ -191,15 +191,15 @@ function createNewComment(postId, username, uid, text) {
 /**
  * Updates the starred status of the post.
  */
-function updateStarredByCurrentUser(postElement, starred) {
-  if (starred) {
-    postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
-    postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
-  } else {
-    postElement.getElementsByClassName('starred')[0].style.display = 'none';
-    postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
-  }
-}
+// function updateStarredByCurrentUser(postElement, starred) {
+//   if (starred) {
+//     postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
+//     postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
+//   } else {
+//     postElement.getElementsByClassName('starred')[0].style.display = 'none';
+//     postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
+//   }
+// }
 
 /**
  * Updates the number of stars displayed for a post.
