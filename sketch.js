@@ -75,7 +75,7 @@ function createPostElement(postId, title, text, author) {
           // '<div class="comments-container"></div>' +
           // '<form class="add-comment" action="#">' +
             '<div class="mdl-textfield mdl-js-textfield">' +
-            '<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">REC</button>'
+            '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">REC</button>'
             '</div>' +
           // '</form>' +
         '</div>' +
