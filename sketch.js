@@ -41,7 +41,7 @@ function writeNewPost(uid, username, title, body) {
     uid: uid,
     body: body,
     title: title,
-    starCount: 0
+    //starCount: 0
   };
 
   // Get a key for a new Post.
@@ -60,21 +60,21 @@ function writeNewPost(uid, username, title, body) {
  * Star/unstar post.
  */
 // [START post_stars_transaction]
-function toggleStar(postRef, uid) {
-  postRef.transaction(function(post) {
-    if (post.stars && post.stars[uid]) {
-      post.starCount--;
-      post.stars[uid] = null;
-    } else {
-      post.starCount++;
-      if (!post.stars) {
-        post.stars = {};
-      }
-      post.stars[uid] = true;
-    }
-    return post;
-  });
-}
+// function toggleStar(postRef, uid) {
+//   postRef.transaction(function(post) {
+//     if (post.stars && post.stars[uid]) {
+//       post.starCount--;
+//       post.stars[uid] = null;
+//     } else {
+//       post.starCount++;
+//       if (!post.stars) {
+//         post.stars = {};
+//       }
+//       post.stars[uid] = true;
+//     }
+//     return post;
+//   });
+// }
 // [END post_stars_transaction]
 
 /**
@@ -146,9 +146,9 @@ function createPostElement(postId, title, text, author) {
 
   // Listen for likes counts.
   // [START post_value_event_listener]
-  firebase.database().ref('posts/' + postId + '/starCount').on('value', function(snapshot) {
-    updateStarCount(postElement, snapshot.val());
-  });
+  // firebase.database().ref('posts/' + postId + '/starCount').on('value', function(snapshot) {
+  //   updateStarCount(postElement, snapshot.val());
+  // });
   // [END post_value_event_listener]
 
   // Listen for the starred status.
@@ -204,9 +204,9 @@ function updateStarredByCurrentUser(postElement, starred) {
 /**
  * Updates the number of stars displayed for a post.
  */
-function updateStarCount(postElement, nbStart) {
-  postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
-}
+// function updateStarCount(postElement, nbStart) {
+//   postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
+// }
 
 /**
  * Creates a comment element and adds it to the given postElement.
@@ -245,7 +245,7 @@ function deleteComment(postElement, id) {
 function startDatabaseQueries() {
   // [START my_top_posts_query]
   var myUserId = firebase.auth().currentUser.uid;
-  var topUserPostsRef = firebase.database().ref('user-posts/' + myUserId).orderByChild('starCount');
+  //var topUserPostsRef = firebase.database().ref('user-posts/' + myUserId).orderByChild('starCount');
   // [END my_top_posts_query]
   // [START recent_posts_query]
   var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
@@ -261,7 +261,7 @@ function startDatabaseQueries() {
     });
   };
 
-  fetchPosts(topUserPostsRef, topUserPostsSection);
+  //fetchPosts(topUserPostsRef, topUserPostsSection);
   fetchPosts(recentPostsRef, recentPostsSection);
   fetchPosts(userPostsRef, userPostsSection);
 }
