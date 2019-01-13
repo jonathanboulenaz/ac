@@ -66,6 +66,7 @@ function createPostElement(postId, title, text, author) {
           '<div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">' +
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
+          '<button>ksk</button>'
           // '<div class="header">' +
           // '</div>' +
           // '<span class="star">' +
