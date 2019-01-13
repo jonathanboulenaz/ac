@@ -28,7 +28,7 @@ var userPostsSection = document.getElementById('user-posts-list');
 var topUserPostsSection = document.getElementById('top-user-posts-list');
 var recentMenuButton = document.getElementById('menu-recent');
 //var myPostsMenuButton = document.getElementById('menu-my-posts');
-var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
+// var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 
 /**
  * Saves a new post to the Firebase DB.
