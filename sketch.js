@@ -316,7 +316,6 @@ window.addEventListener('load', function() {
       });
       // [END single_value_read]
     }
-
   };
 
   // Bind menu buttons.
@@ -327,7 +326,7 @@ window.addEventListener('load', function() {
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
     myPostsMenuButton.classList.remove('is-active');
-    //myTopPostsMenuButton.classList.remove('is-active');
+    myTopPostsMenuButton.classList.remove('is-active');
   };
   myPostsMenuButton.onclick = function() {
     recentPostsSection.style.display = 'none';
@@ -338,23 +337,23 @@ window.addEventListener('load', function() {
     myPostsMenuButton.classList.add('is-active');
     myTopPostsMenuButton.classList.remove('is-active');
   };
-  // myTopPostsMenuButton.onclick = function() {
-  //   recentPostsSection.style.display = 'none';
-  //   userPostsSection.style.display = 'none';
-  //   topUserPostsSection.style.display = 'block';
-  //   addPost.style.display = 'none';
-  //   recentMenuButton.classList.remove('is-active');
-  //   myPostsMenuButton.classList.remove('is-active');
-  //   myTopPostsMenuButton.classList.add('is-active');
-  // };
+  myTopPostsMenuButton.onclick = function() {
+    recentPostsSection.style.display = 'none';
+    userPostsSection.style.display = 'none';
+    topUserPostsSection.style.display = 'block';
+    addPost.style.display = 'none';
+    recentMenuButton.classList.remove('is-active');
+    myPostsMenuButton.classList.remove('is-active');
+    myTopPostsMenuButton.classList.add('is-active');
+  };
   addButton.onclick = function() {
     recentPostsSection.style.display = 'none';
     userPostsSection.style.display = 'none';
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'block';
     recentMenuButton.classList.remove('is-active');
-     myPostsMenuButton.classList.remove('is-active');
-    //myTopPostsMenuButton.classList.remove('is-active');
+    myPostsMenuButton.classList.remove('is-active');
+    myTopPostsMenuButton.classList.remove('is-active');
     messageInput.value = '';
     titleInput.value = '';
   };
