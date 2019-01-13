@@ -165,12 +165,12 @@ function createPostElement(postId, title, text, author) {
   // };
 
   // Bind starring action.
-  var onStarClicked = function() {
-    var globalPostRef = firebase.database().ref('/posts/' + postId);
-    var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
-    toggleStar(globalPostRef, uid);
-    toggleStar(userPostRef, uid);
-  };
+  // var onStarClicked = function() {
+  //   var globalPostRef = firebase.database().ref('/posts/' + postId);
+  //   var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
+  //   toggleStar(globalPostRef, uid);
+  //   toggleStar(userPostRef, uid);
+  // };
   // unStar.onclick = onStarClicked;
   // star.onclick = onStarClicked;
 
