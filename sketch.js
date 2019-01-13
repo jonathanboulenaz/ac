@@ -316,6 +316,7 @@ window.addEventListener('load', function() {
       });
       // [END single_value_read]
     }
+
   };
 
   // Bind menu buttons.
@@ -325,8 +326,8 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
+    //myPostsMenuButton.classList.remove('is-active');
+    //myTopPostsMenuButton.classList.remove('is-active');
   };
   // myPostsMenuButton.onclick = function() {
   //   recentPostsSection.style.display = 'none';
@@ -352,8 +353,8 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'block';
     recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
+    // myPostsMenuButton.classList.remove('is-active');
+    //myTopPostsMenuButton.classList.remove('is-active');
     messageInput.value = '';
     titleInput.value = '';
   };
