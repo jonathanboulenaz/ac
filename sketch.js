@@ -77,7 +77,7 @@ function createPostElement(postId, title, text, author) {
             '<div class="mdl-textfield mdl-js-textfield">' +
             '<br>' +
             '<br>' +
-            '<button id = "rec" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">REC</button>'
+            '<button class="mdl-button mdl-js-button mdl-button--fab mdl-color--red mdl-shadow--4dp mdl-js-ripple-effect" id="add">REC</button>'
             '</div>' +
           // '</form>' +
         '</div>' +
