@@ -256,7 +256,7 @@ function startDatabaseQueries() {
     postsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
       containerElement.insertBefore(
-          createPostElement(data.key, data.val().title, data.val().body, data.val().author),
+          createPostElement(data.key, data.val().title, data.val().body),
           containerElement.firstChild);
     });
   };
