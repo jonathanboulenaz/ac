@@ -91,10 +91,10 @@ function createPostElement(postId, title, text, author) {
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
           '<div class="header">' +
-            '<div>' +
-              '<div class="avatar"></div>' +
-              '<div class="username mdl-color-text--black"></div>' +
-            '</div>' +
+            // '<div>' +
+            //   '<div class="avatar"></div>' +
+            //   '<div class="username mdl-color-text--black"></div>' +
+            // '</div>' +
           '</div>' +
           '<span class="star">' +
             // '<div class="not-starred material-icons">star_border</div>' +
