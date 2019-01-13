@@ -68,14 +68,14 @@ function createPostElement(postId, title, text, author) {
           '</div>' +
           '<div class="header">' +
           '</div>' +
-          // '<span class="star">' +
-          // '</span>' +
-          // '<div class="text"></div>' +
-          // '<div class="comments-container"></div>' +
-          // '<form class="add-comment" action="#">' +
-          //   '<div class="mdl-textfield mdl-js-textfield">' +
-          //   '</div>' +
-          // '</form>' +
+          '<span class="star">' +
+          '</span>' +
+          '<div class="text"></div>' +
+          '<div class="comments-container"></div>' +
+          '<form class="add-comment" action="#">' +
+            '<div class="mdl-textfield mdl-js-textfield">' +
+            '</div>' +
+          '</form>' +
         '</div>' +
       '</div>';
 
