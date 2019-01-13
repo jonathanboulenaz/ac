@@ -70,7 +70,7 @@ function createPostElement(postId, title, text, author) {
           // '</div>' +
           // '<span class="star">' +
           // '</span>' +
-          // '<div class="text"></div>' +
+          '<div class="text"></div>' +
           // '<div class="comments-container"></div>' +
           // '<form class="add-comment" action="#">' +
             '<div class="mdl-textfield mdl-js-textfield">' +
