@@ -97,9 +97,9 @@ function createPostElement(postId, title, text, author) {
             '</div>' +
           '</div>' +
           '<span class="star">' +
-            '<div class="not-starred material-icons">star_border</div>' +
-            '<div class="starred material-icons">star</div>' +
-            '<div class="star-count">0</div>' +
+            // '<div class="not-starred material-icons">star_border</div>' +
+            // '<div class="starred material-icons">star</div>' +
+            // '<div class="star-count">0</div>' +
           '</span>' +
           '<div class="text"></div>' +
           '<div class="comments-container"></div>' +
