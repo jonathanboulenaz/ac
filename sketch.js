@@ -27,8 +27,6 @@ var recentPostsSection = document.getElementById('recent-posts-list');
 var userPostsSection = document.getElementById('user-posts-list');
 var topUserPostsSection = document.getElementById('top-user-posts-list');
 var recentMenuButton = document.getElementById('menu-recent');
-//var myPostsMenuButton = document.getElementById('menu-my-posts');
-// var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 
 /**
  * Saves a new post to the Firebase DB.
@@ -41,7 +39,6 @@ function writeNewPost(uid, username, title, body) {
     uid: uid,
     body: body,
     title: title,
-    //starCount: 0
   };
 
   // Get a key for a new Post.
@@ -57,27 +54,6 @@ function writeNewPost(uid, username, title, body) {
 // [END write_fan_out]
 
 /**
- * Star/unstar post.
- */
-// [START post_stars_transaction]
-// function toggleStar(postRef, uid) {
-//   postRef.transaction(function(post) {
-//     if (post.stars && post.stars[uid]) {
-//       post.starCount--;
-//       post.stars[uid] = null;
-//     } else {
-//       post.starCount++;
-//       if (!post.stars) {
-//         post.stars = {};
-//       }
-//       post.stars[uid] = true;
-//     }
-//     return post;
-//   });
-// }
-// [END post_stars_transaction]
-
-/**
  * Creates a post element.
  */
 function createPostElement(postId, title, text, author) {
@@ -91,24 +67,15 @@ function createPostElement(postId, title, text, author) {
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
           '<div class="header">' +
-            // '<div>' +
-            //   '<div class="avatar"></div>' +
-            //   '<div class="username mdl-color-text--black"></div>' +
-            // '</div>' +
           '</div>' +
-          '<span class="star">' +
-            // '<div class="not-starred material-icons">star_border</div>' +
-            // '<div class="starred material-icons">star</div>' +
-            // '<div class="star-count">0</div>' +
-          '</span>' +
-          '<div class="text"></div>' +
-          '<div class="comments-container"></div>' +
-          '<form class="add-comment" action="#">' +
-            '<div class="mdl-textfield mdl-js-textfield">' +
-              // '<input class="mdl-textfield__input new-comment" type="text">' +
-              // '<label class="mdl-textfield__label">Comment...</label>' +
-            '</div>' +
-          '</form>' +
+          // '<span class="star">' +
+          // '</span>' +
+          // '<div class="text"></div>' +
+          // '<div class="comments-container"></div>' +
+          // '<form class="add-comment" action="#">' +
+          //   '<div class="mdl-textfield mdl-js-textfield">' +
+          //   '</div>' +
+          // '</form>' +
         '</div>' +
       '</div>';
 
@@ -118,126 +85,13 @@ function createPostElement(postId, title, text, author) {
   var postElement = div.firstChild;
   componentHandler.upgradeElements(postElement.getElementsByClassName('mdl-textfield')[0]);
 
-  // var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
-  // var commentInput = postElement.getElementsByClassName('new-comment')[0];
-  // var star = postElement.getElementsByClassName('starred')[0];
-  // var unStar = postElement.getElementsByClassName('not-starred')[0];
 
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
   postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = title;
-  //postElement.getElementsByClassName('username')[0].innerText = author;
-
-  // Listen for comments.
-  // [START child_event_listener_recycler]
-  // var commentsRef = firebase.database().ref('post-comments/' + postId);
-  // commentsRef.on('child_added', function(data) {
-  //   addCommentElement(postElement, data.key, data.val().text, data.val().author);
-  // });
-
-  // commentsRef.on('child_changed', function(data) {
-  //   setCommentValues(postElement, data.key, data.val().text, data.val().author);
-  // });
-
-  // commentsRef.on('child_removed', function(data) {
-  //   deleteComment(postElement, data.key);
-  // });
-  // [END child_event_listener_recycler]
-
-  // Listen for likes counts.
-  // [START post_value_event_listener]
-  // firebase.database().ref('posts/' + postId + '/starCount').on('value', function(snapshot) {
-  //   updateStarCount(postElement, snapshot.val());
-  // });
-  // [END post_value_event_listener]
-
-  // Listen for the starred status.
-  // firebase.database().ref('posts/' + postId + '/stars/' + uid).on('value', function(snapshot) {
-  //   updateStarredByCurrentUser(postElement, snapshot.val());
-  // });
-
-  // Create new comment.
-  // addCommentForm.onsubmit = function(e) {
-  //   e.preventDefault();
-  //   createNewComment(postId, firebase.auth().currentUser.displayName, uid, commentInput.value);
-  //   commentInput.value = '';
-  //   commentInput.parentElement.MaterialTextfield.boundUpdateClassesHandler();
-  // };
-
-  // Bind starring action.
-  // var onStarClicked = function() {
-  //   var globalPostRef = firebase.database().ref('/posts/' + postId);
-  //   var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
-  //   toggleStar(globalPostRef, uid);
-  //   toggleStar(userPostRef, uid);
-  // };
-  // unStar.onclick = onStarClicked;
-  // star.onclick = onStarClicked;
 
   return postElement;
 }
-
-/**
- * Writes a new comment for the given post.
- */
-// function createNewComment(postId, username, uid, text) {
-//   firebase.database().ref('post-comments/' + postId).push({
-//     text: text,
-//     //author: username,
-//     uid: uid
-//   });
-// }
-
-/**
- * Updates the starred status of the post.
- */
-// function updateStarredByCurrentUser(postElement, starred) {
-//   if (starred) {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
-//   } else {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'none';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
-//   }
-// }
-
-/**
- * Updates the number of stars displayed for a post.
- */
-// function updateStarCount(postElement, nbStart) {
-//   postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
-// }
-
-/**
- * Creates a comment element and adds it to the given postElement.
- */
-// function addCommentElement(postElement, id, text, author) {
-//   var comment = document.createElement('div');
-//   comment.classList.add('comment-' + id);
-//   //comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
-//   comment.getElementsByClassName('comment')[0].innerText = text;
-//   //comment.getElementsByClassName('username')[0].innerText = author;
-//
-//   var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
-//   commentsContainer.appendChild(comment);
-// }
-
-/**
- * Sets the comment's values in the given postElement.
- */
-// function setCommentValues(postElement, id, text, author) {
-//   var comment = postElement.getElementsByClassName('comment-' + id)[0];
-//   comment.getElementsByClassName('comment')[0].innerText = text;
-//   //comment.getElementsByClassName('fp-username')[0].innerText = author;
-// }
-
-/**
- * Deletes the comment of the given ID in the given postElement.
- */
-// function deleteComment(postElement, id) {
-//   var comment = postElement.getElementsByClassName('comment-' + id)[0];
-//   comment.parentElement.removeChild(comment);
-// }
 
 /**
  * Starts listening for new posts and populates posts lists.
@@ -261,7 +115,6 @@ function startDatabaseQueries() {
     });
   };
 
-  //fetchPosts(topUserPostsRef, topUserPostsSection);
   fetchPosts(recentPostsRef, recentPostsSection);
   fetchPosts(userPostsRef, userPostsSection);
 }
@@ -326,35 +179,14 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
-    //myPostsMenuButton.classList.remove('is-active');
-    //myTopPostsMenuButton.classList.remove('is-active');
   };
-  // myPostsMenuButton.onclick = function() {
-  //   recentPostsSection.style.display = 'none';
-  //   userPostsSection.style.display = 'block';
-  //   topUserPostsSection.style.display = 'none';
-  //   addPost.style.display = 'none';
-  //   recentMenuButton.classList.remove('is-active');
-  //   myPostsMenuButton.classList.add('is-active');
-  //   myTopPostsMenuButton.classList.remove('is-active');
-  // };
-  // myTopPostsMenuButton.onclick = function() {
-  //   recentPostsSection.style.display = 'none';
-  //   userPostsSection.style.display = 'none';
-  //   topUserPostsSection.style.display = 'block';
-  //   addPost.style.display = 'none';
-  //   recentMenuButton.classList.remove('is-active');
-  //   myPostsMenuButton.classList.remove('is-active');
-  //   myTopPostsMenuButton.classList.add('is-active');
-  // };
+
   addButton.onclick = function() {
     recentPostsSection.style.display = 'none';
     userPostsSection.style.display = 'none';
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'block';
     recentMenuButton.classList.remove('is-active');
-    // myPostsMenuButton.classList.remove('is-active');
-    //myTopPostsMenuButton.classList.remove('is-active');
     messageInput.value = '';
     titleInput.value = '';
   };
