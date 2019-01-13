@@ -120,8 +120,8 @@ function createPostElement(postId, title, text, author) {
 
   var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
   var commentInput = postElement.getElementsByClassName('new-comment')[0];
-  var star = postElement.getElementsByClassName('starred')[0];
-  var unStar = postElement.getElementsByClassName('not-starred')[0];
+  // var star = postElement.getElementsByClassName('starred')[0];
+  // var unStar = postElement.getElementsByClassName('not-starred')[0];
 
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
@@ -171,8 +171,8 @@ function createPostElement(postId, title, text, author) {
     toggleStar(globalPostRef, uid);
     toggleStar(userPostRef, uid);
   };
-  unStar.onclick = onStarClicked;
-  star.onclick = onStarClicked;
+  // unStar.onclick = onStarClicked;
+  // star.onclick = onStarClicked;
 
   return postElement;
 }
