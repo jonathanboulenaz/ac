@@ -118,8 +118,8 @@ function createPostElement(postId, title, text, author) {
   var postElement = div.firstChild;
   componentHandler.upgradeElements(postElement.getElementsByClassName('mdl-textfield')[0]);
 
-  var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
-  var commentInput = postElement.getElementsByClassName('new-comment')[0];
+  // var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
+  // var commentInput = postElement.getElementsByClassName('new-comment')[0];
   // var star = postElement.getElementsByClassName('starred')[0];
   // var unStar = postElement.getElementsByClassName('not-starred')[0];
 
@@ -130,18 +130,18 @@ function createPostElement(postId, title, text, author) {
 
   // Listen for comments.
   // [START child_event_listener_recycler]
-  var commentsRef = firebase.database().ref('post-comments/' + postId);
-  commentsRef.on('child_added', function(data) {
-    addCommentElement(postElement, data.key, data.val().text, data.val().author);
-  });
+  // var commentsRef = firebase.database().ref('post-comments/' + postId);
+  // commentsRef.on('child_added', function(data) {
+  //   addCommentElement(postElement, data.key, data.val().text, data.val().author);
+  // });
 
-  commentsRef.on('child_changed', function(data) {
-    setCommentValues(postElement, data.key, data.val().text, data.val().author);
-  });
+  // commentsRef.on('child_changed', function(data) {
+  //   setCommentValues(postElement, data.key, data.val().text, data.val().author);
+  // });
 
-  commentsRef.on('child_removed', function(data) {
-    deleteComment(postElement, data.key);
-  });
+  // commentsRef.on('child_removed', function(data) {
+  //   deleteComment(postElement, data.key);
+  // });
   // [END child_event_listener_recycler]
 
   // Listen for likes counts.
@@ -157,12 +157,12 @@ function createPostElement(postId, title, text, author) {
   // });
 
   // Create new comment.
-  addCommentForm.onsubmit = function(e) {
-    e.preventDefault();
-    createNewComment(postId, firebase.auth().currentUser.displayName, uid, commentInput.value);
-    commentInput.value = '';
-    commentInput.parentElement.MaterialTextfield.boundUpdateClassesHandler();
-  };
+  // addCommentForm.onsubmit = function(e) {
+  //   e.preventDefault();
+  //   createNewComment(postId, firebase.auth().currentUser.displayName, uid, commentInput.value);
+  //   commentInput.value = '';
+  //   commentInput.parentElement.MaterialTextfield.boundUpdateClassesHandler();
+  // };
 
   // Bind starring action.
   var onStarClicked = function() {
@@ -180,13 +180,13 @@ function createPostElement(postId, title, text, author) {
 /**
  * Writes a new comment for the given post.
  */
-function createNewComment(postId, username, uid, text) {
-  firebase.database().ref('post-comments/' + postId).push({
-    text: text,
-    //author: username,
-    uid: uid
-  });
-}
+// function createNewComment(postId, username, uid, text) {
+//   firebase.database().ref('post-comments/' + postId).push({
+//     text: text,
+//     //author: username,
+//     uid: uid
+//   });
+// }
 
 /**
  * Updates the starred status of the post.
@@ -211,33 +211,33 @@ function createNewComment(postId, username, uid, text) {
 /**
  * Creates a comment element and adds it to the given postElement.
  */
-function addCommentElement(postElement, id, text, author) {
-  var comment = document.createElement('div');
-  comment.classList.add('comment-' + id);
-  //comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
-  comment.getElementsByClassName('comment')[0].innerText = text;
-  //comment.getElementsByClassName('username')[0].innerText = author;
-
-  var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
-  commentsContainer.appendChild(comment);
-}
+// function addCommentElement(postElement, id, text, author) {
+//   var comment = document.createElement('div');
+//   comment.classList.add('comment-' + id);
+//   //comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
+//   comment.getElementsByClassName('comment')[0].innerText = text;
+//   //comment.getElementsByClassName('username')[0].innerText = author;
+//
+//   var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
+//   commentsContainer.appendChild(comment);
+// }
 
 /**
  * Sets the comment's values in the given postElement.
  */
-function setCommentValues(postElement, id, text, author) {
-  var comment = postElement.getElementsByClassName('comment-' + id)[0];
-  comment.getElementsByClassName('comment')[0].innerText = text;
-  //comment.getElementsByClassName('fp-username')[0].innerText = author;
-}
+// function setCommentValues(postElement, id, text, author) {
+//   var comment = postElement.getElementsByClassName('comment-' + id)[0];
+//   comment.getElementsByClassName('comment')[0].innerText = text;
+//   //comment.getElementsByClassName('fp-username')[0].innerText = author;
+// }
 
 /**
  * Deletes the comment of the given ID in the given postElement.
  */
-function deleteComment(postElement, id) {
-  var comment = postElement.getElementsByClassName('comment-' + id)[0];
-  comment.parentElement.removeChild(comment);
-}
+// function deleteComment(postElement, id) {
+//   var comment = postElement.getElementsByClassName('comment-' + id)[0];
+//   comment.parentElement.removeChild(comment);
+// }
 
 /**
  * Starts listening for new posts and populates posts lists.
