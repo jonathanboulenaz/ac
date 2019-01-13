@@ -255,8 +255,7 @@ function startDatabaseQueries() {
   var fetchPosts = function(postsRef, sectionElement) {
     postsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
-      // containerElement.insertBefore
-      (
+      containerElement.insertedNode(
           createPostElement(data.key, data.val().title, data.val().body, data.val().author),
           containerElement.firstChild);
     });
