@@ -328,24 +328,24 @@ window.addEventListener('load', function() {
     myPostsMenuButton.classList.remove('is-active');
     myTopPostsMenuButton.classList.remove('is-active');
   };
-  myPostsMenuButton.onclick = function() {
-    recentPostsSection.style.display = 'none';
-    userPostsSection.style.display = 'block';
-    topUserPostsSection.style.display = 'none';
-    addPost.style.display = 'none';
-    recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.add('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
-  };
-  myTopPostsMenuButton.onclick = function() {
-    recentPostsSection.style.display = 'none';
-    userPostsSection.style.display = 'none';
-    topUserPostsSection.style.display = 'block';
-    addPost.style.display = 'none';
-    recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.add('is-active');
-  };
+  // myPostsMenuButton.onclick = function() {
+  //   recentPostsSection.style.display = 'none';
+  //   userPostsSection.style.display = 'block';
+  //   topUserPostsSection.style.display = 'none';
+  //   addPost.style.display = 'none';
+  //   recentMenuButton.classList.remove('is-active');
+  //   myPostsMenuButton.classList.add('is-active');
+  //   myTopPostsMenuButton.classList.remove('is-active');
+  // };
+  // myTopPostsMenuButton.onclick = function() {
+  //   recentPostsSection.style.display = 'none';
+  //   userPostsSection.style.display = 'none';
+  //   topUserPostsSection.style.display = 'block';
+  //   addPost.style.display = 'none';
+  //   recentMenuButton.classList.remove('is-active');
+  //   myPostsMenuButton.classList.remove('is-active');
+  //   myTopPostsMenuButton.classList.add('is-active');
+  // };
   addButton.onclick = function() {
     recentPostsSection.style.display = 'none';
     userPostsSection.style.display = 'none';
