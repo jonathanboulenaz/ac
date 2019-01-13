@@ -27,7 +27,7 @@ var recentPostsSection = document.getElementById('recent-posts-list');
 var userPostsSection = document.getElementById('user-posts-list');
 var topUserPostsSection = document.getElementById('top-user-posts-list');
 var recentMenuButton = document.getElementById('menu-recent');
-var myPostsMenuButton = document.getElementById('menu-my-posts');
+//var myPostsMenuButton = document.getElementById('menu-my-posts');
 var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 
 /**
@@ -310,12 +310,13 @@ window.addEventListener('load', function() {
         // [START_EXCLUDE]
         writeNewPost(firebase.auth().currentUser.uid, firebase.auth().currentUser.displayName,
             titleInput.value, postText).then(function() {
-              myPostsMenuButton.click();
+              //myPostsMenuButton.click();
             });
         // [END_EXCLUDE]
       });
       // [END single_value_read]
     }
+
   };
 
   // Bind menu buttons.
@@ -325,35 +326,35 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
+    //myPostsMenuButton.classList.remove('is-active');
+    //myTopPostsMenuButton.classList.remove('is-active');
   };
-  myPostsMenuButton.onclick = function() {
-    recentPostsSection.style.display = 'none';
-    userPostsSection.style.display = 'block';
-    topUserPostsSection.style.display = 'none';
-    addPost.style.display = 'none';
-    recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.add('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
-  };
-  myTopPostsMenuButton.onclick = function() {
-    recentPostsSection.style.display = 'none';
-    userPostsSection.style.display = 'none';
-    topUserPostsSection.style.display = 'block';
-    addPost.style.display = 'none';
-    recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.add('is-active');
-  };
+  // myPostsMenuButton.onclick = function() {
+  //   recentPostsSection.style.display = 'none';
+  //   userPostsSection.style.display = 'block';
+  //   topUserPostsSection.style.display = 'none';
+  //   addPost.style.display = 'none';
+  //   recentMenuButton.classList.remove('is-active');
+  //   myPostsMenuButton.classList.add('is-active');
+  //   myTopPostsMenuButton.classList.remove('is-active');
+  // };
+  // myTopPostsMenuButton.onclick = function() {
+  //   recentPostsSection.style.display = 'none';
+  //   userPostsSection.style.display = 'none';
+  //   topUserPostsSection.style.display = 'block';
+  //   addPost.style.display = 'none';
+  //   recentMenuButton.classList.remove('is-active');
+  //   myPostsMenuButton.classList.remove('is-active');
+  //   myTopPostsMenuButton.classList.add('is-active');
+  // };
   addButton.onclick = function() {
     recentPostsSection.style.display = 'none';
     userPostsSection.style.display = 'none';
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'block';
     recentMenuButton.classList.remove('is-active');
-    myPostsMenuButton.classList.remove('is-active');
-    myTopPostsMenuButton.classList.remove('is-active');
+    // myPostsMenuButton.classList.remove('is-active');
+    //myTopPostsMenuButton.classList.remove('is-active');
     messageInput.value = '';
     titleInput.value = '';
   };
