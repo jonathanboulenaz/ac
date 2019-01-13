@@ -37,7 +37,7 @@ var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 function writeNewPost(uid, username, title, body) {
   // A post entry.
   var postData = {
-    author: username,
+    //author: username,
     uid: uid,
     body: body,
     title: title,
@@ -91,10 +91,10 @@ function createPostElement(postId, title, text, author) {
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
           '<div class="header">' +
-            '<div>' +
-              '<div class="avatar"></div>' +
-              '<div class="username mdl-color-text--black"></div>' +
-            '</div>' +
+            // '<div>' +
+            //   '<div class="avatar"></div>' +
+            //   '<div class="username mdl-color-text--black"></div>' +
+            // '</div>' +
           '</div>' +
           '<span class="star">' +
             // '<div class="not-starred material-icons">star_border</div>' +
@@ -126,7 +126,7 @@ function createPostElement(postId, title, text, author) {
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
   postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = title;
-  postElement.getElementsByClassName('username')[0].innerText = author;
+  //postElement.getElementsByClassName('username')[0].innerText = author;
 
   // Listen for comments.
   // [START child_event_listener_recycler]
@@ -183,7 +183,7 @@ function createPostElement(postId, title, text, author) {
 function createNewComment(postId, username, uid, text) {
   firebase.database().ref('post-comments/' + postId).push({
     text: text,
-    author: username,
+    //author: username,
     uid: uid
   });
 }
@@ -214,9 +214,9 @@ function createNewComment(postId, username, uid, text) {
 function addCommentElement(postElement, id, text, author) {
   var comment = document.createElement('div');
   comment.classList.add('comment-' + id);
-  comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
+  //comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
   comment.getElementsByClassName('comment')[0].innerText = text;
-  comment.getElementsByClassName('username')[0].innerText = author;
+  //comment.getElementsByClassName('username')[0].innerText = author;
 
   var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
   commentsContainer.appendChild(comment);
@@ -228,7 +228,7 @@ function addCommentElement(postElement, id, text, author) {
 function setCommentValues(postElement, id, text, author) {
   var comment = postElement.getElementsByClassName('comment-' + id)[0];
   comment.getElementsByClassName('comment')[0].innerText = text;
-  comment.getElementsByClassName('fp-username')[0].innerText = author;
+  //comment.getElementsByClassName('fp-username')[0].innerText = author;
 }
 
 /**
@@ -272,7 +272,7 @@ function startDatabaseQueries() {
 // [START basic_write]
 function writeUserData(userId, name, email) {
   firebase.database().ref('users/' + userId).set({
-    username: name,
+    //username: name,
     email: email
   });
 }
@@ -306,7 +306,7 @@ window.addEventListener('load', function() {
       // [START single_value_read]
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-        var username = snapshot.val().username;
+        //var username = snapshot.val().username;
         // [START_EXCLUDE]
         writeNewPost(firebase.auth().currentUser.uid, firebase.auth().currentUser.displayName,
             titleInput.value, postText).then(function() {
