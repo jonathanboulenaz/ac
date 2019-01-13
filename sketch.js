@@ -120,8 +120,8 @@ function createPostElement(postId, title, text, author) {
 
   var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
   var commentInput = postElement.getElementsByClassName('new-comment')[0];
-  // var star = postElement.getElementsByClassName('starred')[0];
-  // var unStar = postElement.getElementsByClassName('not-starred')[0];
+  var star = postElement.getElementsByClassName('starred')[0];
+  var unStar = postElement.getElementsByClassName('not-starred')[0];
 
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
@@ -152,9 +152,9 @@ function createPostElement(postId, title, text, author) {
   // [END post_value_event_listener]
 
   // Listen for the starred status.
-  // firebase.database().ref('posts/' + postId + '/stars/' + uid).on('value', function(snapshot) {
-  //   updateStarredByCurrentUser(postElement, snapshot.val());
-  // });
+  firebase.database().ref('posts/' + postId + '/stars/' + uid).on('value', function(snapshot) {
+    updateStarredByCurrentUser(postElement, snapshot.val());
+  });
 
   // Create new comment.
   addCommentForm.onsubmit = function(e) {
@@ -165,16 +165,16 @@ function createPostElement(postId, title, text, author) {
   };
 
   // Bind starring action.
-  // var onStarClicked = function() {
-  //   var globalPostRef = firebase.database().ref('/posts/' + postId);
-  //   var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
-  //   toggleStar(globalPostRef, uid);
-  //   toggleStar(userPostRef, uid);
-  // };
-  // unStar.onclick = onStarClicked;
-  // star.onclick = onStarClicked;
+  var onStarClicked = function() {
+    var globalPostRef = firebase.database().ref('/posts/' + postId);
+    var userPostRef = firebase.database().ref('/user-posts/' + uid + '/' + postId);
+    toggleStar(globalPostRef, uid);
+    toggleStar(userPostRef, uid);
+  };
+  unStar.onclick = onStarClicked;
+  star.onclick = onStarClicked;
 
-  // return postElement;
+  return postElement;
 }
 
 /**
@@ -191,15 +191,15 @@ function createNewComment(postId, username, uid, text) {
 /**
  * Updates the starred status of the post.
  */
-// function updateStarredByCurrentUser(postElement, starred) {
-//   if (starred) {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
-//   } else {
-//     postElement.getElementsByClassName('starred')[0].style.display = 'none';
-//     postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
-//   }
-// }
+function updateStarredByCurrentUser(postElement, starred) {
+  if (starred) {
+    postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
+    postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
+  } else {
+    postElement.getElementsByClassName('starred')[0].style.display = 'none';
+    postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
+  }
+}
 
 /**
  * Updates the number of stars displayed for a post.
@@ -256,7 +256,7 @@ function startDatabaseQueries() {
     postsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
       containerElement.insertBefore(
-          createPostElement(data.key, data.val().title, data.val().author),
+          createPostElement(data.key, data.val().title, data.val().body, data.val().author),
           containerElement.firstChild);
     });
   };
