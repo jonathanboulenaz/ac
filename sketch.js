@@ -101,14 +101,14 @@ function createPostElement(postId, title, text, author) {
             // '<div class="starred material-icons">star</div>' +
             // '<div class="star-count">0</div>' +
           '</span>' +
-          // '<div class="text"></div>' +
-          // '<div class="comments-container"></div>' +
-          // '<form class="add-comment" action="#">' +
-          //   '<div class="mdl-textfield mdl-js-textfield">' +
-          //     '<input class="mdl-textfield__input new-comment" type="text">' +
-          //     '<label class="mdl-textfield__label">Comment...</label>' +
-          //   '</div>' +
-          // '</form>' +
+          '<div class="text"></div>' +
+          '<div class="comments-container"></div>' +
+          '<form class="add-comment" action="#">' +
+            '<div class="mdl-textfield mdl-js-textfield">' +
+              '<input class="mdl-textfield__input new-comment" type="text">' +
+              '<label class="mdl-textfield__label">Comment...</label>' +
+            '</div>' +
+          '</form>' +
         '</div>' +
       '</div>';
 
