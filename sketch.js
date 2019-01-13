@@ -96,11 +96,11 @@ function createPostElement(postId, title, text, author) {
               '<div class="username mdl-color-text--black"></div>' +
             '</div>' +
           '</div>' +
-          // '<span class="star">' +
-          //   '<div class="not-starred material-icons">star_border</div>' +
-          //   '<div class="starred material-icons">star</div>' +
-          //   '<div class="star-count">0</div>' +
-          // '</span>' +
+          '<span class="star">' +
+            '<div class="not-starred material-icons">star_border</div>' +
+            '<div class="starred material-icons">star</div>' +
+            '<div class="star-count">0</div>' +
+          '</span>' +
           '<div class="text"></div>' +
           '<div class="comments-container"></div>' +
           '<form class="add-comment" action="#">' +
@@ -255,7 +255,7 @@ function startDatabaseQueries() {
   var fetchPosts = function(postsRef, sectionElement) {
     postsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
-      containerElement.insertedNode(
+      containerElement.insertBefore(
           createPostElement(data.key, data.val().title, data.val().body, data.val().author),
           containerElement.firstChild);
     });
