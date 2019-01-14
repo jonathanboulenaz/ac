@@ -11,8 +11,8 @@
     font-size: 56px;
   }
   .button_rec{
-    background-color: transparent; /* Green */ */
-   border: none;
+    background:none; /* Green */ */
+   border: 1px solid transparent;
    /* padding: 40px; */
    padding:10px;
    text-align: center;
