@@ -168,6 +168,7 @@ window.addEventListener('load', function() {
         writeNewPost(firebase.auth().currentUser.uid, firebase.auth().currentUser.displayName,
             titleInput.value, postText).then(function() {
               //myPostsMenuButton.click();
+              recentMenuButton.onclick();
             });
         // [END_EXCLUDE]
       });
