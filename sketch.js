@@ -184,6 +184,7 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
+
   };
 
   addButton.onclick = function() {
@@ -194,6 +195,7 @@ window.addEventListener('load', function() {
     recentMenuButton.classList.remove('is-active');
     messageInput.value = '';
     titleInput.value = '';
+    addButton.style.display = 'none';
   };
   recentMenuButton.onclick();
 }, false);
