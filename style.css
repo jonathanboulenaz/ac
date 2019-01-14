@@ -11,16 +11,16 @@
     font-size: 56px;
   }
   .button_rec{
-    background-color: red; /* Green */
+    /* background-color: white; /* Green */ */
    border: none;
-   padding: 40px;
+   /* padding: 40px; */
    text-align: center;
-   text-decoration: none;
+   text-decoration-color: black;
    display: inline-block;
    font-size: 100px;
    margin: 4px 2px;
    cursor: pointer;
-   border-radius: 50%;
+   /* border-radius: 50%; */
 
   }
   .footer {
