@@ -11,9 +11,10 @@
     font-size: 56px;
   }
   .button_rec{
-    /* background-color: white; /* Green */ */
+    background-color: transparent; /* Green */ */
    border: none;
    /* padding: 40px; */
+   padding:10px;
    text-align: center;
    text-decoration-color: black;
    display: inline-block;
