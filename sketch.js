@@ -184,6 +184,7 @@ window.addEventListener('load', function() {
     topUserPostsSection.style.display = 'none';
     addPost.style.display = 'none';
     recentMenuButton.classList.add('is-active');
+    addButton.style.display = 'block';
 
   };
 
