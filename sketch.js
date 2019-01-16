@@ -58,55 +58,16 @@ var v = 512;
 var ps = true;
 var recording = false;
 
-// function preload() {
-//   soundA = loadSound('A.mp3');
-//   soundB = loadSound('B.mp3');
-//   soundC = loadSound('B.mp3');
-//
-// }
+
 
 
 function setup() {
 
+document.getElementById('record').style.display = 'none';
+
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
-    setupButtons();
-    if(localStorage['form_data']){
-      console.log("Loading form data...");
-      //console.log(JSON.parse(localStorage['form_data']))
-      let model = JSON.parse(localStorage.getItem('audio_data'));
-      machine.training = model;
-      console.log('length',model.length,machine.training);
-      counter = JSON.parse(localStorage.getItem('counter_data'));
-
-     nSamples = model.length;
-      //console.log(JSON.parse(localStorage['audio-data']))
-      let form = localStorage.getItem('form_data');
-      $("form#myForm").fromJSON(form);
-
-    } else {
-      //counter = 0;
-      console.log("Error: Save some data first")
-    }
-
-
-      for (i = 0; i < counter; i++){
-
-        var newTextBoxDiv = $(document.createElement('div'))
-           .attr("id", 'TextBoxDiv' + i);
-        //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
-        newTextBoxDiv.after().html(
-        // '<label>Textbox #'+ counter + ' : </label>' +
-            '<input class = text1 type="text" name="textfield' + i
-            + '" id="myText'+ i +'" value=""><button id="class' + i + '" class="button">'+ i + '</button>  <p id="p'+i+'" class = p>0 /</p>  <input class = email type="text" name="email' + i + '" id="myEmail' + i + '" value="10">'
-          );
-        // <button id="class1" class="button">1</button>
-
-
-        newTextBoxDiv.appendTo("#TextBoxesGroup");
-    i = counter;
-      }
 
 
 }
@@ -125,41 +86,32 @@ function draw() {
     background(255);
     textSize(36);
 drawButtons();
-// if (currentClass>0){
-//
-// for (var i = 1; i< counter; i++){
-//   document.getElementById('class0').className = 'ambiant'
-// document.getElementById('class'+i).className = 'button'
-// //document.getElementById('myText'+i).className = 'text1'
-// }
-//   //if (currentClass !== lastClass){
-//   document.getElementById('class'+currentClass).className = 'button2'
-// //  document.getElementById('myText'+currentClass).className = 'text2'
-//
-// }
-//
-// if (currentClass==0){
-//
-// for (var i = 1; i< counter; i++){
-//   document.getElementById('class0').className = 'ambiant'
-// document.getElementById('class'+i).className = 'button'
-// //document.getElementById('myText'+i).className = 'text1'
-// }
-//   //if (currentClass !== lastClass){
-//     document.getElementById('class0').className = 'ambiant2'
-// //  document.getElementById('myText'+currentClass).className = 'text2'
-//
-// }
+if (currentClass>0){
 
+for (var i = 1; i< counter; i++){
+  document.getElementById('class0').className = 'ambiant'
+document.getElementById('class'+i).className = 'button'
+//document.getElementById('myText'+i).className = 'text1'
+}
+  //if (currentClass !== lastClass){
+  document.getElementById('class'+currentClass).className = 'button2'
+//  document.getElementById('myText'+currentClass).className = 'text2'
 
-// if (currentClass == 1){
-//   document.getElementById('class1').className = 'button2'
-//   document.getElementById('myText1').className = 'text2'
-// }
-// else{
-//     document.getElementById('class1').className = 'button'
-//     document.getElementById('myText1').className = 'text1'
-// }
+}
+
+if (currentClass==0){
+
+for (var i = 1; i< counter; i++){
+  document.getElementById('class0').className = 'ambiant'
+document.getElementById('class'+i).className = 'button'
+//document.getElementById('myText'+i).className = 'text1'
+}
+  //if (currentClass !== lastClass){
+    document.getElementById('class0').className = 'ambiant2'
+//  document.getElementById('myText'+currentClass).className = 'text2'
+
+}
+
 
 playSound();
 //pr
@@ -236,10 +188,10 @@ if (loudness < ambiantNoise){
  if (currentClass !== 0){
 
 //text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
-for (var i = 1; i< counter; i++){
+for (var i = 1; i<= counter; i++){
 document.getElementById("p"+i).innerHTML = count[i-1] + " /";
 }
-for (var i = 1; i < counter; i++){
+for (var i = 1; i <= counter; i++){
   if(count[i-1] == document.getElementById("myEmail"+i).value){
     //console.log(document.getElementById("myEmail1").value);
     if (count[i-1] !== 0){
@@ -270,7 +222,7 @@ for (var i = 1; i < counter; i++){
     else if  ( nSamples >= 1000 ){
       a = 450;
     }
-    text("Number of samples: " + nSamples, window.innerWidth-a, 30, 1000);
+    //text("Number of samples: " + nSamples, window.innerWidth-a, 30, 1000);
 
     if (predictionAlpha > 0) predictionAlpha-=5;
 
@@ -304,10 +256,10 @@ function drawButtons(){
 //
 // }
 if (counter == 1){
-class0 = select('#class0');
-class0.mousePressed(function(e) {
+class1 = select('#class1');
+class1.mousePressed(function(e) {
  //machine.save();
-currentClass = 0;
+currentClass = 1;
 // document.getElementById('class1').className = 'button2'
 // document.getElementById('class2').className = 'button'
 // document.getElementById('class3').className = 'button'
@@ -316,10 +268,10 @@ e.preventDefault();
 });
 }
 if (counter == 2){
-     class1 = select('#class1');
-    class1.mousePressed(function(e) {
+     class2 = select('#class2');
+    class2.mousePressed(function(e) {
       //machine.save();
-  	currentClass = 1;
+  	currentClass = 2;
     // document.getElementById('class1').className = 'button2'
     // document.getElementById('class2').className = 'button'
     // document.getElementById('class3').className = 'button'
@@ -328,131 +280,102 @@ e.preventDefault();
     });
   }
     if (counter == 3){
-    class2 = select('#class2');
-    class2.mousePressed(function(e) {
+    class3 = select('#class3');
+    class3.mousePressed(function(e) {
       // document.getElementById('class1').className = 'button'
       // document.getElementById('class2').className = 'button2'
       // document.getElementById('class3').className = 'button'
       //machine.save();
-  	currentClass = 2;
+  	currentClass = 3;
     e.preventDefault();
     });
   }
     if (counter == 4){
-    class3 = select('#class3');
-    class3.mousePressed(function() {
-  	currentClass = 3;
-    });
-  }
-    if (counter == 5){
     class4 = select('#class4');
     class4.mousePressed(function() {
-      //machine.save();
   	currentClass = 4;
     });
   }
-    if (counter == 6){
+    if (counter == 5){
     class5 = select('#class5');
     class5.mousePressed(function() {
       //machine.save();
   	currentClass = 5;
     });
   }
-    if (counter == 7){
+    if (counter == 6){
     class6 = select('#class6');
     class6.mousePressed(function() {
       //machine.save();
   	currentClass = 6;
     });
   }
-    if (counter == 8){
-    class7 = select('#class7');
+    if (counter == 7){
+    class7 = select('#class6');
     class7.mousePressed(function() {
       //machine.save();
   	currentClass = 7;
     });
   }
-    if (counter == 9){
+    if (counter == 8){
     class8 = select('#class8');
     class8.mousePressed(function() {
       //machine.save();
   	currentClass = 8;
     });
   }
-    if (counter == 10){
+    if (counter == 9){
     class9 = select('#class9');
     class9.mousePressed(function() {
       //machine.save();
   	currentClass = 9;
     });
   }
+    if (counter == 10){
+    class10 = select('#class10');
+    class10.mousePressed(function() {
+      //machine.save();
+  	currentClass = 10;
+    });
+  }
   if (counter == 11){
-  class10 = select('#class10');
-  class10.mousePressed(function() {
+  class11 = select('#class11');
+  class11.mousePressed(function() {
     //machine.save();
-  currentClass = 10;
+  currentClass = 11;
   });
 }
 if (counter == 12){
-class11 = select('#class11');
-class11.mousePressed(function() {
-  //machine.save();
-currentClass = 11;
-});
-}
-if (counter == 13){
 class12 = select('#class12');
 class12.mousePressed(function() {
   //machine.save();
 currentClass = 12;
 });
 }
-if (counter == 14){
+if (counter == 13){
 class13 = select('#class13');
 class13.mousePressed(function() {
   //machine.save();
 currentClass = 13;
 });
 }
-if (counter == 15){
+if (counter == 14){
 class14 = select('#class14');
 class14.mousePressed(function() {
   //machine.save();
 currentClass = 14;
 });
 }
-if (counter == 16){
+if (counter == 15){
 class15 = select('#class15');
 class15.mousePressed(function() {
   //machine.save();
 currentClass = 15;
 });
 }
-}
-function setupButtons() {
 
-  record = select('#record');
-  record.mousePressed(function() {
+}
 
-    //machine.save();
-    if (pressed == false ){
-    document.getElementById('record').className = 'record2'
-    pressed = true;
-	recording = true;
-  audio = new MicrophoneInput(v);
-}
-else{
-  document.getElementById('record').className = 'record'
-//machine.save();
-pressed = false;
-recording = false;
-}
-  });
-  // stopRecording = select('#stoprecording');
-  // stopRecording.mousePressed(function() {
-  //
-  // });
-}
 
 function playSound(){
 
@@ -548,10 +471,27 @@ $(document).ready(function(){
    })
 });
 $(document).ready(function(){
+
+
 //
 
 //
+  // $("#liste").click(function () {
+  //
+  //   for (var i=1; i <= counter; i++){
+  //     document.getElementById('div'+i).style.display = 'inline-block';
+  //     document.getElementById("q"+i).style.display = 'none';
+  //     document.getElementById("qb"+i).style.display = 'none';
+  //     document.getElementById("submit"+i).style.display = 'none';
+  //       document.getElementById('submitb'+i).style.display = 'none';
+  //       document.getElementById('record').style.display = 'inline-block';
+  //
+  //   }
+  // })
+
     $("#addButton").click(function () {
+currentClass = counter+1;
+      	counter++;
 
 	if(counter>15){
             alert("Only 15 textboxes allow");
@@ -563,8 +503,31 @@ $(document).ready(function(){
     //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
-	      '<input class = text1 type="text" name="textfield' + counter
-        + '" id="myText'+ counter +'" value=""><button id="class' + counter + '" class="button">'+ counter + '</button>  <p id="p'+counter+'" class = p>0 /</p>  <input class = email type="text" name="email' + counter + '" id="myEmail' + counter + '" value="10">'
+        '<div class="div" id = "div' + counter + '">' +
+	      '<div class="q" id = "q' + counter +
+        '">Que voulez-vous compter ?</div>'+
+        '<input class = text1 type="text" name="textfield' + counter
+        + '" id="myText'+ counter +'" value="">'+
+
+        '<input class="textList" id ="texta'+ counter +
+        '"value ="" disabled></input>'+
+        '<p id="p'+ counter
+        +'" class = p>0 /</p>'+
+
+        '<input class="textListb" id ="textb'+ counter +
+        '"value ="" disabled></input>'+
+
+         '<button class="submit" onclick="myFunction()" id="submit'+counter+
+        '">Submit</button>'+
+        '<button id="class' + counter
+         + '" class="button">'+ counter + '</button>'  +
+          '<div class="q" id = "qb'+counter+
+         '">Après combien de fois voulez déclencher une action ?</div> <input class = email type="text" name="email'
+         + counter + '" id="myEmail' + counter + '" value="">'
+         + '<button class="submit" onclick="yourFunction()" id="submitb'+counter+
+         '">Submit</button>' +
+
+         '</div>'
       );
 // <button id="class1" class="button">1</button>
 
@@ -572,19 +535,50 @@ $(document).ready(function(){
 	newTextBoxDiv.appendTo("#TextBoxesGroup");
 
 
-	counter++;
+
+  for (var i=1; i < counter; i++){
+    document.getElementById('div'+i).style.display = 'none';
+    document.getElementById('q'+i).style.display = 'none';
+    document.getElementById('qb'+i).style.display = 'none';
+    document.getElementById('submit'+i).style.display = 'none';
+    document.getElementById('submitb'+i).style.display = 'none';
+    document.getElementById('p'+i).style.display = 'none';
+    document.getElementById('class'+i).style.display = 'none';
+    document.getElementById('textb'+i).style.display = 'none';
+    document.getElementById('texta'+i).style.display = 'none';
+    document.getElementById('div'+i).style.borderWidth = '0px';
+    document.getElementById('div'+i).style.backgroundColor = "white";
+
+
+  }
+  document.getElementById('q'+counter).style.display = 'inline-block';
+  document.getElementById('div'+counter).style.display = 'inline-block';
+  document.getElementById('submit'+counter).style.display = 'inline-block';
+  document.getElementById('div'+counter).style.borderWidth = '0px';
+  document.getElementById('div'+counter).style.backgroundColor = "white";
+
+
+  document.getElementById('qb'+counter).style.display = 'none';
+  document.getElementById('myEmail'+counter).style.display = 'none';
+    document.getElementById('submitb'+i).style.display = 'none';
+    document.getElementById('p'+counter).style.display = 'none';
+    document.getElementById('class'+counter).style.display = 'none';
+    document.getElementById('record').style.display = 'none';
+    document.getElementById('textb'+counter).style.display = 'none';
+    document.getElementById('texta'+counter).style.display = 'none';
+document.getElementById('addButton').style.display = 'none';
      });
 
      $("#removeButton").click(function () {
-	if(counter==1){
+	if(counter==0){
           alert("No more textbox to remove");
           return false;
        }
 
-	counter--;
+
 
         $("#TextBoxDiv" + counter).remove();
-
+        	counter--;
      });
 
      $("#getButtonValue").click(function () {
@@ -596,3 +590,77 @@ $(document).ready(function(){
     	  alert(msg);
      });
   });
+
+  function myFunction(){
+    for (var i=1; i <= counter; i++){
+
+      document.getElementById('qb'+counter).style.display = 'inline-block';
+      document.getElementById('myEmail'+counter).style.display = 'inline-block';
+
+      document.getElementById('q'+counter).style.display = 'none';
+
+      document.getElementById('submit'+counter).style.display = 'none';
+      document.getElementById('myText'+counter).style.display = 'none';
+
+
+      document.getElementById('submitb'+counter).style.display = 'inline-block';
+
+
+
+
+
+    }
+
+
+  }
+
+
+function yourFunction() {
+document.getElementById('record').style.display = 'inline-block';
+for(var i = 1; i <= counter; i++){
+
+      document.getElementById('qb'+i).style.display = 'none';
+      document.getElementById('submitb'+i).style.display = 'none';
+      document.getElementById('myEmail'+i).style.display = 'none';
+    }
+
+}
+
+function recFunction(){
+
+
+
+      //machine.save();
+      if (pressed == false ){
+      document.getElementById('record').className = 'record2'
+      pressed = true;
+  	recording = true;
+    audio = new MicrophoneInput(v);
+  }
+  else if (pressed == true){
+    document.getElementById('record').className = 'record'
+  //machine.save();
+  pressed = false;
+  recording = false;
+  for (var i=1; i <= counter; i++){
+        document.getElementById('div'+i).style.display = 'inline-block';
+        document.getElementById("q"+i).style.display = 'none';
+        document.getElementById("qb"+i).style.display = 'none';
+        document.getElementById("submit"+i).style.display = 'none';
+          document.getElementById('submitb'+i).style.display = 'none';
+          document.getElementById('myText'+i).style.display = 'none';
+          document.getElementById('myEmail'+i).style.display = 'none';
+          document.getElementById('texta'+i).value = document.getElementById('myText'+i).value;
+          document.getElementById('texta'+i).style.display = 'inline-block';
+          document.getElementById('textb'+i).value = document.getElementById('myEmail'+i).value;
+          document.getElementById('textb'+i).style.display = 'inline-block';
+          document.getElementById('p'+i).style.display = 'inline-block';
+          document.getElementById('class'+i).style.display = 'inline-block'
+          document.getElementById('record').style.display = 'none';
+          document.getElementById('addButton').style.display = 'inline-block';
+          document.getElementById('div'+i).style.borderWidth = '1px';
+          document.getElementById('div'+i).style.backgroundColor = "#e1e1e1";
+      }
+
+  }
+}
