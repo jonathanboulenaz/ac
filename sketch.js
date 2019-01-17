@@ -71,7 +71,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     startTime = millis();
 
 
-var email 	= require(['/emailjs/email.js"']);
+var email 	= require(['/emailjs/email.js']);
 var server 	= email.server.connect({
    user:    "jonathan",
    password:"ratdu1005",
