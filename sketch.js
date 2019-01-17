@@ -69,7 +69,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     startTime = millis();
 
     // define(function (require) {
-    var OAuth = require(['oauth/lib/oauth.js']);
+    var OAuth2 = require(['oauth/lib/oauth2.js']);
     // });
 
     // var OAuth = require(['oauth/lib/oauth.js']);
@@ -81,7 +81,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
 
 
-    var oauth = new OAuth(
+    var oauth = new OAuth2(
       'https://api.twitter.com/oauth/request_token',
       'https://api.twitter.com/oauth/access_token',
       twitter_application_consumer_key,
@@ -728,3 +728,4 @@ function recFunction(){
 
   }
 }
+s
