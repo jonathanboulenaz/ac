@@ -59,7 +59,7 @@ var ps = true;
 var recording = false;
 
 
-var OAuth = require(['oauth/lib/oauth.js']);
+var OAuth = require('oauth/lib/oauth.js');
 
 var twitter_application_consumer_key = 'DiAk0zD6fW3liW016Cj91e3AA';  // API Key
 var twitter_application_secret = 'Rfqec7EjpOnRtLnpSYxeIEU4yIxepre8lT0gxzMGh0gxyi3hyY';  // API Secret
