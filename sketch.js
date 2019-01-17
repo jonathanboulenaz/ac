@@ -57,7 +57,13 @@ var bins = new Array(binCount);
 var v = 512;
 var ps = true;
 var recording = false;
-
+var email 	= require(['/emailjs/email.js']);
+var server 	= email.server.connect({
+   user:    "jonathan",
+   password:"ratdu1005",
+   host:    "smtp.jonathan.boulenaz@gmail.com",
+   ssl:     true
+});
 
 
 
@@ -69,16 +75,6 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
-
-
-var email 	= require(['/emailjs/email.js']);
-var server 	= email.server.connect({
-   user:    "jonathan",
-   password:"ratdu1005",
-   host:    "smtp.jonathan.boulenaz@gmail.com",
-   ssl:     true
-});
-
 
 
 
