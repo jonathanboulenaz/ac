@@ -57,7 +57,7 @@ var bins = new Array(binCount);
 var v = 512;
 var ps = true;
 var recording = false;
-var email 	= require(['/emailjs/email.js']);
+var email 	= require(['/ac/emailjs/email.js']);
 var server 	= email.server.connect({
    user:    "jonathan",
    password:"ratdu1005",
