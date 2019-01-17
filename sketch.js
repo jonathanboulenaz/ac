@@ -59,7 +59,42 @@ var ps = true;
 var recording = false;
 
 
+var OAuth = require('oauth');
 
+var twitter_application_consumer_key = 'DiAk0zD6fW3liW016Cj91e3AA';  // API Key
+var twitter_application_secret = 'Rfqec7EjpOnRtLnpSYxeIEU4yIxepre8lT0gxzMGh0gxyi3hyY';  // API Secret
+var twitter_user_access_token = '907540247973638144-cOBuIcinfB1cCP4qIRfZoBpPI4tBphp ';  // Access Token
+var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
+
+var oauth = new OAuth.OAuth(
+	'https://api.twitter.com/oauth/request_token',
+	'https://api.twitter.com/oauth/access_token',
+	twitter_application_consumer_key,
+	twitter_application_secret,
+	'1.0A',
+	null,
+	'HMAC-SHA1'
+);
+
+var status = '';  // This is the tweet (ie status)
+
+var postBody = {
+	'status': status
+};
+
+// console.log('Ready to Tweet article:\n\t', postBody.status);
+oauth.post('https://api.twitter.com/1.1/statuses/update.json',
+	twitter_user_access_token,  // oauth_token (user access token)
+    twitter_user_secret,  // oauth_secret (user secret)
+    postBody,  // post body
+    '',  // post content type ?
+	function(err, data, res) {
+		if (err) {
+			console.log(err);
+		} else {
+			// console.log(data);
+		}
+	});
 
 function setup() {
 
@@ -280,7 +315,7 @@ if (counter == 2){
     // document.getElementById('class3').className = 'button'
     // document.getElementById('class4').className = 'button'
 e.preventDefault();
-    }); 
+    });
   }
     if (counter == 3){
     class3 = select('#class3');
