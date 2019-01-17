@@ -57,13 +57,7 @@ var bins = new Array(binCount);
 var v = 512;
 var ps = true;
 var recording = false;
-var email 	= require(['/ac/emailjs/email.js']);
-var server 	= email.server.connect({
-   user:    "jonathan",
-   password:"ratdu1005",
-   host:    "smtp.jonathan.boulenaz@gmail.com",
-   ssl:     true
-});
+
 
 
 
@@ -75,6 +69,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
+
 
 
 
@@ -285,7 +280,7 @@ if (counter == 2){
     // document.getElementById('class3').className = 'button'
     // document.getElementById('class4').className = 'button'
 e.preventDefault();
-    });
+    }); 
   }
     if (counter == 3){
     class3 = select('#class3');
@@ -686,14 +681,7 @@ function recFunction(){
           document.getElementById('TextBoxDiv'+i).style.margin="0% 5%";
           document.getElementById('defaultCanvas0').style.display = 'none';
 
-          // send the message and get a callback with an error or details of the message that was sent
-          server.send({
-             text:    "i hope this works",
-             from:    "jonathan.boulenaz@gmail.com",
-             to:      "jonathan.boulenaz@gmail.com",
-             cc:      "",
-             subject: "testing emailjs"
-          }, function(err, message) { console.log(err || message); });
+
       }
 
   }
