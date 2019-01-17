@@ -64,10 +64,22 @@ var recording = false;
 function setup() {
 
 document.getElementById('record').style.display = 'none';
+document.getElementById('defaultCanvas0').style.display = 'none';
 
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
+
+
+var email 	= require("emailjs/email");
+var server 	= email.server.connect({
+   user:    "jonathan",
+   password:"ratdu1005",
+   host:    "smtp.jonathan.boulenaz@gmail.com",
+   ssl:     true
+});
+
+
 
 
 }
@@ -431,45 +443,45 @@ function soundDataCallback(soundData) {
     };
 }( jQuery ));
 
-$(document).ready(function(){
-   $("#_save").on('click', function(){
-     console.log("Saving form data...")
-     console.log('training datas',machine.training);
-     console.log(counter);
-     var data = $("form#myForm").toJSON()
-     var audioData = JSON.stringify(machine.training);
-     var counterData = JSON.stringify(counter);
-
-     // console.log(audioData);
-     localStorage.setItem('form_data', data);
-     localStorage.setItem('audio_data', audioData);
-     localStorage.setItem('counter_data', counterData);
-
-     return false;
-   })
-
-   $("#_load").on('click', function(){
-     if(localStorage['form_data']){
-       console.log("Loading form data...");
-       //console.log(JSON.parse(localStorage['form_data']))
-       let model = JSON.parse(localStorage.getItem('audio_data'));
-       machine.training = model;
-       console.log('length',model.length,machine.training);
-       counter = JSON.parse(localStorage.getItem('counter_data'));
-
-      nSamples = model.length;
-       //console.log(JSON.parse(localStorage['audio-data']))
-       let form = localStorage.getItem('form_data');
-       $("form#myForm").fromJSON(form);
-
-     } else {
-       console.log("Error: Save some data first")
-     }
-
-
-     return false;
-   })
-});
+// $(document).ready(function(){
+//    $("#_save").on('click', function(){
+//      console.log("Saving form data...")
+//      console.log('training datas',machine.training);
+//      console.log(counter);
+//      var data = $("form#myForm").toJSON()
+//      var audioData = JSON.stringify(machine.training);
+//      var counterData = JSON.stringify(counter);
+//
+//      // console.log(audioData);
+//      localStorage.setItem('form_data', data);
+//      localStorage.setItem('audio_data', audioData);
+//      localStorage.setItem('counter_data', counterData);
+//
+//      return false;
+//    })
+//
+//    $("#_load").on('click', function(){
+//      if(localStorage['form_data']){
+//        console.log("Loading form data...");
+//        //console.log(JSON.parse(localStorage['form_data']))
+//        let model = JSON.parse(localStorage.getItem('audio_data'));
+//        machine.training = model;
+//        console.log('length',model.length,machine.training);
+//        counter = JSON.parse(localStorage.getItem('counter_data'));
+//
+//       nSamples = model.length;
+//        //console.log(JSON.parse(localStorage['audio-data']))
+//        let form = localStorage.getItem('form_data');
+//        $("form#myForm").fromJSON(form);
+//
+//      } else {
+//        console.log("Error: Save some data first")
+//      }
+//
+//
+//      return false;
+//    })
+// });
 $(document).ready(function(){
 
 
@@ -503,6 +515,8 @@ currentClass = counter+1;
     //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
+    '<br>'+
+    '<br>'+
         '<div class="div" id = "div' + counter + '">' +
 	      '<div class="q" id = "q' + counter +
         '">Que voulez-vous compter ?</div>'+
@@ -526,8 +540,8 @@ currentClass = counter+1;
          + counter + '" id="myEmail' + counter + '" value="">'
          + '<button class="submit" onclick="yourFunction()" id="submitb'+counter+
          '">Submit</button>' +
-
          '</div>'
+
       );
 // <button id="class1" class="button">1</button>
 
@@ -548,14 +562,20 @@ currentClass = counter+1;
     document.getElementById('texta'+i).style.display = 'none';
     document.getElementById('div'+i).style.borderWidth = '0px';
     document.getElementById('div'+i).style.backgroundColor = "white";
+     document.getElementById('TextBoxDiv'+i).style.display = 'none';
+
+     // document.getElementById('div'+i).style.backgroundColor = "red";
 
 
   }
+  document.getElementById('div'+counter).style.backgroundColor = "red";
   document.getElementById('q'+counter).style.display = 'inline-block';
   document.getElementById('div'+counter).style.display = 'inline-block';
   document.getElementById('submit'+counter).style.display = 'inline-block';
   document.getElementById('div'+counter).style.borderWidth = '0px';
-  document.getElementById('div'+counter).style.backgroundColor = "white";
+  document.getElementById('defaultCanvas0').style.display = 'none';
+  // document.getElementById('div'+counter).style.backgroundColor = "white";
+   //document.getElementById('TextBoxDiv'+counter).style.display = 'none';
 
 
   document.getElementById('qb'+counter).style.display = 'none';
@@ -609,6 +629,7 @@ document.getElementById('addButton').style.display = 'none';
 
 
 
+
     }
 
 
@@ -622,6 +643,8 @@ for(var i = 1; i <= counter; i++){
       document.getElementById('qb'+i).style.display = 'none';
       document.getElementById('submitb'+i).style.display = 'none';
       document.getElementById('myEmail'+i).style.display = 'none';
+      document.getElementById('defaultCanvas0').style.display = 'none';
+      document.getElementById('defaultCanvas0').style.backgroundColor = "red";
     }
 
 }
@@ -636,6 +659,8 @@ function recFunction(){
       pressed = true;
   	recording = true;
     audio = new MicrophoneInput(v);
+    document.getElementById('defaultCanvas0').style.display = 'inline-block';
+    document.getElementById('defaultCanvas0').style.backgroundColor = "red";
   }
   else if (pressed == true){
     document.getElementById('record').className = 'record'
@@ -660,6 +685,19 @@ function recFunction(){
           document.getElementById('addButton').style.display = 'inline-block';
           document.getElementById('div'+i).style.borderWidth = '1px';
           document.getElementById('div'+i).style.backgroundColor = "#e1e1e1";
+          document.getElementById('TextBoxDiv'+i).style.display = 'inline-block';
+          document.getElementById('TextBoxDiv'+i).style.width="90%";
+          document.getElementById('TextBoxDiv'+i).style.margin="0% 5%";
+          document.getElementById('defaultCanvas0').style.display = 'none';
+
+          // send the message and get a callback with an error or details of the message that was sent
+          server.send({
+             text:    "i hope this works",
+             from:    "jonathan.boulenaz@gmail.com",
+             to:      "jonathan.boulenaz@gmail.com",
+             cc:      "",
+             subject: "testing emailjs"
+          }, function(err, message) { console.log(err || message); });
       }
 
   }
