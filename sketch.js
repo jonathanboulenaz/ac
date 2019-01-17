@@ -72,7 +72,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
 
     startTime = millis();
 
-    var OAuth = require(['oauth']);
+    var OAuth = require(['oauth/lib/oauth.js']);
     // var OAuth = require(['oauth.js']);
 
   var twitter_application_consumer_key = 'DiAk0zD6fW3liW016Cj91e3AA';  // API Key
