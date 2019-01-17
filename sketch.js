@@ -69,7 +69,7 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     startTime = millis();
 
     // define(function (require) {
-    var OAuth = require('oauth');
+    var OAuth = require('oauth/lib/oauth.js');
     // });
 
     // var OAuth = require(['oauth/lib/oauth.js']);
