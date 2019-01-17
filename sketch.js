@@ -66,7 +66,7 @@ var twitter_application_secret = 'Rfqec7EjpOnRtLnpSYxeIEU4yIxepre8lT0gxzMGh0gxyi
 var twitter_user_access_token = '907540247973638144-cOBuIcinfB1cCP4qIRfZoBpPI4tBphp ';  // Access Token
 var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
 
-var oauth = new OAuth.OAuth(
+var oauth = new OAuth(
 	'https://api.twitter.com/oauth/request_token',
 	'https://api.twitter.com/oauth/access_token',
 	twitter_application_consumer_key,
