@@ -1,4 +1,4 @@
-var crypto= require('crypto'),
+var crypto= require(['crypto']),
     sha1= require('./sha1'),
     http= require('http'),
     https= require('https'),
