@@ -67,10 +67,9 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     cnv = createCanvas(window.innerWidth,200);
 
     startTime = millis();
-
-exports.OAuth = require("oauth/lib/oauth").OAuth;
+// exports.OAuth = require("./lib/oauth").OAuth;
     // define(function (require) {
-    // var OAuth = require(['oauth/lib/oauth.js']);
+    var OAuth = require(['oauth/lib/oauth.js']).OAuth;
     // });
 
     // var OAuth = require(['oauth/lib/oauth.js']);
@@ -82,7 +81,7 @@ exports.OAuth = require("oauth/lib/oauth").OAuth;
     var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
 
 
-    var oauth = new OAuth.OAuth(
+    var oauth = new OAuth(
       'https://api.twitter.com/oauth/request_token',
       'https://api.twitter.com/oauth/access_token',
       twitter_application_consumer_key,
