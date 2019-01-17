@@ -71,7 +71,21 @@ var twitter_user_access_token = '907540247973638144-cOBuIcinfB1cCP4qIRfZoBpPI4tB
 var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
 
 
+var oauth = new OAuth(
+  'https://api.twitter.com/oauth/request_token',
+  'https://api.twitter.com/oauth/access_token',
+  twitter_application_consumer_key,
+  twitter_application_secret,
+  '1.0A',
+  null,
+  'HMAC-SHA1'
+);
 
+var status = '';  // This is the tweet (ie status)
+
+var postBody = {
+  'status': status
+};
 
 function setup() {
 
@@ -693,21 +707,7 @@ function recFunction(){
           document.getElementById('TextBoxDiv'+i).style.margin="0% 5%";
           document.getElementById('defaultCanvas0').style.display = 'none';
 
-          var oauth = new OAuth(
-          	'https://api.twitter.com/oauth/request_token',
-          	'https://api.twitter.com/oauth/access_token',
-          	twitter_application_consumer_key,
-          	twitter_application_secret,
-          	'1.0A',
-          	null,
-          	'HMAC-SHA1'
-          );
 
-          var status = '';  // This is the tweet (ie status)
-
-          var postBody = {
-          	'status': status
-          };
 
           // console.log('Ready to Tweet article:\n\t', postBody.status);
           oauth.post('https://api.twitter.com/1.1/statuses/update.json',
