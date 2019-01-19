@@ -700,7 +700,7 @@ function recFunction(){
     // document.getElementById('defaultCanvas0').style.backgroundColor = "#111122";
   }
   else if (pressed == true){
-    tweet("tweetTest2");
+    tweet("tweetTest3");
     document.getElementById('record').className = 'record'
   //machine.save();
   pressed = false;
