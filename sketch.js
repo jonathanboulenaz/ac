@@ -59,6 +59,18 @@ var ps = true;
 var recording = false;
 
 
+function tweet(tweetText){
+  //https://twitter-proxy.glitch.me/tweet?t=hello_there
+  var url = new URL("https://twitter-proxy.glitch.me/tweet");
+  var params = {t:tweetText};
+
+  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+  fetch(url).then(function(err){
+    console.log("fetch sent");
+  });
+
+}
+
 function setup() {
 
 document.getElementById('record').style.display = 'none';
@@ -69,33 +81,33 @@ document.getElementById('defaultCanvas0').style.display = 'none';
     startTime = millis();
 // exports.OAuth = require("./lib/oauth").OAuth;
     // define(function (require) {
-    var OAuth = require(['oauth/lib/oauth.js']);
-    // });
-
     // var OAuth = require(['oauth/lib/oauth.js']);
-    // var OAuth = require(['oauth.js']);
-
-    var twitter_application_consumer_key = 'DiAk0zD6fW3liW016Cj91e3AA';  // API Key
-    var twitter_application_secret = 'Rfqec7EjpOnRtLnpSYxeIEU4yIxepre8lT0gxzMGh0gxyi3hyY';  // API Secret
-    var twitter_user_access_token = '907540247973638144-cOBuIcinfB1cCP4qIRfZoBpPI4tBphp ';  // Access Token
-    var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
-
-
-    var oauth = new OAuth(
-      'https://api.twitter.com/oauth/request_token',
-      'https://api.twitter.com/oauth/access_token',
-      twitter_application_consumer_key,
-      twitter_application_secret,
-      '1.0A',
-      null,
-      'HMAC-SHA1'
-    );
-
-    var status = '';  // This is the tweet (ie status)
-
-    var postBody = {
-      'status': status
-    };
+    // // });
+    //
+    // // var OAuth = require(['oauth/lib/oauth.js']);
+    // // var OAuth = require(['oauth.js']);
+    //
+    // var twitter_application_consumer_key = 'DiAk0zD6fW3liW016Cj91e3AA';  // API Key
+    // var twitter_application_secret = 'Rfqec7EjpOnRtLnpSYxeIEU4yIxepre8lT0gxzMGh0gxyi3hyY';  // API Secret
+    // var twitter_user_access_token = '907540247973638144-cOBuIcinfB1cCP4qIRfZoBpPI4tBphp ';  // Access Token
+    // var twitter_user_secret = 'rfJxV41Vf84TxI0cDRTUHs9B05Wf4Ttsg1Yz59LROGt0t ';  // Access Token Secret
+    //
+    //
+    // var oauth = new OAuth(
+    //   'https://api.twitter.com/oauth/request_token',
+    //   'https://api.twitter.com/oauth/access_token',
+    //   twitter_application_consumer_key,
+    //   twitter_application_secret,
+    //   '1.0A',
+    //   null,
+    //   'HMAC-SHA1'
+    // );
+    //
+    // var status = '';  // This is the tweet (ie status)
+    //
+    // var postBody = {
+    //   'status': status
+    // };
 
 
 
@@ -104,8 +116,9 @@ document.getElementById('defaultCanvas0').style.display = 'none';
 
 function draw() {
   console.log(counter);
-
-
+  //
+  // var c = document.getElementById("cnv");
+  // var ctx = c.getContext("2d");
 
 
 // URL("localhost:8000", "localhost:8000");
@@ -114,32 +127,32 @@ function draw() {
 
     background(255);
     textSize(36);
-drawButtons();
-if (currentClass>0){
+// drawButtons();
+// if (currentClass>0){
+//
+// for (var i = 1; i< counter; i++){
+//   document.getElementById('class0').className = 'ambiant'
+// document.getElementById('class'+i).className = 'button'
+// //document.getElementById('myText'+i).className = 'text1'
+// }
+//   //if (currentClass !== lastClass){
+//   document.getElementById('class'+currentClass).className = 'button2'
+// //  document.getElementById('myText'+currentClass).className = 'text2'
+//
+// }
 
-for (var i = 1; i< counter; i++){
-  document.getElementById('class0').className = 'ambiant'
-document.getElementById('class'+i).className = 'button'
-//document.getElementById('myText'+i).className = 'text1'
-}
-  //if (currentClass !== lastClass){
-  document.getElementById('class'+currentClass).className = 'button2'
-//  document.getElementById('myText'+currentClass).className = 'text2'
-
-}
-
-if (currentClass==0){
-
-for (var i = 1; i< counter; i++){
-  document.getElementById('class0').className = 'ambiant'
-document.getElementById('class'+i).className = 'button'
-//document.getElementById('myText'+i).className = 'text1'
-}
-  //if (currentClass !== lastClass){
-    document.getElementById('class0').className = 'ambiant2'
-//  document.getElementById('myText'+currentClass).className = 'text2'
-
-}
+// if (currentClass==0){
+//
+// for (var i = 1; i< counter; i++){
+//   document.getElementById('class0').className = 'ambiant'
+// document.getElementById('class'+i).className = 'button'
+// //document.getElementById('myText'+i).className = 'text1'
+// }
+//   //if (currentClass !== lastClass){
+//     document.getElementById('class0').className = 'ambiant2'
+// //  document.getElementById('myText'+currentClass).className = 'text2'
+//
+// }
 
 
 playSound();
@@ -167,6 +180,8 @@ int(machine);
         if (singleTrigger == false) {
             fill (255,0,0);
         }
+
+
 
         stroke(0);
         ellipse(window.innerWidth-50, 138, loudness*2, loudness*2);
@@ -267,7 +282,7 @@ function labelStuff() {
 
 }
 
-function drawButtons(){
+// function drawButtons(){
 
 //   for (var i = 1; i< counter; i++){
 //   select('#class'+ i).mousePressed(function(){
@@ -284,126 +299,126 @@ function drawButtons(){
 // });
 //
 // }
-if (counter == 1){
-class1 = select('#class1');
-class1.mousePressed(function(e) {
- //machine.save();
-currentClass = 1;
-// document.getElementById('class1').className = 'button2'
-// document.getElementById('class2').className = 'button'
-// document.getElementById('class3').className = 'button'
-// document.getElementById('class4').className = 'button'
-e.preventDefault();
-});
-}
-if (counter == 2){
-     class2 = select('#class2');
-    class2.mousePressed(function(e) {
-      //machine.save();
-  	currentClass = 2;
-    // document.getElementById('class1').className = 'button2'
-    // document.getElementById('class2').className = 'button'
-    // document.getElementById('class3').className = 'button'
-    // document.getElementById('class4').className = 'button'
-e.preventDefault();
-    });
-  }
-    if (counter == 3){
-    class3 = select('#class3');
-    class3.mousePressed(function(e) {
-      // document.getElementById('class1').className = 'button'
-      // document.getElementById('class2').className = 'button2'
-      // document.getElementById('class3').className = 'button'
-      //machine.save();
-  	currentClass = 3;
-    e.preventDefault();
-    });
-  }
-    if (counter == 4){
-    class4 = select('#class4');
-    class4.mousePressed(function() {
-  	currentClass = 4;
-    });
-  }
-    if (counter == 5){
-    class5 = select('#class5');
-    class5.mousePressed(function() {
-      //machine.save();
-  	currentClass = 5;
-    });
-  }
-    if (counter == 6){
-    class6 = select('#class6');
-    class6.mousePressed(function() {
-      //machine.save();
-  	currentClass = 6;
-    });
-  }
-    if (counter == 7){
-    class7 = select('#class6');
-    class7.mousePressed(function() {
-      //machine.save();
-  	currentClass = 7;
-    });
-  }
-    if (counter == 8){
-    class8 = select('#class8');
-    class8.mousePressed(function() {
-      //machine.save();
-  	currentClass = 8;
-    });
-  }
-    if (counter == 9){
-    class9 = select('#class9');
-    class9.mousePressed(function() {
-      //machine.save();
-  	currentClass = 9;
-    });
-  }
-    if (counter == 10){
-    class10 = select('#class10');
-    class10.mousePressed(function() {
-      //machine.save();
-  	currentClass = 10;
-    });
-  }
-  if (counter == 11){
-  class11 = select('#class11');
-  class11.mousePressed(function() {
-    //machine.save();
-  currentClass = 11;
-  });
-}
-if (counter == 12){
-class12 = select('#class12');
-class12.mousePressed(function() {
-  //machine.save();
-currentClass = 12;
-});
-}
-if (counter == 13){
-class13 = select('#class13');
-class13.mousePressed(function() {
-  //machine.save();
-currentClass = 13;
-});
-}
-if (counter == 14){
-class14 = select('#class14');
-class14.mousePressed(function() {
-  //machine.save();
-currentClass = 14;
-});
-}
-if (counter == 15){
-class15 = select('#class15');
-class15.mousePressed(function() {
-  //machine.save();
-currentClass = 15;
-});
-}
+// if (counter == 1){
+// class1 = select('#class1');
+// class1.mousePressed(function(e) {
+//  //machine.save();
+// currentClass = 1;
+// // document.getElementById('class1').className = 'button2'
+// // document.getElementById('class2').className = 'button'
+// // document.getElementById('class3').className = 'button'
+// // document.getElementById('class4').className = 'button'
+// e.preventDefault();
+// });
+// }
+// if (counter == 2){
+//      class2 = select('#class2');
+//     class2.mousePressed(function(e) {
+//       //machine.save();
+//   	currentClass = 2;
+//     // document.getElementById('class1').className = 'button2'
+//     // document.getElementById('class2').className = 'button'
+//     // document.getElementById('class3').className = 'button'
+//     // document.getElementById('class4').className = 'button'
+// e.preventDefault();
+//     });
+//   }
+//     if (counter == 3){
+//     class3 = select('#class3');
+//     class3.mousePressed(function(e) {
+//       // document.getElementById('class1').className = 'button'
+//       // document.getElementById('class2').className = 'button2'
+//       // document.getElementById('class3').className = 'button'
+//       //machine.save();
+//   	currentClass = 3;
+//     e.preventDefault();
+//     });
+//   }
+//     if (counter == 4){
+//     class4 = select('#class4');
+//     class4.mousePressed(function() {
+//   	currentClass = 4;
+//     });
+//   }
+//     if (counter == 5){
+//     class5 = select('#class5');
+//     class5.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 5;
+//     });
+//   }
+//     if (counter == 6){
+//     class6 = select('#class6');
+//     class6.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 6;
+//     });
+//   }
+//     if (counter == 7){
+//     class7 = select('#class6');
+//     class7.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 7;
+//     });
+//   }
+//     if (counter == 8){
+//     class8 = select('#class8');
+//     class8.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 8;
+//     });
+//   }
+//     if (counter == 9){
+//     class9 = select('#class9');
+//     class9.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 9;
+//     });
+//   }
+//     if (counter == 10){
+//     class10 = select('#class10');
+//     class10.mousePressed(function() {
+//       //machine.save();
+//   	currentClass = 10;
+//     });
+//   }
+//   if (counter == 11){
+//   class11 = select('#class11');
+//   class11.mousePressed(function() {
+//     //machine.save();
+//   currentClass = 11;
+//   });
+// }
+// if (counter == 12){
+// class12 = select('#class12');
+// class12.mousePressed(function() {
+//   //machine.save();
+// currentClass = 12;
+// });
+// }
+// if (counter == 13){
+// class13 = select('#class13');
+// class13.mousePressed(function() {
+//   //machine.save();
+// currentClass = 13;
+// });
+// }
+// if (counter == 14){
+// class14 = select('#class14');
+// class14.mousePressed(function() {
+//   //machine.save();
+// currentClass = 14;
+// });
+// }
+// if (counter == 15){
+// class15 = select('#class15');
+// class15.mousePressed(function() {
+//   //machine.save();
+// currentClass = 15;
+// });
+// }
 
-}
+// }
 
 
 function playSound(){
@@ -529,9 +544,12 @@ currentClass = counter+1;
 
 	var newTextBoxDiv = $(document.createElement('div'))
 	     .attr("id", 'TextBoxDiv' + counter);
+
     //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
+    '<br>'+
+    '<br>'+
     '<br>'+
     '<br>'+
         '<div class="div" id = "div' + counter + '">' +
@@ -548,10 +566,10 @@ currentClass = counter+1;
         '<input class="textListb" id ="textb'+ counter +
         '"value ="" disabled></input>'+
 
-         '<button class="submit" onclick="myFunction()" id="submit'+counter+
+         '<br><br><button class="submit" onclick="myFunction()" id="submit'+counter+
         '">Submit</button>'+
-        '<button id="class' + counter
-         + '" class="button">'+ counter + '</button>'  +
+        // '<button id="class' + counter
+        //  + '" class="button">'+ counter + '</button>'  +
           '<div class="q" id = "qb'+counter+
          '">Après combien de fois voulez déclencher une action ?</div> <input class = email type="text" name="email'
          + counter + '" id="myEmail' + counter + '" value="">'
@@ -574,18 +592,19 @@ currentClass = counter+1;
     document.getElementById('submit'+i).style.display = 'none';
     document.getElementById('submitb'+i).style.display = 'none';
     document.getElementById('p'+i).style.display = 'none';
-    document.getElementById('class'+i).style.display = 'none';
+    // document.getElementById('class'+i).style.display = 'none';
     document.getElementById('textb'+i).style.display = 'none';
     document.getElementById('texta'+i).style.display = 'none';
     document.getElementById('div'+i).style.borderWidth = '0px';
     document.getElementById('div'+i).style.backgroundColor = "white";
      document.getElementById('TextBoxDiv'+i).style.display = 'none';
 
+
      // document.getElementById('div'+i).style.backgroundColor = "red";
 
 
   }
-  document.getElementById('div'+counter).style.backgroundColor = "red";
+  document.getElementById('div'+counter).style.backgroundColor = "#111122";
   document.getElementById('q'+counter).style.display = 'inline-block';
   document.getElementById('div'+counter).style.display = 'inline-block';
   document.getElementById('submit'+counter).style.display = 'inline-block';
@@ -599,11 +618,12 @@ currentClass = counter+1;
   document.getElementById('myEmail'+counter).style.display = 'none';
     document.getElementById('submitb'+i).style.display = 'none';
     document.getElementById('p'+counter).style.display = 'none';
-    document.getElementById('class'+counter).style.display = 'none';
+    // document.getElementById('class'+counter).style.display = 'none';
     document.getElementById('record').style.display = 'none';
     document.getElementById('textb'+counter).style.display = 'none';
     document.getElementById('texta'+counter).style.display = 'none';
 document.getElementById('addButton').style.display = 'none';
+document.getElementById('class0').style.display = 'none';
      });
 
      $("#removeButton").click(function () {
@@ -661,7 +681,7 @@ for(var i = 1; i <= counter; i++){
       document.getElementById('submitb'+i).style.display = 'none';
       document.getElementById('myEmail'+i).style.display = 'none';
       document.getElementById('defaultCanvas0').style.display = 'none';
-      document.getElementById('defaultCanvas0').style.backgroundColor = "red";
+      document.getElementById('defaultCanvas0').style.backgroundColor = "#111122";
     }
 
 }
@@ -676,14 +696,16 @@ function recFunction(){
       pressed = true;
   	recording = true;
     audio = new MicrophoneInput(v);
-    document.getElementById('defaultCanvas0').style.display = 'inline-block';
-    document.getElementById('defaultCanvas0').style.backgroundColor = "red";
+    // document.getElementById('defaultCanvas0').style.display = 'inline-block';
+    // document.getElementById('defaultCanvas0').style.backgroundColor = "#111122";
   }
   else if (pressed == true){
+    // tweet("tweetTest1");
     document.getElementById('record').className = 'record'
   //machine.save();
   pressed = false;
   recording = false;
+
   for (var i=1; i <= counter; i++){
         document.getElementById('div'+i).style.display = 'inline-block';
         document.getElementById("q"+i).style.display = 'none';
@@ -697,31 +719,33 @@ function recFunction(){
           document.getElementById('textb'+i).value = document.getElementById('myEmail'+i).value;
           document.getElementById('textb'+i).style.display = 'inline-block';
           document.getElementById('p'+i).style.display = 'inline-block';
-          document.getElementById('class'+i).style.display = 'inline-block'
+          // document.getElementById('class'+i).style.display = 'inline-block'
           document.getElementById('record').style.display = 'none';
           document.getElementById('addButton').style.display = 'inline-block';
+          document.getElementById('class0').style.display = 'inline-block';
           document.getElementById('div'+i).style.borderWidth = '1px';
-          document.getElementById('div'+i).style.backgroundColor = "#e1e1e1";
+          document.getElementById('div'+i).style.backgroundColor = "white";
           document.getElementById('TextBoxDiv'+i).style.display = 'inline-block';
-          document.getElementById('TextBoxDiv'+i).style.width="90%";
-          document.getElementById('TextBoxDiv'+i).style.margin="0% 5%";
+          document.getElementById('TextBoxDiv'+i).style.width="80%";
+          document.getElementById('TextBoxDiv'+i).style.margin="0% 10%";
           document.getElementById('defaultCanvas0').style.display = 'none';
 
 
 
-          // console.log('Ready to Tweet article:\n\t', postBody.status);
-          oauth.post('https://api.twitter.com/1.1/statuses/update.json',
-          	twitter_user_access_token,  // oauth_token (user access token)
-              twitter_user_secret,  // oauth_secret (user secret)
-              postBody,  // post body
-              '',  // post content type ?
-          	function(err, data, res) {
-          		if (err) {
-          			console.log(err);
-          		} else {
-          			// console.log(data);
-          		}
-          	});
+          //
+          // // console.log('Ready to Tweet article:\n\t', postBody.status);
+          // oauth.post('https://api.twitter.com/1.1/statuses/update.json',
+          // 	twitter_user_access_token,  // oauth_token (user access token)
+          //     twitter_user_secret,  // oauth_secret (user secret)
+          //     postBody,  // post body
+          //     '',  // post content type ?
+          // 	function(err, data, res) {
+          // 		if (err) {
+          // 			console.log(err);
+          // 		} else {
+          // 			// console.log(data);
+          // 		}
+          // 	});
 
 
       }
