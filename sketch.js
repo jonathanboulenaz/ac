@@ -34,6 +34,7 @@ var counter15 = 0;
 
 var counter = 0;
 var count  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8,counter9,counter10,counter11,counter12,counter13,counter14,counter15];
+var et  = [0,counter1,counter2,counter3,counter4,counter5,counter6,counter7,counter8,counter9,counter10,counter11,counter12,counter13,counter14,counter15];
 
 //TRIGGER MODE
 var predictionAlpha = 255;
@@ -70,6 +71,7 @@ function tweet(tweetText){
   });
 
 }
+
 
 function setup() {
 
@@ -115,19 +117,22 @@ document.getElementById('defaultCanvas0').style.display = 'none';
 
 
 function draw() {
-  console.log(counter);
+  // console.log(counter);
   //
   // var c = document.getElementById("cnv");
   // var ctx = c.getContext("2d");
 
+if (counter == 0 ){
+
+  document.getElementById('removeButton').style.display = 'none';
+}
+
 
 // URL("localhost:8000", "localhost:8000");
 
-
-
     background(255);
     textSize(36);
-// drawButtons();
+drawButtons();
 // if (currentClass>0){
 //
 // for (var i = 1; i< counter; i++){
@@ -229,7 +234,7 @@ if (loudness < ambiantNoise){
 
 ////////////////////////////////////////////////////////////////////////////////
 
- if (currentClass !== 0){
+ // if (currentClass !== 0){
 
 //text(count[currentClass-1] + " " + document.getElementById("myText"+ currentClass).value, posx, posy);
 for (var i = 1; i<= counter; i++){
@@ -239,14 +244,42 @@ for (var i = 1; i <= counter; i++){
   if(count[i-1] == document.getElementById("myEmail"+i).value){
     //console.log(document.getElementById("myEmail1").value);
     if (count[i-1] !== 0){
-    alert(count[i-1] + " " + document.getElementById("myText"+ i).value + " comptailisé");
+
+
+          // alert(count[i-1] + " " + document.getElementById("myText"+ i).value + " comptailisé");
+    if (et[counter] == 0){
+      console.log(document.getElementById("tweet"+i).value)
+    //   tweet(document.getElementById("tweet"+i).value);
+    }
+    else if (et[counter] == 1){
+
+      console.log("to:"+ document.getElementById('destinataire'+i).value + ", objet:" + document.getElementById('myEmail'+i).value + " " + document.getElementById('myText'+i).value + ", message:" + document.getElementById('message'+i).value)
+
+      // Email.send({
+      //     Host : "smtp.gmail.com",
+      //     Username : "smtp0593@gmail.com",
+      //     Password : "q1w2e3r4t5z6",
+      //     To : document.getElementById('destinataire'+i).value,
+      //     From : "smtp0593@gmail.com",
+      //     Subject : document.getElementById('myEmail'+i).value + " " + document.getElementById('myText'+i).value,
+      //     Body : document.getElementById('message'+i).value
+      // }).then(
+      //   //message => alert(message)
+      // );
+
+    }
+
+    // var element = document.getElementById('div'+counter);
+    //     element.parentNode.removeChild(element);
+
+
   }
     //console.log(count[i-1] + " " + document.getElementById("myText"+ currentClass).value);
     count[i-1] = 0;
 
   }
 }
-}
+// }
 
     noStroke();
 
@@ -271,6 +304,8 @@ for (var i = 1; i <= counter; i++){
     if (predictionAlpha > 0) predictionAlpha-=5;
 
 
+
+
 }
 function labelStuff() {
   fill(255);
@@ -282,7 +317,131 @@ function labelStuff() {
 
 }
 
-// function drawButtons(){
+function drawButtons(){
+
+  class0 = select('#class0');
+  class0.mousePressed(function(e) {
+   //machine.save();
+  currentClass = 0;
+  document.getElementById('class0').style.display = 'none';
+  document.getElementById('addButton').style.display = 'none';
+  document.getElementById('record').style.display = 'inline-block';
+  document.getElementById('TextBoxesGroup').style.display = 'none'
+  document.getElementById('removeButton').style.display = 'none';
+  // for (var i=1; i <= counter; i++){
+  //
+  //       document.getElementById('div'+i).style.display = 'none';
+  //
+  //     }
+  yourFunction();
+
+
+  // document.getElementById('class1').className = 'button2'
+  // document.getElementById('class2').className = 'button'
+  // document.getElementById('class3').className = 'button'
+  // document.getElementById('class4').className = 'button'
+  //e.preventDefault();
+  });
+
+
+  for (var i = 1; i <= counter; i++){
+
+    select('#class'+i).mousePressed(function() {
+
+         // currentClass = i-1;
+
+         // console.log(currentClass);
+         // // console.log(i);
+         // console.log(counter);
+
+
+         // document.getElementById('addButton').style.display = 'none';
+         // document.getElementById('class0').style.display = 'none';
+         // document.getElementById('record').style.display = 'inline-block';
+         // document.getElementById('TextBoxesGroup').style.display = 'none';
+         // document.getElementById('removeButton').style.display = 'none';
+
+for (var j = 1; j <= counter; j++){
+// console.log(j);
+           document.getElementById('div'+j).style.display = 'none';
+           document.getElementById('q'+j).style.display = 'none';
+           document.getElementById('qb'+j).style.display = 'none';
+           document.getElementById('qc'+j).style.display = 'none';
+           document.getElementById('qd'+j).style.display = 'none';
+           document.getElementById('qe'+j).style.display = 'none';
+           document.getElementById('submit'+j).style.display = 'none';
+           document.getElementById('submitb'+j).style.display = 'none';
+           document.getElementById('submitTweet'+j).style.display = 'none';
+           document.getElementById('submitEmail'+j).style.display = 'none';
+           document.getElementById('tweetButton'+j).style.display = 'none';
+           document.getElementById('mailButton'+j).style.display = 'none';
+           document.getElementById('tweet'+j).style.display = 'none';
+           document.getElementById('message'+j).style.display = 'none';
+           document.getElementById('destinataire'+j).style.display = 'none';
+           document.getElementById('class'+j).style.display = 'none';
+
+           document.getElementById('p'+j).style.display = 'none';
+           // document.getElementById('class'+j).style.display = 'none';
+           //document.getElementById('textb'+j).style.display = 'none';
+           // document.getElementById('texta'+j).style.display = 'none';
+           document.getElementById('div'+j).style.borderWidth = '0px';
+           document.getElementById('div'+j).style.backgroundColor = "white";
+            document.getElementById('TextBoxDiv'+j).style.display = 'none';
+            document.getElementById('submitb'+j).style.display = 'none';
+            document.getElementById('submitTweet'+j).style.display = 'none';
+            document.getElementById('submitEmail'+j).style.display = 'none';
+            document.getElementById('tweetButton'+j).style.display = 'none';
+            document.getElementById('mailButton'+j).style.display = 'none';
+            document.getElementById('texta'+j).style.display = 'none';
+            document.getElementById('textb'+j).style.display = 'none';
+            // document.getElementById('div'+i).style.backgroundColor = "red";
+
+
+}
+        document.getElementById('TextBoxDiv'+currentClass).style.display = 'inline-block';
+        document.getElementById('TextBoxDiv'+currentClass).style.width = '100%';
+        document.getElementById('TextBoxDiv'+currentClass).style.margin = '0%';
+
+          document.getElementById('myText'+currentClass).style.display = 'inline-block';
+
+         document.getElementById('div'+currentClass).style.background = "none ";
+
+
+         // document.getElementById('TextBoxesGroup').style.display = 'inline-block';
+
+         document.getElementById('q'+currentClass).style.display = 'inline-block';
+         document.getElementById('q'+currentClass).style.textAlign = "left";
+         document.getElementById('div'+currentClass).style.display = 'inline-block';
+         document.getElementById('submit'+currentClass).style.display = 'inline-block';
+         document.getElementById('div'+currentClass).style.borderWidth = '0px';
+         document.getElementById('defaultCanvas0').style.display = 'none';
+         // document.getElementById('div'+currentClass).style.backgroundColor = "white";
+          //document.getElementById('TextBoxDiv'+currentClass).style.display = 'none';
+       document.getElementById('class'+currentClass).style.display = 'none';
+
+         document.getElementById('qb'+currentClass).style.display = 'none';
+         document.getElementById('qc'+currentClass).style.display = 'none';
+         document.getElementById('qd'+currentClass).style.display = 'none';
+         document.getElementById('qe'+currentClass).style.display = 'none';
+         document.getElementById('myEmail'+currentClass).style.display = 'none';
+
+           document.getElementById('tweet'+currentClass).style.display = 'none';
+           document.getElementById('message'+currentClass).style.display = 'none';
+           document.getElementById('destinataire'+currentClass).style.display = 'none';
+           document.getElementById('p'+currentClass).style.display = 'none';
+           // document.getElementById('class'+counter).style.display = 'none';
+           document.getElementById('record').style.display = 'none';
+           //document.getElementById('textb'+counter).style.display = 'none';
+           // document.getElementById('texta'+counter).style.display = 'none';
+       document.getElementById('addButton').style.display = 'none';
+       document.getElementById('class0').style.display = 'none';
+       document.getElementById('removeButton').style.display = 'none';
+       // console.log(counter);
+
+
+
+       });
+     }
 
 //   for (var i = 1; i< counter; i++){
 //   select('#class'+ i).mousePressed(function(){
@@ -299,126 +458,103 @@ function labelStuff() {
 // });
 //
 // }
-// if (counter == 1){
-// class1 = select('#class1');
-// class1.mousePressed(function(e) {
-//  //machine.save();
-// currentClass = 1;
-// // document.getElementById('class1').className = 'button2'
-// // document.getElementById('class2').className = 'button'
-// // document.getElementById('class3').className = 'button'
-// // document.getElementById('class4').className = 'button'
-// e.preventDefault();
-// });
-// }
-// if (counter == 2){
-//      class2 = select('#class2');
-//     class2.mousePressed(function(e) {
-//       //machine.save();
-//   	currentClass = 2;
-//     // document.getElementById('class1').className = 'button2'
-//     // document.getElementById('class2').className = 'button'
-//     // document.getElementById('class3').className = 'button'
-//     // document.getElementById('class4').className = 'button'
-// e.preventDefault();
-//     });
-//   }
-//     if (counter == 3){
-//     class3 = select('#class3');
-//     class3.mousePressed(function(e) {
-//       // document.getElementById('class1').className = 'button'
-//       // document.getElementById('class2').className = 'button2'
-//       // document.getElementById('class3').className = 'button'
-//       //machine.save();
-//   	currentClass = 3;
-//     e.preventDefault();
-//     });
-//   }
-//     if (counter == 4){
-//     class4 = select('#class4');
-//     class4.mousePressed(function() {
-//   	currentClass = 4;
-//     });
-//   }
-//     if (counter == 5){
-//     class5 = select('#class5');
-//     class5.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 5;
-//     });
-//   }
-//     if (counter == 6){
-//     class6 = select('#class6');
-//     class6.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 6;
-//     });
-//   }
-//     if (counter == 7){
-//     class7 = select('#class6');
-//     class7.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 7;
-//     });
-//   }
-//     if (counter == 8){
-//     class8 = select('#class8');
-//     class8.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 8;
-//     });
-//   }
-//     if (counter == 9){
-//     class9 = select('#class9');
-//     class9.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 9;
-//     });
-//   }
-//     if (counter == 10){
-//     class10 = select('#class10');
-//     class10.mousePressed(function() {
-//       //machine.save();
-//   	currentClass = 10;
-//     });
-//   }
-//   if (counter == 11){
-//   class11 = select('#class11');
-//   class11.mousePressed(function() {
-//     //machine.save();
-//   currentClass = 11;
-//   });
-// }
-// if (counter == 12){
-// class12 = select('#class12');
-// class12.mousePressed(function() {
-//   //machine.save();
-// currentClass = 12;
-// });
-// }
-// if (counter == 13){
-// class13 = select('#class13');
-// class13.mousePressed(function() {
-//   //machine.save();
-// currentClass = 13;
-// });
-// }
-// if (counter == 14){
-// class14 = select('#class14');
-// class14.mousePressed(function() {
-//   //machine.save();
-// currentClass = 14;
-// });
-// }
-// if (counter == 15){
-// class15 = select('#class15');
-// class15.mousePressed(function() {
-//   //machine.save();
-// currentClass = 15;
-// });
-// }
+if (counter == 1){
+class1 = select('#class1');
+class1.mousePressed(function(e) {
+ //machine.save();
+currentClass = 1;
+e.preventDefault();
+});
+}
+if (counter == 2){
+     class2 = select('#class2');
+    class2.mousePressed(function(e) {
+      //machine.save();
+  	currentClass = 2;
+e.preventDefault();
+    });
+  }
+    if (counter == 3){
+    class3 = select('#class3');
+    class3.mousePressed(function(e) {
+  	currentClass = 3;
+    e.preventDefault();
+    });
+  }
+    if (counter == 4){
+    class4 = select('#class4');
+    class4.mousePressed(function() {
+  	currentClass = 4;
+    });
+  }
+    if (counter == 5){
+    class5 = select('#class5');
+    class5.mousePressed(function() {
+  	currentClass = 5;
+    });
+  }
+    if (counter == 6){
+    class6 = select('#class6');
+    class6.mousePressed(function() {
+  	currentClass = 6;
+    });
+  }
+    if (counter == 7){
+    class7 = select('#class6');
+    class7.mousePressed(function() {
+  	currentClass = 7;
+    });
+  }
+    if (counter == 8){
+    class8 = select('#class8');
+    class8.mousePressed(function() {
+  	currentClass = 8;
+    });
+  }
+    if (counter == 9){
+    class9 = select('#class9');
+    class9.mousePressed(function() {
+  	currentClass = 9;
+    });
+  }
+    if (counter == 10){
+    class10 = select('#class10');
+    class10.mousePressed(function() {
+  	currentClass = 10;
+    });
+  }
+  if (counter == 11){
+  class11 = select('#class11');
+  class11.mousePressed(function() {
+  currentClass = 11;
+  });
+}
+if (counter == 12){
+class12 = select('#class12');
+class12.mousePressed(function() {
+currentClass = 12;
+});
+}
+if (counter == 13){
+class13 = select('#class13');
+class13.mousePressed(function() {
+currentClass = 13;
+});
+}
+if (counter == 14){
+class14 = select('#class14');
+class14.mousePressed(function() {
+currentClass = 14;
+});
+}
+if (counter == 15){
+class15 = select('#class15');
+class15.mousePressed(function() {
+currentClass = 15;
+});
+}
 
-// }
+}
 
 
 function playSound(){
@@ -533,14 +669,23 @@ $(document).ready(function(){
   //   }
   // })
 
+  // --------------------------------------- ajouter
+
     $("#addButton").click(function () {
-currentClass = counter+1;
-      	counter++;
+
+
+      counter++;
+currentClass = counter;
+
+console.log("add:"+currentClass)
+
 
 	if(counter>15){
             alert("Only 15 textboxes allow");
             return false;
 	}
+
+
 
 	var newTextBoxDiv = $(document.createElement('div'))
 	     .attr("id", 'TextBoxDiv' + counter);
@@ -548,8 +693,7 @@ currentClass = counter+1;
     //  <input class = text1 type="text" name="textfield8" id="myText8" value="Verre(s)">
 	newTextBoxDiv.after().html(
     // '<label>Textbox #'+ counter + ' : </label>' +
-    '<br>'+
-    '<br>'+
+    // '<br>'+
     '<br>'+
     '<br>'+
         '<div class="div" id = "div' + counter + '">' +
@@ -560,21 +704,59 @@ currentClass = counter+1;
 
         '<input class="textList" id ="texta'+ counter +
         '"value ="" disabled></input>'+
-        '<p id="p'+ counter
-        +'" class = p>0 /</p>'+
+
+        '<div id="p'+ counter
+        +'" class = p>0 /</div>'+
 
         '<input class="textListb" id ="textb'+ counter +
         '"value ="" disabled></input>'+
 
-         '<br><br><button class="submit" onclick="myFunction()" id="submit'+counter+
-        '">Submit</button>'+
-        // '<button id="class' + counter
-        //  + '" class="button">'+ counter + '</button>'  +
+         '<button class="submit" onclick="myFunction()" id="submit'+counter+
+        '">Valider</button>'+
+        // '<br><br><br><br>'+
+        '<button id="class' + counter
+         + '" class="button">Editer</button>'  +
           '<div class="q" id = "qb'+counter+
          '">Après combien de fois voulez déclencher une action ?</div> <input class = email type="text" name="email'
          + counter + '" id="myEmail' + counter + '" value="">'
          + '<button class="submit" onclick="yourFunction()" id="submitb'+counter+
-         '">Submit</button>' +
+         '">Valider</button>' +
+//
+         '<div class="q" id = "qc'+counter+
+        '">Quelle action voulez-vous assigner à ce son ?</div>' +
+
+        '<button class=" choice" onclick="tweetPage()" id="tweetButton'+counter+
+        '">Tweet</button>' +
+        '<button class="choice" onclick="emailPage()" id="mailButton'+counter+
+        '">Email</button>' +
+
+        '<div class="q" id = "qd'+counter+
+       '">Tweet</div>'+
+
+       // '<input class = "tweet" type="text" name="tweet'
+       // + counter + '" id="tweet' + counter + '" value="">'
+
+       '<textarea class = "tweet" name="tweet'
+       + counter + '" id="tweet' + counter + '" cols="40" rows="3" ></textarea>'
+
+       + '<button class="submit" onclick="postTweet()" id="submitTweet'+counter+
+       '">Valider</button>' +
+
+       '<div class="q" id = "qe'+counter+
+      '">Email</div>'+
+
+      '<input placeholder="A" class = destinataire type="text" name="destinataire'
+      + counter + '" id="destinataire' + counter + '" value="">'
+
+      // '<input class = message type="text" name="message'
+      // + counter + '" id="message' + counter + '" value="">'+
+
+      +'<textarea placeholder="message" class = "message" name="message'
+      + counter + '" id="message' + counter + '" cols="40" rows="3"></textarea>'
+
+      + '<button class="submit" onclick="sendEmail()" id="submitEmail'+counter+
+      '">Valider</button>' +
+
          '</div>'
 
       );
@@ -583,16 +765,28 @@ currentClass = counter+1;
 
 	newTextBoxDiv.appendTo("#TextBoxesGroup");
 
-
+// --------------------------------------- premiere question -> que voulez vous compter ?
 
   for (var i=1; i < counter; i++){
     document.getElementById('div'+i).style.display = 'none';
     document.getElementById('q'+i).style.display = 'none';
     document.getElementById('qb'+i).style.display = 'none';
+    document.getElementById('qc'+i).style.display = 'none';
+    document.getElementById('qd'+i).style.display = 'none';
+    document.getElementById('qe'+i).style.display = 'none';
     document.getElementById('submit'+i).style.display = 'none';
     document.getElementById('submitb'+i).style.display = 'none';
+    document.getElementById('submitTweet'+i).style.display = 'none';
+    document.getElementById('submitEmail'+i).style.display = 'none';
+    document.getElementById('tweetButton'+i).style.display = 'none';
+    document.getElementById('mailButton'+i).style.display = 'none';
+    document.getElementById('tweet'+i).style.display = 'none';
+    document.getElementById('message'+i).style.display = 'none';
+    document.getElementById('destinataire'+i).style.display = 'none';
+    document.getElementById('class'+i).style.display = 'none';
+
     document.getElementById('p'+i).style.display = 'none';
-    // document.getElementById('class'+i).style.display = 'none';
+    document.getElementById('class'+i).style.display = 'none';
     document.getElementById('textb'+i).style.display = 'none';
     document.getElementById('texta'+i).style.display = 'none';
     document.getElementById('div'+i).style.borderWidth = '0px';
@@ -604,19 +798,31 @@ currentClass = counter+1;
 
 
   }
-  document.getElementById('div'+counter).style.backgroundColor = "#111122";
+
+  document.getElementById('div'+counter).style.background = "none";
   document.getElementById('q'+counter).style.display = 'inline-block';
+  document.getElementById('q'+counter).style.textAlign = "left";
   document.getElementById('div'+counter).style.display = 'inline-block';
   document.getElementById('submit'+counter).style.display = 'inline-block';
   document.getElementById('div'+counter).style.borderWidth = '0px';
   document.getElementById('defaultCanvas0').style.display = 'none';
   // document.getElementById('div'+counter).style.backgroundColor = "white";
    //document.getElementById('TextBoxDiv'+counter).style.display = 'none';
-
+document.getElementById('class'+counter).style.display = 'none';
 
   document.getElementById('qb'+counter).style.display = 'none';
+  document.getElementById('qc'+counter).style.display = 'none';
+  document.getElementById('qd'+counter).style.display = 'none';
+  document.getElementById('qe'+counter).style.display = 'none';
   document.getElementById('myEmail'+counter).style.display = 'none';
     document.getElementById('submitb'+i).style.display = 'none';
+    document.getElementById('submitTweet'+i).style.display = 'none';
+    document.getElementById('submitEmail'+i).style.display = 'none';
+    document.getElementById('tweetButton'+i).style.display = 'none';
+    document.getElementById('mailButton'+i).style.display = 'none';
+    document.getElementById('tweet'+counter).style.display = 'none';
+    document.getElementById('message'+counter).style.display = 'none';
+    document.getElementById('destinataire'+counter).style.display = 'none';
     document.getElementById('p'+counter).style.display = 'none';
     // document.getElementById('class'+counter).style.display = 'none';
     document.getElementById('record').style.display = 'none';
@@ -624,9 +830,13 @@ currentClass = counter+1;
     document.getElementById('texta'+counter).style.display = 'none';
 document.getElementById('addButton').style.display = 'none';
 document.getElementById('class0').style.display = 'none';
+document.getElementById('removeButton').style.display = 'none';
+// console.log(counter);
      });
 
+
      $("#removeButton").click(function () {
+       document.getElementById('TextBoxesGroup').style.width = '100%'
 	if(counter==0){
           alert("No more textbox to remove");
           return false;
@@ -647,42 +857,139 @@ document.getElementById('class0').style.display = 'none';
     	  alert(msg);
      });
   });
-
+// --------------------------------------- question 2 -> après combien de fois declencher action
   function myFunction(){
     for (var i=1; i <= counter; i++){
+      if (currentClass !== 0){
 
-      document.getElementById('qb'+counter).style.display = 'inline-block';
-      document.getElementById('myEmail'+counter).style.display = 'inline-block';
+      document.getElementById('qb'+currentClass).style.display = 'inline-block';
+      document.getElementById('myEmail'+currentClass).style.display = 'inline-block';
 
-      document.getElementById('q'+counter).style.display = 'none';
+      document.getElementById('q'+currentClass).style.display = 'none';
 
-      document.getElementById('submit'+counter).style.display = 'none';
-      document.getElementById('myText'+counter).style.display = 'none';
-
-
-      document.getElementById('submitb'+counter).style.display = 'inline-block';
+      document.getElementById('submit'+currentClass).style.display = 'none';
+      document.getElementById('myText'+currentClass).style.display = 'none';
 
 
-
-
-
+      document.getElementById('submitb'+currentClass).style.display = 'inline-block';
+      document.getElementById('submitb'+i).style.marginTop = '7%';
+      document.getElementById('tweetButton'+i).style.display = 'none';
+      document.getElementById('mailButton'+i).style.display = 'none';
+}
 
     }
 
 
   }
 
+// --------------------------------------- ouvrir page rec
+// function yourFunction() {
+// document.getElementById('record').style.display = 'inline-block';
+// for(var i = 1; i <= counter; i++){
+//
+//       document.getElementById('qb'+i).style.display = 'none';
+//       document.getElementById('qc'+i).style.display = 'none';
+//       document.getElementById('submitb'+i).style.display = 'none';
+//       document.getElementById('myEmail'+i).style.display = 'none';
+//       document.getElementById('defaultCanvas0').style.display = 'none';
+//       document.getElementById('defaultCanvas0').style.backgroundColor = "#ff7a00 ";
+//     }
+//
+// }
 
 function yourFunction() {
-document.getElementById('record').style.display = 'inline-block';
-for(var i = 1; i <= counter; i++){
+  for (var i=1; i <= counter; i++){
+if (currentClass !== 0){
+    document.getElementById('qc'+currentClass).style.display = 'inline-block';
+    document.getElementById('tweetButton'+currentClass).style.display = 'inline-block';
+    document.getElementById('mailButton'+currentClass).style.display = 'inline-block';
 
-      document.getElementById('qb'+i).style.display = 'none';
-      document.getElementById('submitb'+i).style.display = 'none';
-      document.getElementById('myEmail'+i).style.display = 'none';
-      document.getElementById('defaultCanvas0').style.display = 'none';
-      document.getElementById('defaultCanvas0').style.backgroundColor = "#111122";
-    }
+    document.getElementById('q'+currentClass).style.display = 'none';
+    document.getElementById('qb'+currentClass).style.display = 'none';
+
+    document.getElementById('submit'+currentClass).style.display = 'none';
+    document.getElementById('myText'+currentClass).style.display = 'none';
+    document.getElementById('myEmail'+currentClass).style.display = 'none';
+
+
+    document.getElementById('submitb'+currentClass).style.display = 'none';
+    // document.getElementById('tweetButton'+i).style.display = 'none';
+    // document.getElementById('mailButton'+i).style.display = 'none';
+
+}
+  }
+
+}
+function tweetPage(){
+  console.log("tweetPage");
+ et[counter] = 0;
+ document.getElementById('qc'+currentClass).style.display = 'none';
+ document.getElementById('tweetButton'+currentClass).style.display = 'none';
+ document.getElementById('mailButton'+currentClass).style.display = 'none';
+
+ document.getElementById('div'+currentClass).style.display = 'inline-block';
+
+ document.getElementById('qd'+currentClass).style.display = 'inline-block';
+ document.getElementById('tweet'+currentClass).style.display = 'inline-block';
+ document.getElementById('submitTweet'+currentClass).style.display = 'inline-block';
+ document.getElementById('div'+currentClass).style.width = '100%';
+
+
+
+}
+
+function emailPage(){
+  console.log("emailPage");
+  et[counter] = 1;
+  document.getElementById('qc'+currentClass).style.display = 'none';
+  document.getElementById('tweetButton'+currentClass).style.display = 'none';
+  document.getElementById('mailButton'+currentClass).style.display = 'none';
+
+  document.getElementById('div'+currentClass).style.display = 'inline-block';
+
+  document.getElementById('qe'+currentClass).style.display = 'inline-block';
+  document.getElementById('message'+currentClass).style.display = 'inline-block';
+  document.getElementById('destinataire'+currentClass).style.display = 'inline-block';
+  document.getElementById('submitEmail'+currentClass).style.display = 'inline-block';
+  document.getElementById('div'+currentClass).style.width = '100%';
+
+
+
+}
+
+function postTweet(){
+  console.log("postTweet");
+  document.getElementById('div'+currentClass).style.display = 'none';
+
+  document.getElementById('qd'+currentClass).style.display = 'none';
+  document.getElementById('tweet'+currentClass).style.display = 'none';
+  document.getElementById('submitTweet'+currentClass).style.display = 'none';
+  document.getElementById('record').style.display = 'inline-block';
+
+}
+
+function sendEmail(){
+console.log("sendEmail");
+
+document.getElementById('div'+currentClass).style.display = 'none';
+
+document.getElementById('qe'+currentClass).style.display = 'none';
+document.getElementById('message'+currentClass).style.display = 'none';
+document.getElementById('destinataire'+currentClass).style.display = 'none';
+document.getElementById('submitEmail'+currentClass).style.display = 'none';
+document.getElementById('record').style.display = 'inline-block';
+//
+// Email.send({
+//     Host : "smtp.gmail.com",
+//     Username : "smtp0593@gmail.com",
+//     Password : "q1w2e3r4t5z6",
+//     To : document.getElementById('destinataire'+counter).value,
+//     From : "smtp0593@gmail.com",
+//     Subject : document.getElementById('myEmail'+counter).value + " " + document.getElementById('myText'+counter).value,
+//     Body : document.getElementById('message'+counter).value
+// }).then(
+//   //message => alert(message)
+// );
 
 }
 
@@ -691,64 +998,90 @@ function recFunction(){
 
 
       //machine.save();
+
+// --------------------------------------- begin to rec
       if (pressed == false ){
       document.getElementById('record').className = 'record2'
       pressed = true;
   	recording = true;
     audio = new MicrophoneInput(v);
+console.log(currentClass);
     // document.getElementById('defaultCanvas0').style.display = 'inline-block';
-    // document.getElementById('defaultCanvas0').style.backgroundColor = "#111122";
+    // document.getElementById('defaultCanvas0').style.backgroundColor = "#ff7a00 ";
   }
+// --------------------------------------- stop rec -> retour à la page d'acceuil
   else if (pressed == true){
-    tweet("tweetTest3");
+    // tweet("tweetTest3");
     document.getElementById('record').className = 'record'
   //machine.save();
   pressed = false;
   recording = false;
 
+document.getElementById('TextBoxesGroup').style.display = 'inline-block';
+document.getElementById('TextBoxesGroup').style.width = '100%';
   for (var i=1; i <= counter; i++){
+
         document.getElementById('div'+i).style.display = 'inline-block';
         document.getElementById("q"+i).style.display = 'none';
         document.getElementById("qb"+i).style.display = 'none';
+        document.getElementById("qc"+i).style.display = 'none';
+        document.getElementById("qd"+i).style.display = 'none';
         document.getElementById("submit"+i).style.display = 'none';
           document.getElementById('submitb'+i).style.display = 'none';
+          // document.getElementById('myText'+i).style.display = 'inline-block';
           document.getElementById('myText'+i).style.display = 'none';
-          document.getElementById('myEmail'+i).style.display = 'none';
+          // document.getElementById('myEmail'+i).style.clear = 'both';
+          // document.getElementById('myEmail'+i).style.display = 'inline-block';
+          // // document.getElementById('myEmail'+i).style.position= 'relative';
+          //  document.getElementById('myEmail'+i).style.cssFloat= 'right';
+          // // document.getElementById('myEmail'+i).style.right= '0%';
+          // document.getElementById('myEmail'+i).style.marginRight= '0%';
+          // document.getElementById('myEmail'+i).style.marginLeft= '0%';
+          // document.getElementById('myEmail'+i).style.fontSize= '56px';
+          // document.getElementById('myEmail'+i).style.transform = "translateX(20px)";
+          // //
+          // //
+          // // document.getElementById('myEmail'+i).style.marginLeft= '0%';
+          // document.getElementById('myEmail'+i).style.width= '20%';
+          // document.getElementById('myEmail'+i).style.textAlign= 'right';
+          document.getElementById('class'+i).style.display = 'inline-block';
+
+          // document.getElementById('myText'+i).style.textAlign = 'left';
+          // document.getElementById('myText'+i).style.marginRight = '4%';
+          // document.getElementById('myText'+i).style.marginLeft = '4%';
+          // document.getElementById('myText'+i).style.fontSize= '56px';
+          // document.getElementById('myText'+i).style.fontWeight = 'bold';
+          // document.getElementById('myText'+i).style.width = '92%';
+
+
+
+
+
           document.getElementById('texta'+i).value = document.getElementById('myText'+i).value;
           document.getElementById('texta'+i).style.display = 'inline-block';
           document.getElementById('textb'+i).value = document.getElementById('myEmail'+i).value;
           document.getElementById('textb'+i).style.display = 'inline-block';
           document.getElementById('p'+i).style.display = 'inline-block';
           // document.getElementById('class'+i).style.display = 'inline-block'
-          document.getElementById('record').style.display = 'none';
-          document.getElementById('addButton').style.display = 'inline-block';
-          document.getElementById('class0').style.display = 'inline-block';
+
+
           document.getElementById('div'+i).style.borderWidth = '1px';
           document.getElementById('div'+i).style.backgroundColor = "white";
           document.getElementById('TextBoxDiv'+i).style.display = 'inline-block';
           document.getElementById('TextBoxDiv'+i).style.width="80%";
           document.getElementById('TextBoxDiv'+i).style.margin="0% 10%";
           document.getElementById('defaultCanvas0').style.display = 'none';
-
-
-
-          //
-          // // console.log('Ready to Tweet article:\n\t', postBody.status);
-          // oauth.post('https://api.twitter.com/1.1/statuses/update.json',
-          // 	twitter_user_access_token,  // oauth_token (user access token)
-          //     twitter_user_secret,  // oauth_secret (user secret)
-          //     postBody,  // post body
-          //     '',  // post content type ?
-          // 	function(err, data, res) {
-          // 		if (err) {
-          // 			console.log(err);
-          // 		} else {
-          // 			// console.log(data);
-          // 		}
-          // 	});
+          document.getElementById('tweetButton'+i).style.display = 'none';
+          document.getElementById('mailButton'+i).style.display = 'none';
 
 
       }
+      document.getElementById('class0').style.display = 'inline-block';
+      document.getElementById('record').style.display = 'none';
+      document.getElementById('addButton').style.display = 'inline-block';
+      if (counter>0){
+      document.getElementById('removeButton').style.display = 'inline-block';
 
+}
   }
 }
