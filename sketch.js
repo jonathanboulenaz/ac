@@ -11,8 +11,8 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 4;
-var ambiantNoise = 2;
+var loudnessThreshold = 6;
+var ambiantNoise = 4;
 
 var soundReady = false;
 var pressed = false;
@@ -1052,8 +1052,6 @@ document.getElementById('TextBoxesGroup').style.width = '100%';
           // document.getElementById('myText'+i).style.fontSize= '56px';
           // document.getElementById('myText'+i).style.fontWeight = 'bold';
           // document.getElementById('myText'+i).style.width = '92%';
-
-
 
 
 
