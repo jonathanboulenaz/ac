@@ -396,31 +396,85 @@ width: 100%;
 
   /* border: 1px solid white; */
 }
-.save-btn .save {
-  width:25%;
-  background-color: black;
-  border: none;
+
+#_save{
+margin-bottom: 3%;
+}
+#_load{
+margin-bottom: 7%;
+}
+ .save {
+   outline:none;
+  width:14%;
+margin-left:7%;
+
+/* margin-top: 0%; */
+   /* background-image: linear-gradient(to right, #3d668f 0%, #6b86ae 35%, #3d668f 100%); */
+   /* background-image: linear-gradient(to right, #1E416E, #0EA7E6); */
+  /* border: 1px solid white; */
+background-color: #52667a;
+/* background:none; */
   color: white;
-  padding: 15px 32px;
+  /* font-weight: bold; */
+  padding: 40px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 36px;
   cursor: pointer;
-  float: left;
-  border: 1px solid white;
+  /* float: right; */
+  border-radius: 50%;
+
+  transition: all 0.4s ease-in;
+  span[class^='ion'] {
+    position: relative;
+  }
+
+  &:before {
+    content: '';
+    background-color: aliceblue;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(0.001, 0.001);
+  }
+  &:focus {
+    outline: 0;
+    color: #fff;
+    &:before {
+      animation: effect_dylan 0.8s ease-out;
+    }
+  }
+}
+@keyframes effect_dylan {
+  50% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
 }
 .ambiant {
   width:40%;
   margin-right:10%;
 margin-bottom: 7%;
-margin-top: 5%;
+margin-top: 11.1%;
    /* background-image: linear-gradient(to right, #3d668f 0%, #6b86ae 35%, #3d668f 100%); */
    /* background-image: linear-gradient(to right, #1E416E, #0EA7E6); */
   border: 1px solid white;
-background-color: #52667a;
-
-  color: white;
+background-color: white;
+/* background: none; */
+  color: #52667a;
   font-weight: bold;
   padding: 15px 24px;
   text-align: center;
@@ -430,7 +484,6 @@ background-color: #52667a;
   cursor: pointer;
   float: right;
   border-radius: 45px;
-  /* border: 1px solid white; */
 }
 .ambiant2 {
   width:100%;
@@ -516,6 +569,16 @@ color: white;
      height: 20%;
      text-align: center;
   }
+
+  /* .footerSave {
+
+       position: fixed;
+
+       bottom: 0;
+       width: 40%;
+       height: 20%;
+       text-align: center;
+    } */
   .div{
     font-family: Arial, Helvetica, sans-serif;
     background: none;
@@ -562,9 +625,7 @@ color: white;
 
         <div class="save-btn">
 
-         <button id="_save" class = "save">Save</button>
 
-        <button id="_load" class = "save">Load</button>
 
         <!-- <input type="reset"> -->
 
@@ -577,8 +638,12 @@ color: white;
     </div> -->
     <!-- <label for="myText1">First Name</label> -->
     <div id='TextBoxesGroup'>
-      <button id="class0" class = "ambiant">Bruit ambiant</button>
 
+
+      <button id="class0" class = "ambiant">Bruit ambiant</button>
+      <button id="_save" class = "save">Save</button>
+    <br>
+     <button id="_load" class = "save">Load</button>
 
    </div>
 <!-- </form> -->
@@ -590,6 +655,11 @@ color: white;
 <input class = 'add' type='button' value='+' id='addButton'>
 <!-- </div> -->
 </div>
+
+<!-- <div id="footerSave" class="footerSave"> -->
+
+<!-- </div> -->
+
 </body>
 
 </html>
