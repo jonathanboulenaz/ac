@@ -11,8 +11,8 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 6;
-var ambiantNoise = 4;
+var loudnessThreshold = 4;
+var ambiantNoise = 2;
 
 var soundReady = false;
 var pressed = false;
@@ -385,7 +385,7 @@ for (var j = 1; j <= counter; j++){
            //document.getElementById('textb'+j).style.display = 'none';
            // document.getElementById('texta'+j).style.display = 'none';
            document.getElementById('div'+j).style.borderWidth = '0px';
-           document.getElementById('div'+j).style.backgroundColor = "white";
+           // document.getElementById('div'+j).style.backgroundColor = "white";
             document.getElementById('TextBoxDiv'+j).style.display = 'none';
             document.getElementById('submitb'+j).style.display = 'none';
             document.getElementById('submitTweet'+j).style.display = 'none';
@@ -790,7 +790,7 @@ console.log("add:"+currentClass)
     document.getElementById('textb'+i).style.display = 'none';
     document.getElementById('texta'+i).style.display = 'none';
     document.getElementById('div'+i).style.borderWidth = '0px';
-    document.getElementById('div'+i).style.backgroundColor = "white";
+    // document.getElementById('div'+i).style.backgroundColor = "white";
      document.getElementById('TextBoxDiv'+i).style.display = 'none';
 
 
@@ -1066,7 +1066,7 @@ document.getElementById('TextBoxesGroup').style.width = '100%';
 
 
           document.getElementById('div'+i).style.borderWidth = '1px';
-          document.getElementById('div'+i).style.backgroundColor = "white";
+          // document.getElementById('div'+i).style.backgroundColor = "white";
           document.getElementById('TextBoxDiv'+i).style.display = 'inline-block';
           document.getElementById('TextBoxDiv'+i).style.width="80%";
           document.getElementById('TextBoxDiv'+i).style.margin="0% 10%";
