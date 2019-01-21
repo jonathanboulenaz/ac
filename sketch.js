@@ -611,45 +611,45 @@ function soundDataCallback(soundData) {
     };
 }( jQuery ));
 
-// $(document).ready(function(){
-//    $("#_save").on('click', function(){
-//      console.log("Saving form data...")
-//      console.log('training datas',machine.training);
-//      console.log(counter);
-//      var data = $("form#myForm").toJSON()
-//      var audioData = JSON.stringify(machine.training);
-//      var counterData = JSON.stringify(counter);
-//
-//      // console.log(audioData);
-//      localStorage.setItem('form_data', data);
-//      localStorage.setItem('audio_data', audioData);
-//      localStorage.setItem('counter_data', counterData);
-//
-//      return false;
-//    })
-//
-//    $("#_load").on('click', function(){
-//      if(localStorage['form_data']){
-//        console.log("Loading form data...");
-//        //console.log(JSON.parse(localStorage['form_data']))
-//        let model = JSON.parse(localStorage.getItem('audio_data'));
-//        machine.training = model;
-//        console.log('length',model.length,machine.training);
-//        counter = JSON.parse(localStorage.getItem('counter_data'));
-//
-//       nSamples = model.length;
-//        //console.log(JSON.parse(localStorage['audio-data']))
-//        let form = localStorage.getItem('form_data');
-//        $("form#myForm").fromJSON(form);
-//
-//      } else {
-//        console.log("Error: Save some data first")
-//      }
-//
-//
-//      return false;
-//    })
-// });
+$(document).ready(function(){
+   $("#_save").on('click', function(){
+     console.log("Saving form data...")
+     console.log('training datas',machine.training);
+     console.log(counter);
+     // var data = $("form#myForm").toJSON()
+     var audioData = JSON.stringify(machine.training);
+     var counterData = JSON.stringify(counter);
+
+     // console.log(audioData);
+     // localStorage.setItem('form_data', data);
+     localStorage.setItem('audio_data', audioData);
+     localStorage.setItem('counter_data', counterData);
+
+     return false;
+   })
+
+   $("#_load").on('click', function(){
+     if(localStorage['audio_data']){
+       console.log("Loading form data...");
+       //console.log(JSON.parse(localStorage['form_data']))
+       let model = JSON.parse(localStorage.getItem('audio_data'));
+       machine.training = model;
+       console.log('length',model.length,machine.training);
+       counter = JSON.parse(localStorage.getItem('counter_data'));
+
+      nSamples = model.length;
+       //console.log(JSON.parse(localStorage['audio-data']))
+       // let form = localStorage.getItem('form_data');
+       // $("form#myForm").fromJSON(form);
+
+     } else {
+       console.log("Error: Save some data first")
+     }
+
+
+     return false;
+   })
+});
 $(document).ready(function(){
 
 
