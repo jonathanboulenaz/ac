@@ -11,8 +11,8 @@ var normalized = [];
 
 var mfcc;
 var loudness = 0;
-var loudnessThreshold = 6;
-var ambiantNoise = 4;
+var loudnessThreshold = 4;
+var ambiantNoise = 2;
 
 var soundReady = false;
 var pressed = false;
