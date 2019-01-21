@@ -29,6 +29,14 @@ background: linear-gradient(to right, #020c0f , #093258);
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 
+  -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -webkit-tap-highlight-color: transparent;
+
 }
 .record{
   /* background-color:#3d668f; */
@@ -398,77 +406,46 @@ width: 100%;
 }
 
 #_save{
-margin-bottom: 3%;
+margin-bottom: 4%;
+/* margin-top: -10%; */
 }
 #_load{
 margin-bottom: 7%;
+/* margin-top: -10%; */
 }
  .save {
    outline:none;
-  width:14%;
-margin-left:7%;
-
+  width:12%;
+margin-left:9%;
+margin-top: -1%;
 /* margin-top: 0%; */
    /* background-image: linear-gradient(to right, #3d668f 0%, #6b86ae 35%, #3d668f 100%); */
    /* background-image: linear-gradient(to right, #1E416E, #0EA7E6); */
   /* border: 1px solid white; */
-background-color: #52667a;
+background-color: transparent;
 /* background:none; */
   color: white;
   /* font-weight: bold; */
-  padding: 40px 4px;
+  padding: 34px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 36px;
+  font-size: 34px;
   cursor: pointer;
   /* float: right; */
   border-radius: 50%;
 
-  transition: all 0.4s ease-in;
-  span[class^='ion'] {
-    position: relative;
   }
 
-  &:before {
-    content: '';
-    background-color: aliceblue;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: scale(0.001, 0.001);
-  }
-  &:focus {
-    outline: 0;
-    color: #fff;
-    &:before {
-      animation: effect_dylan 0.8s ease-out;
-    }
-  }
+  .save:active {
+  background-color:	#94a6b8;
 }
-@keyframes effect_dylan {
-  50% {
-    transform: scale(1.5, 1.5);
-    opacity: 0;
-  }
-  99% {
-    transform: scale(0.001, 0.001);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0.001, 0.001);
-    opacity: 1;
-  }
-}
+
 .ambiant {
   width:40%;
   margin-right:10%;
 margin-bottom: 7%;
-margin-top: 11.1%;
+margin-top: 14%;
    /* background-image: linear-gradient(to right, #3d668f 0%, #6b86ae 35%, #3d668f 100%); */
    /* background-image: linear-gradient(to right, #1E416E, #0EA7E6); */
   border: 1px solid white;
