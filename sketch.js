@@ -249,23 +249,23 @@ for (var i = 1; i <= counter; i++){
           // alert(count[i-1] + " " + document.getElementById("myText"+ i).value + " comptailisé");
     if (et[counter] == 0){
       console.log(document.getElementById("tweet"+i).value)
-    //   tweet(document.getElementById("tweet"+i).value);
+      tweet(document.getElementById("tweet"+i).value);
     }
     else if (et[counter] == 1){
 
       console.log("to:"+ document.getElementById('destinataire'+i).value + ", objet:" + document.getElementById('myEmail'+i).value + " " + document.getElementById('myText'+i).value + ", message:" + document.getElementById('message'+i).value)
 
-      // Email.send({
-      //     Host : "smtp.gmail.com",
-      //     Username : "smtp0593@gmail.com",
-      //     Password : "q1w2e3r4t5z6",
-      //     To : document.getElementById('destinataire'+i).value,
-      //     From : "smtp0593@gmail.com",
-      //     Subject : document.getElementById('myEmail'+i).value + " " + document.getElementById('myText'+i).value,
-      //     Body : document.getElementById('message'+i).value
-      // }).then(
-      //   //message => alert(message)
-      // );
+      Email.send({
+          Host : "smtp.gmail.com",
+          Username : "smtp0593@gmail.com",
+          Password : "q1w2e3r4t5z6",
+          To : document.getElementById('destinataire'+i).value,
+          From : "smtp0593@gmail.com",
+          Subject : document.getElementById('myEmail'+i).value + " " + document.getElementById('myText'+i).value,
+          Body : document.getElementById('message'+i).value
+      }).then(
+        //message => alert(message)
+      );
 
     }
 
@@ -324,6 +324,8 @@ function drawButtons(){
    //machine.save();
   currentClass = 0;
   document.getElementById('class0').style.display = 'none';
+  document.getElementById('_save').style.display = 'none';
+  document.getElementById('_load').style.display = 'none';
   document.getElementById('addButton').style.display = 'none';
   document.getElementById('record').style.display = 'inline-block';
   document.getElementById('TextBoxesGroup').style.display = 'none'
@@ -435,6 +437,8 @@ for (var j = 1; j <= counter; j++){
            // document.getElementById('texta'+counter).style.display = 'none';
        document.getElementById('addButton').style.display = 'none';
        document.getElementById('class0').style.display = 'none';
+       document.getElementById('_save').style.display = 'none';
+       document.getElementById('_load').style.display = 'none';
        document.getElementById('removeButton').style.display = 'none';
        // console.log(counter);
 
@@ -830,6 +834,8 @@ document.getElementById('class'+counter).style.display = 'none';
     document.getElementById('texta'+counter).style.display = 'none';
 document.getElementById('addButton').style.display = 'none';
 document.getElementById('class0').style.display = 'none';
+document.getElementById('_save').style.display = 'none';
+document.getElementById('_load').style.display = 'none';
 document.getElementById('removeButton').style.display = 'none';
 // console.log(counter);
      });
@@ -1075,6 +1081,8 @@ document.getElementById('TextBoxesGroup').style.width = '100%';
 
       }
       document.getElementById('class0').style.display = 'inline-block';
+      document.getElementById('_save').style.display = 'inline-block';
+      document.getElementById('_load').style.display = 'inline-block';
       document.getElementById('record').style.display = 'none';
       document.getElementById('addButton').style.display = 'inline-block';
       if (counter>0){
